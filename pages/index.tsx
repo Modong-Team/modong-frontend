@@ -5,6 +5,8 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<StyledTest>Styled-Componets Test</StyledTest>
+			<div className='pink-color'>SCSS Variables Test</div>
+			<div className='pink-box'>SCSS Mixin Test</div>
 		</>
 	);
 };
