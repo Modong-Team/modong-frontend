@@ -90,7 +90,6 @@ const TabElementContainer = styled.div`
 	border-radius: 0.8rem 0.8rem 0 0;
 	background-color: ${Colors.white01};
 	overflow: hidden;
-	background-color: pink;
 
 	& {
 		div:last-child {
