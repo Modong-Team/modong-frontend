@@ -83,6 +83,7 @@ video {
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
+	font-weight: normal;
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -119,4 +120,17 @@ q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+button {
+	all: unset;
+	cursor: pointer;
+}
+input {
+	border: none;
+}
+input:focus {
+	outline: none;
+}
+span {
+	all: unset;
 }
