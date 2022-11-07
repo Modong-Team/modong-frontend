@@ -1,10 +1,12 @@
+import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
+import { NewApplicationTitleProps } from './propsTypes';
 
-export default function NewApplicationTitle() {
+export default function NewApplicationTitle({ titleRef }: NewApplicationTitleProps) {
 	return (
 		<TitleContainer>
-			<input type='text' placeholder='지원서 제목을 입력하세요' />
+			<input type='text' placeholder='지원서 제목을 입력하세요' ref={titleRef} />
 		</TitleContainer>
 	);
 }
