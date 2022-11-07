@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
+import { NewApplicationHeaderProps } from './propsTypes';
 
-export default function NewApplicationHeader() {
+export default function NewApplicationHeader({ onDone }: NewApplicationHeaderProps) {
 	return (
 		<HeaderContainer>
 			<HeaderLogo>모동</HeaderLogo>
-			<SubmitBtn>작성완료</SubmitBtn>
+			<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
 		</HeaderContainer>
 	);
 }
