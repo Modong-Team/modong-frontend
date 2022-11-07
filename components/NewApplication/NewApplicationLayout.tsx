@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import NewApplicationHeader from './NewApplicationHeader';
-import { IChildren } from '../../interfaces/children';
+import { NewApplicationLayoutProps } from './propsTypes';
 
-export default function NewApplicationLayout({ children }: IChildren) {
+export default function NewApplicationLayout({ children, onDone }: NewApplicationLayoutProps) {
 	return (
 		<LayoutContainer>
-			<NewApplicationHeader />
+			<NewApplicationHeader onDone={onDone} />
 			<MainContainer>{children}</MainContainer>
 		</LayoutContainer>
 	);

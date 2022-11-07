@@ -1,17 +1,15 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { svgCircleMinus, svgCirclePlus } from '../../constants/svgs';
-import { IChildren } from '../../interfaces/children';
-import { Essentials } from '../../models/essential';
+import { Essentials } from '../../models/essentials';
+import { EssentialElementWrapperProps } from './styledTypes';
+import { EssentialElementProps, NewApplicationEssentialProps } from './propsTypes';
 
-export default function NewApplicationEssential() {
+export default function NewApplicationEssential({
+	essentials,
+	setEssentials,
+}: NewApplicationEssentialProps) {
 	const essentialsList = [1, 2, 3, 4, 5, 6];
-	const [essentials, setEssentials] = useState([1, 2, 3, 4, 5, 6]);
-
-	useEffect(() => {
-		console.log(essentials);
-	}, [essentials]);
 
 	const setIsEssential = (element: number) => {
 		if (essentials.includes(element)) setEssentials(essentials.filter((v) => v !== element));
@@ -43,18 +41,12 @@ export default function NewApplicationEssential() {
 	);
 }
 
-interface IEssentialElement extends IChildren {
-	onClick?: () => void;
-	isNotEssential: boolean;
-	isFixedEssential?: boolean;
-}
-
 const EssentialElement = ({
 	children,
 	onClick,
 	isNotEssential,
 	isFixedEssential,
-}: IEssentialElement) => (
+}: EssentialElementProps) => (
 	<EssentialElementWrapper isNotEssential={isNotEssential}>
 		{children}
 		{!isFixedEssential && (
@@ -69,11 +61,7 @@ const EssentialContainer = styled.div`
 	gap: 1.6rem;
 `;
 
-interface ThemedStyledProps {
-	isNotEssential: boolean;
-}
-
-const EssentialElementWrapper = styled.div<ThemedStyledProps>`
+const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
 	font-weight: 700;
 	font-size: 1.8rem;
 	background-color: ${(props) =>

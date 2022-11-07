@@ -2,11 +2,15 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { svgPlus, svgX } from '../../constants/svgs';
-import { IChildren } from '../../interfaces/children';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
+import { TabElementWrapperProps } from './styledTypes';
+import { NewApplicationContentProps, TabElementProps } from './propsTypes';
 
-export default function NewApplicationContent() {
+export default function NewApplicationContent({
+	essentials,
+	setEssentials,
+}: NewApplicationContentProps) {
 	const [activePage, setActivePage] = useState(0);
 	const [pages, setPages] = useState(1);
 
@@ -40,19 +44,17 @@ export default function NewApplicationContent() {
 				<span onClick={addNewPage}>{svgPlus}</span>
 			</TabContainer>
 			<FormContainer>
-				{!activePage ? <NewApplicationEssential /> : <NewApplicationDefault />}
+				{!activePage ? (
+					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
+				) : (
+					<NewApplicationDefault />
+				)}
 			</FormContainer>
 		</ContentContainer>
 	);
 }
 
-interface ITabElement extends IChildren {
-	onClickTitle: () => void;
-	onClickX: () => void;
-	isActive: boolean;
-}
-
-const TabElement = ({ children, onClickTitle, onClickX, isActive }: ITabElement) => {
+const TabElement = ({ children, onClickTitle, onClickX, isActive }: TabElementProps) => {
 	return (
 		<TabElementWrapper isActive={isActive}>
 			<span onClick={onClickTitle}>{children}</span>
@@ -98,11 +100,7 @@ const TabElementContainer = styled.div`
 	}
 `;
 
-interface ThemedStyledProps {
-	isActive: boolean;
-}
-
-const TabElementWrapper = styled.div<ThemedStyledProps>`
+const TabElementWrapper = styled.div<TabElementWrapperProps>`
 	background-color: ${(props) => (props.isActive ? Colors.white01 : Colors.background05)};
 	border-right: 0.1rem solid ${Colors.border02};
 	padding: 1.2rem 1.6rem;

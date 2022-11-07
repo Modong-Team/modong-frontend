@@ -1,12 +1,4 @@
-interface IEssentials {
-	1: string;
-	2: string;
-	3: string;
-	4: string;
-	5: string;
-	6: string;
-	[keys: number]: string;
-}
+import { IEssentials } from '../interfaces/essentials';
 
 export const Essentials: IEssentials = {
 	1: '성함을 입력해주세요.',
