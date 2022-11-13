@@ -3,7 +3,7 @@ import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
-import { NewApplicationContentProps, TabElementProps } from './propsTypes';
+import { NewApplicationContentProps } from './propsTypes';
 
 export default function NewApplicationContent({
 	essentials,
@@ -29,8 +29,7 @@ const ContentContainer = styled.div``;
 const FormContainer = styled.div`
 	background-color: ${Colors.white};
 	border: 0.1rem solid ${Colors.gray200};
-	border-top: none;
-	border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+	border-radius: 0.8rem;
 	padding: 4rem;
 
 	& {
