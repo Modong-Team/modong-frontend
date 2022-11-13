@@ -4,4 +4,5 @@ export interface TabElementWrapperProps {
 
 export interface EssentialElementWrapperProps {
 	isNotEssential: boolean;
+	isFixedEssential?: boolean;
 }
