@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
+import Fonts from '../../constants/fonts';
 
 export default function NewApplicationIndicator() {
 	return (
@@ -27,7 +28,7 @@ const IndicatorContainer = styled.section`
 
 	& {
 		div {
-			font-size: 1.4rem;
+			${Fonts.subtitle14medium}
 		}
 	}
 `;
@@ -36,16 +37,16 @@ const IndicatorElement = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 0.7rem;
-	color: ${Colors.gray01};
+	color: ${Colors.gray500};
 `;
 
 const IndicatorCircle = styled.div`
 	width: 2.4rem;
 	height: 2.4rem;
 	border-radius: 50%;
-	background-color: ${Colors.background06};
+	background-color: ${Colors.gray200};
+	color: ${Colors.gray500};
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: ${Colors.gray01};
 `;

@@ -15,7 +15,7 @@ export default function NewApplicationLayout({ children, onDone }: NewApplicatio
 const LayoutContainer = styled.div``;
 
 const MainContainer = styled.div`
-	background-color: ${Colors.background01};
+	background-color: ${Colors.background};
 	min-height: calc(100vh - 10rem);
 	padding: 4rem 0;
 `;

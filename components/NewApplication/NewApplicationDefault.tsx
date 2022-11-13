@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
+import Fonts from '../../constants/fonts';
 import { svgTrash, svgCirclePlusBig } from '../../constants/svgs';
 
 export default function NewApplicationDefault() {
@@ -38,13 +39,12 @@ const DefaultContainer = styled.div`
 
 const DefaultInputContainer = styled.div`
 	padding: 2.1rem 3.7rem;
-	background-color: ${Colors.background02};
+	background-color: ${Colors.white};
 	border-radius: 0.8rem;
 
 	& {
 		h3 {
-			font-weight: 700;
-			font-size: 1.4rem;
+			${Fonts.subtitle14semibold}
 			margin-bottom: 0.6rem;
 		}
 	}
@@ -54,8 +54,7 @@ const DefaultInputText = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 0.15rem solid ${Colors.border05};
-	background-color: ${Colors.background02};
+	background-color: ${Colors.white};
 
 	& {
 		input {
@@ -64,9 +63,8 @@ const DefaultInputText = styled.div`
 			padding: 0;
 		}
 		input::placeholder {
-			font-weight: 700;
-			font-size: 1.8rem;
-			color: ${Colors.black04};
+			${Fonts.body16regular}
+			color: ${Colors.gray400};
 		}
 		svg {
 			margin-bottom: 0.6rem;
