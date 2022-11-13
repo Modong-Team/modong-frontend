@@ -2,11 +2,12 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgCirclePlus, svgCircleX } from '../../constants/svgs';
+import { NewApplicationDefaultProps } from './propsTypes';
 
-export default function NewApplicationDefault() {
+export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {
 	return (
 		<>
-			<h2>질문 페이지(1)</h2>
+			<h2>{section.title}</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
 			<DefaultContainer>
 				<DefaultInputContainer>
