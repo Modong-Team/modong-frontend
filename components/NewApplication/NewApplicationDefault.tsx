@@ -1,24 +1,22 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { svgTrash, svgCirclePlusBig } from '../../constants/svgs';
+import Fonts from '../../constants/fonts';
+import { svgCirclePlus, svgCircleX } from '../../constants/svgs';
 
 export default function NewApplicationDefault() {
 	return (
 		<>
-			<h2>새로운 페이지 (임시)</h2>
-			<p>
-				페이지를 추가하면 주관식 질문이 기본으로 보여져요.
-				<br />이 곳에 들어갈 문구는 따로 전달 부탁드려요.
-			</p>
+			<h2>질문 페이지(1)</h2>
+			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
 			<DefaultContainer>
 				<DefaultInputContainer>
 					<h3>주관식</h3>
 					<DefaultInputText>
 						<input placeholder='질문 제목을 입력해주세요' />
-						{svgTrash}
+						{svgCircleX}
 					</DefaultInputText>
 				</DefaultInputContainer>
-				<span>{svgCirclePlusBig}</span>
+				<span>{svgCirclePlus}</span>
 			</DefaultContainer>
 		</>
 	);
@@ -27,7 +25,7 @@ export default function NewApplicationDefault() {
 const DefaultContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1.79rem;
+	gap: 2.52rem;
 
 	& {
 		> span {
@@ -37,15 +35,16 @@ const DefaultContainer = styled.div`
 `;
 
 const DefaultInputContainer = styled.div`
-	padding: 2.1rem 3.7rem;
-	background-color: ${Colors.background02};
+	padding: 2.3rem 2.8rem;
+	background-color: ${Colors.white};
 	border-radius: 0.8rem;
+	border: 0.1rem solid ${Colors.gray200};
+	margin-top: 2rem;
 
 	& {
 		h3 {
-			font-weight: 700;
-			font-size: 1.4rem;
-			margin-bottom: 0.6rem;
+			${Fonts.subtitle14semibold}
+			margin-bottom: 0.9rem;
 		}
 	}
 `;
@@ -54,19 +53,21 @@ const DefaultInputText = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	border-bottom: 0.15rem solid ${Colors.border05};
-	background-color: ${Colors.background02};
+	gap: 1.15rem;
+	background-color: ${Colors.white};
 
 	& {
 		input {
+			${Fonts.body16regular}
 			width: 100%;
 			background-color: transparent;
-			padding: 0;
+			padding: 1rem 0.8rem;
+			border: 0.1rem solid ${Colors.gray200};
+			border-radius: 0.4rem;
 		}
 		input::placeholder {
-			font-weight: 700;
-			font-size: 1.8rem;
-			color: ${Colors.black04};
+			${Fonts.body16regular}
+			color: ${Colors.gray400};
 		}
 		svg {
 			margin-bottom: 0.6rem;

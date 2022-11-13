@@ -4,6 +4,7 @@ import { svgChecked, svgUnChecked } from '../../constants/svgs';
 import { Essentials } from '../../models/essentials';
 import { EssentialElementWrapperProps } from './styledTypes';
 import { EssentialElementProps, NewApplicationEssentialProps } from './propsTypes';
+import Fonts from '../../constants/fonts';
 
 export default function NewApplicationEssential({
 	essentials,
@@ -67,32 +68,37 @@ const EssentialElement = ({
 const EssentialContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
-	margin-top: 1.4rem;
 `;
 
 const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
-	font-weight: 600;
-	font-size: 1.6rem;
+	${Fonts.subtitle16semibold}
 	height: 4.8rem;
 	padding: 0 2.15rem;
 	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.border07};
+	border: 0.1rem solid ${Colors.gray200};
+	color: ${Colors.gray900};
 	display: flex;
 	align-items: center;
 	gap: 1.15rem;
-	color: ${Colors.gray02};
 	cursor: ${(props) => (!props.isFixedEssential ? 'pointer' : '')};
+	margin-bottom: 1rem;
 
 	& {
 		> span {
 			display: flex;
 		}
+		:last-child {
+			margin-bottom: 0;
+		}
 	}
 `;
 
 const Description = styled.p`
-	font-size: 1.4rem;
-	margin-top: 1.4rem;
-	color: ${Colors.gray02};
+	${Fonts.subtitle14medium}
+	color: ${Colors.gray900};
+	margin-bottom: 0.8rem;
+
+	&:nth-of-type(2) {
+		margin-top: 1.4rem;
+	}
 `;

@@ -19,10 +19,10 @@ const NavigatorContainer = styled.section`
 `;
 
 const NavigatorElement = styled.div`
-	background-color: ${Colors.background06};
-	border: 0.1rem solid ${Colors.border06};
+	background-color: ${Colors.gray200};
+	border: 0.1rem solid ${Colors.gray300};
 	padding: 1.2rem 1.6rem;
 	border-radius: 0.8rem;
 	width: 17.4rem;
-	color: ${Colors.gray01};
+	color: ${Colors.gray500};
 `;

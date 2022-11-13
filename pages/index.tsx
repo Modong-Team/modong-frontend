@@ -19,7 +19,7 @@ const Home: NextPage = () => {
 };
 
 const HomeContainer = styled.div`
-	background-color: ${Colors.background01};
+	background-color: ${Colors.background};
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -27,8 +27,8 @@ const HomeContainer = styled.div`
 `;
 
 const NewApplicationBtn = styled.button`
-	background-color: ${Colors.highlight01};
-	color: ${Colors.white01};
+	background-color: ${Colors.blue500};
+	color: ${Colors.white};
 	padding: 1.2rem 1.5rem;
 	border-radius: 0.8rem;
 	font-size: 2rem;
