@@ -24,4 +24,6 @@ const Button = styled.button`
 	border-radius: 0.8rem;
 	border: 0.1rem solid ${Colors.border07};
 	background-color: ${Colors.white01};
+	font-size: 1.4rem;
+	font-weight: 700;
 `;
