@@ -1,10 +1,6 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { svgPlus, svgX } from '../../constants/svgs';
-import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
-import { TabElementWrapperProps } from './styledTypes';
 import { NewApplicationContentProps, TabElementProps } from './propsTypes';
 
 export default function NewApplicationContent({
@@ -20,13 +16,7 @@ export default function NewApplicationContent({
 	);
 }
 
-const ContentContainer = styled.div`
-	& {
-		svg {
-			cursor: pointer;
-		}
-	}
-`;
+const ContentContainer = styled.div``;
 
 const FormContainer = styled.div`
 	background-color: ${Colors.white01};
@@ -38,16 +28,8 @@ const FormContainer = styled.div`
 	& {
 		h2 {
 			font-weight: 700;
-			font-size: 2.8rem;
-			margin-bottom: 1.2rem;
-		}
-
-		p {
-			font-weight: 600;
-			font-size: 1.8rem;
-			color: ${Colors.black03};
-			line-height: 140%;
-			margin-bottom: 3.2rem;
+			font-size: 2.4rem;
+			color: ${Colors.gray02};
 		}
 	}
 `;

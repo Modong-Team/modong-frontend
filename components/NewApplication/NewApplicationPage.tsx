@@ -10,10 +10,11 @@ import NewApplicationButton from './NewApplicationButton';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
-	const [essentials, setEssentials] = useState([1, 2, 3, 4, 5, 6]);
+	const [essentials, setEssentials] = useState([1, 2, 3]);
 
 	const onDone = async () => {
 		const title = titleRef.current!.value;
+		if (!title) return;
 		const post = await postApplication(1, title)
 			.then(async (res) => {
 				console.log(res);
