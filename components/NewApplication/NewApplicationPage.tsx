@@ -51,7 +51,7 @@ export default function NewApplicationPage() {
 		<NewApplicationLayout onDone={onDone}>
 			<NewApplicationContainer>
 				<NewApplicationTitle titleRef={titleRef} />
-				<NewApplicationIndicator />
+				<NewApplicationIndicator currentSection={currentSection} />
 				<NewApplicationContent
 					essentials={essentials}
 					setEssentials={setEssentials}

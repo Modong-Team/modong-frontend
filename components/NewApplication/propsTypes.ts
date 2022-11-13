@@ -54,3 +54,7 @@ export interface NewApplicationNavigatorProps {
 export interface NewApplicationDefaultProps {
 	section: ISections;
 }
+
+export interface NewApplicationIndicatorProps {
+	currentSection: number;
+}

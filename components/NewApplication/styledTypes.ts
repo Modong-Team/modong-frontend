@@ -14,3 +14,7 @@ export interface ButtonProps {
 export interface NavigatorElementProps {
 	isCurrent?: boolean;
 }
+
+export interface IndicatorElementProps {
+	isHighlighted?: boolean;
+}
