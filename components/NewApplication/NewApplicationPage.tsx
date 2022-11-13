@@ -16,6 +16,7 @@ export default function NewApplicationPage() {
 	const [sections, setSections] = useState([...DummySections]);
 	const [sectionsLength, setSectionsLength] = useState(0);
 	const [removedSections, setRemovedSections] = useState([]);
+	const [emptyTitleError, setEmptyTitleError] = useState(false);
 
 	useEffect(() => {
 		setSectionsLength(sections.length);
@@ -23,7 +24,11 @@ export default function NewApplicationPage() {
 
 	const onDone = async () => {
 		const title = titleRef.current!.value;
-		if (!title) return;
+		if (!title) {
+			setEmptyTitleError(true);
+			return;
+		} else setEmptyTitleError(false);
+
 		const post = await postApplication(1, title)
 			.then(async (res) => {
 				console.log(res);
@@ -47,10 +52,15 @@ export default function NewApplicationPage() {
 		setCurrentSection(idx);
 	};
 
+	const onRemove = (idx: number) => {
+		setSections(sections.filter((v, i) => i !== idx));
+		setCurrentSection(Math.max(0, currentSection - 1));
+	};
+
 	return (
 		<NewApplicationLayout onDone={onDone}>
 			<NewApplicationContainer>
-				<NewApplicationTitle titleRef={titleRef} />
+				<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
 				<NewApplicationIndicator currentSection={currentSection} />
 				<NewApplicationContent
 					essentials={essentials}
@@ -62,6 +72,7 @@ export default function NewApplicationPage() {
 					sections={sections}
 					currentSection={currentSection}
 					onRouteToSection={onRouteToSection}
+					onRemove={onRemove}
 				/>
 				<NewApplicationButton
 					currentSection={currentSection}
