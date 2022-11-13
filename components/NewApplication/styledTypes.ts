@@ -18,3 +18,8 @@ export interface NavigatorElementProps {
 export interface IndicatorElementProps {
 	isHighlighted?: boolean;
 }
+
+export interface TitleContainerProps {
+	isFocused?: boolean;
+	isError?: boolean;
+}
