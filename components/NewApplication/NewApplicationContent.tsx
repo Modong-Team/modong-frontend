@@ -8,12 +8,17 @@ import { NewApplicationContentProps, TabElementProps } from './propsTypes';
 export default function NewApplicationContent({
 	essentials,
 	setEssentials,
+	currentSection,
+	section,
 }: NewApplicationContentProps) {
 	return (
 		<ContentContainer>
 			<FormContainer>
-				<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
-				{/* <NewApplicationDefault /> */}
+				{!currentSection ? (
+					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
+				) : (
+					<NewApplicationDefault section={section} />
+				)}
 			</FormContainer>
 		</ContentContainer>
 	);
@@ -33,6 +38,9 @@ const FormContainer = styled.div`
 			${Fonts.heading24bold}
 			color: ${Colors.gray900};
 			margin-bottom: 2.4rem;
+		}
+		p {
+			${Fonts.subtitle14medium}
 		}
 	}
 `;
