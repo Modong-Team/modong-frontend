@@ -4,6 +4,8 @@ import NewApplicationContent from './NewApplicationContent';
 import NewApplicationLayout from './NewApplicationLayout';
 import NewApplicationTitle from './NewApplicationTitle';
 import { postApplication, patchApplication } from '../../api/application';
+import NewApplicationIndicator from './NewApplicationIndicator';
+import NewApplicationNavigator from './NewApplicationNavigator';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -24,16 +26,19 @@ export default function NewApplicationPage() {
 		<NewApplicationLayout onDone={onDone}>
 			<NewApplicationContainer>
 				<NewApplicationTitle titleRef={titleRef} />
+				<NewApplicationIndicator />
 				<NewApplicationContent essentials={essentials} setEssentials={setEssentials} />
+				<NewApplicationNavigator />
 			</NewApplicationContainer>
 		</NewApplicationLayout>
 	);
 }
 
 const NewApplicationContainer = styled.div`
-	width: 69.4rem;
-	margin: 0 auto;
-	display: flex;
-	flex-direction: column;
-	gap: 2.1rem;
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	display: grid;
+	grid-template-columns: max-content 71.2rem max-content;
+	row-gap: 1.6rem;
 `;

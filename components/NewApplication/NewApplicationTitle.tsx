@@ -16,6 +16,7 @@ const TitleContainer = styled.div`
 	padding: 1.6rem 2.4rem;
 	background-color: ${Colors.white01};
 	border: 0.1rem solid ${Colors.border02};
+	grid-column: 2/3;
 
 	& {
 		input {
