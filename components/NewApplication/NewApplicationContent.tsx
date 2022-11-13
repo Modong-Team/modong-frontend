@@ -3,17 +3,22 @@ import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
-import { NewApplicationContentProps, TabElementProps } from './propsTypes';
+import { NewApplicationContentProps } from './propsTypes';
 
 export default function NewApplicationContent({
 	essentials,
 	setEssentials,
+	currentSection,
+	section,
 }: NewApplicationContentProps) {
 	return (
 		<ContentContainer>
 			<FormContainer>
-				<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
-				{/* <NewApplicationDefault /> */}
+				{!currentSection ? (
+					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
+				) : (
+					<NewApplicationDefault section={section} />
+				)}
 			</FormContainer>
 		</ContentContainer>
 	);
@@ -24,8 +29,7 @@ const ContentContainer = styled.div``;
 const FormContainer = styled.div`
 	background-color: ${Colors.white};
 	border: 0.1rem solid ${Colors.gray200};
-	border-top: none;
-	border-radius: 0.8rem 0.8rem 0.8rem 0.8rem;
+	border-radius: 0.8rem;
 	padding: 4rem;
 
 	& {
@@ -33,6 +37,9 @@ const FormContainer = styled.div`
 			${Fonts.heading24bold}
 			color: ${Colors.gray900};
 			margin-bottom: 2.4rem;
+		}
+		p {
+			${Fonts.subtitle14medium}
 		}
 	}
 `;

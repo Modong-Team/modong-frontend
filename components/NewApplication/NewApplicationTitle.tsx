@@ -1,22 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { NewApplicationTitleProps } from './propsTypes';
+import { TitleContainerProps } from './styledTypes';
 
-export default function NewApplicationTitle({ titleRef }: NewApplicationTitleProps) {
+export default function NewApplicationTitle({
+	titleRef,
+	emptyTitleError,
+}: NewApplicationTitleProps) {
+	const [isFocused, setIsFocused] = useState(false);
+
+	const onFocus = () => {
+		setIsFocused(true);
+	};
+
+	const onBlur = () => {
+		setIsFocused(false);
+	};
+
 	return (
-		<TitleContainer>
-			<input type='text' placeholder='지원서 제목' ref={titleRef} />
+		<TitleContainer isFocused={isFocused} isError={emptyTitleError}>
+			<Error>{emptyTitleError ? '내용을 입력해주세요.' : ''}</Error>
+			<input
+				type='text'
+				placeholder='지원서 제목'
+				ref={titleRef}
+				onFocus={onFocus}
+				onBlur={onBlur}
+			/>
 		</TitleContainer>
 	);
 }
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.div<TitleContainerProps>`
+	position: relative;
 	border-radius: 0.8rem;
 	padding: 2.2rem 4rem;
 	background-color: ${Colors.white};
-	border: 0.1rem solid ${Colors.gray200};
+	border: 0.1rem solid ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray200)};
 	grid-column: 2/3;
 
 	& {
@@ -32,4 +54,18 @@ const TitleContainer = styled.div`
 			}
 		}
 	}
+
+	&:hover {
+		border-color: ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray700)};
+	}
+
+	border-color: ${(props) => (props.isError ? `${Colors.red} !important` : '')};
+`;
+
+const Error = styled.div`
+	${Fonts.body14regular}
+	position: absolute;
+	top: -2.4rem;
+	left: 0;
+	color: ${Colors.red};
 `;
