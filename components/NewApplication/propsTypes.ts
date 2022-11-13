@@ -12,6 +12,7 @@ export interface NewApplicationHeaderProps {
 
 export interface NewApplicationTitleProps {
 	titleRef: React.RefObject<HTMLInputElement>;
+	emptyTitleError: boolean;
 }
 
 export interface NewApplicationContentProps {
@@ -49,6 +50,7 @@ export interface NewApplicationNavigatorProps {
 	currentSection: number;
 	sections: ISections[];
 	onRouteToSection: (idx: number) => void;
+	onRemove: (idx: number) => void;
 }
 
 export interface NewApplicationDefaultProps {
