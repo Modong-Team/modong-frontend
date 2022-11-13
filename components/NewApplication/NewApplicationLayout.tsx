@@ -16,6 +16,6 @@ const LayoutContainer = styled.div``;
 
 const MainContainer = styled.div`
 	background-color: ${Colors.background};
-	min-height: calc(100vh - 10rem);
+	min-height: calc(100vh - 8rem);
 	padding: 4rem 0;
 `;
