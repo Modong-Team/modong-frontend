@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { svgChecked, svgUnChecked } from '../../constants/svgs';
+import { svgChecked, svgUnChecked, svgCheckedBlue } from '../../constants/svgs';
 import { Essentials } from '../../models/essentials';
 import { EssentialElementWrapperProps } from './styledTypes';
 import { EssentialElementProps, NewApplicationEssentialProps } from './propsTypes';
@@ -55,15 +55,21 @@ const EssentialElement = ({
 	onClick,
 	isNotEssential,
 	isFixedEssential,
-}: EssentialElementProps) => (
-	<EssentialElementWrapper
-		onClick={onClick}
-		isNotEssential={isNotEssential}
-		isFixedEssential={isFixedEssential}>
-		{<span>{isNotEssential ? svgUnChecked : svgChecked}</span>}
-		{children}
-	</EssentialElementWrapper>
-);
+}: EssentialElementProps) => {
+	return (
+		<EssentialElementWrapper
+			onClick={onClick}
+			isNotEssential={isNotEssential}
+			isFixedEssential={isFixedEssential}>
+			{
+				<span>
+					{!isFixedEssential ? (isNotEssential ? svgUnChecked : svgCheckedBlue) : svgChecked}
+				</span>
+			}
+			{children}
+		</EssentialElementWrapper>
+	);
+};
 
 const EssentialContainer = styled.div`
 	display: flex;
@@ -82,6 +88,7 @@ const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
 	gap: 1.15rem;
 	cursor: ${(props) => (!props.isFixedEssential ? 'pointer' : '')};
 	margin-bottom: 1rem;
+	transition: 0.3s ease;
 
 	& {
 		> span {
@@ -89,6 +96,17 @@ const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
 		}
 		:last-child {
 			margin-bottom: 0;
+		}
+	}
+
+	&:hover {
+		background-color: ${(props) => (!props.isFixedEssential ? Colors.gray100 : '')};
+		border-color: ${(props) => (!props.isFixedEssential ? Colors.gray300 : '')};
+		transition: 0.3s ease;
+
+		> span svg path:first-child {
+			fill: ${(props) => props.isNotEssential && Colors.gray300};
+			transition: 0.3s ease;
 		}
 	}
 `;
