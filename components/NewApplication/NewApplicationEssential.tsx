@@ -68,7 +68,6 @@ const EssentialElement = ({
 const EssentialContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-top: 2.4rem;
 `;
 
 const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
