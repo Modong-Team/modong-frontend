@@ -94,8 +94,6 @@ const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
 `;
 
 const Description = styled.p`
-	${Fonts.subtitle14medium}
-	color: ${Colors.gray900};
 	margin-bottom: 0.8rem;
 
 	&:nth-of-type(2) {
