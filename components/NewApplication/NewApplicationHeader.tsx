@@ -1,12 +1,16 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { NewApplicationHeaderProps } from './propsTypes';
+import { svgModong } from '../../constants/svgs';
 
 export default function NewApplicationHeader({ onDone }: NewApplicationHeaderProps) {
 	return (
 		<HeaderContainer>
-			<HeaderLogo>모동</HeaderLogo>
-			<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
+			<HeaderLogo>{svgModong}</HeaderLogo>
+			<HeaderButton>
+				<SubmitBtn onClick={onDone}>저장하기</SubmitBtn>
+				<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
+			</HeaderButton>
 		</HeaderContainer>
 	);
 }
@@ -14,7 +18,7 @@ export default function NewApplicationHeader({ onDone }: NewApplicationHeaderPro
 const HeaderContainer = styled.header`
 	background: ${Colors.white01};
 	border-bottom: 0.1rem solid ${Colors.border01};
-	height: 10rem;
+	height: 8rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -28,12 +32,17 @@ const HeaderLogo = styled.h1`
 	margin-left: 1.2rem;
 `;
 
+const HeaderButton = styled.div`
+	display: flex;
+	gap: 1.2rem;
+`;
+
 const SubmitBtn = styled.button`
 	background-color: ${Colors.background03};
-	padding: 2rem 2.4rem;
+	padding: 1.4rem 2rem;
 	border-radius: 0.8rem;
 	border: 0.15rem solid ${Colors.border02};
-	font-size: 2.05rem;
+	font-size: 1.4rem;
 	font-weight: 700;
-	color: ${Colors.black01};
+	color: ${Colors.gray02};
 `;
