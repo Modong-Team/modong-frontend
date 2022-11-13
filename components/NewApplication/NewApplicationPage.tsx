@@ -6,6 +6,7 @@ import NewApplicationTitle from './NewApplicationTitle';
 import { postApplication, patchApplication } from '../../api/application';
 import NewApplicationIndicator from './NewApplicationIndicator';
 import NewApplicationNavigator from './NewApplicationNavigator';
+import NewApplicationButton from './NewApplicationButton';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -29,15 +30,15 @@ export default function NewApplicationPage() {
 				<NewApplicationIndicator />
 				<NewApplicationContent essentials={essentials} setEssentials={setEssentials} />
 				<NewApplicationNavigator />
+				<NewApplicationButton />
 			</NewApplicationContainer>
 		</NewApplicationLayout>
 	);
 }
 
 const NewApplicationContainer = styled.div`
-	position: absolute;
-	left: 50%;
-	transform: translateX(-50%);
+	width: fit-content;
+	margin: 0 auto;
 	display: grid;
 	grid-template-columns: max-content 71.2rem max-content;
 	row-gap: 1.6rem;
