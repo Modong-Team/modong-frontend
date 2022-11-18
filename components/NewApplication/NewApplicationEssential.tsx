@@ -1,19 +1,25 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
+import Fonts from '../../constants/fonts';
 import { svgChecked, svgUnChecked, svgCheckedBlue } from '../../constants/svgs';
-import { Essentials } from '../../models/essentials';
 import { EssentialElementWrapperProps } from './styled';
 import { EssentialElementProps, NewApplicationEssentialProps } from './props';
-import Fonts from '../../constants/fonts';
+import { useEffect, useState } from 'react';
+import { getEssentialAll } from '../../api/essential';
+import { ResponseEssential } from '../../@types/api/essential';
+import useAPI from '../../hooks/useAPI';
 
 export default function NewApplicationEssential({
 	essentials,
 	setEssentials,
 }: NewApplicationEssentialProps) {
-	const essentialsList = Object.keys(Essentials).map((v) => Number(v));
+	const [essentialsList, setEssentialsList] = useState<ResponseEssential.GetAll>([]);
+
+	useEffect(() => {
+		useAPI(getEssentialAll, setEssentialsList);
+	}, []);
 
 	const setIsEssential = (element: number) => {
-		if ([1, 2, 3].includes(element)) return;
 		if (essentials.includes(element)) setEssentials(essentials.filter((v) => v !== element));
 		else setEssentials([...essentials, element]);
 	};
@@ -23,28 +29,28 @@ export default function NewApplicationEssential({
 			<h2>지원자 정보</h2>
 			<EssentialContainer>
 				<Description>아래 3가지 항목은 지원자들에게 기본적으로 제출받는 항목입니다.</Description>
-				{essentialsList.slice(0, 3).map((v, i) => {
-					return (
-						<EssentialElement
-							key={i}
-							onClick={() => setIsEssential(v)}
-							isNotEssential={!essentials.includes(v)}
-							isFixedEssential={true}>
-							{Essentials[v]}
-						</EssentialElement>
-					);
-				})}
+				{essentialsList
+					.filter((v) => v.isFixed)
+					.map((v, i) => {
+						return (
+							<EssentialElement key={i} isFixedEssential={true}>
+								{v.content}
+							</EssentialElement>
+						);
+					})}
 				<Description>지원자에게 추가로 제출받을 항목을 선택해 주세요.</Description>
-				{essentialsList.slice(3).map((v, i) => {
-					return (
-						<EssentialElement
-							key={i}
-							onClick={() => setIsEssential(v)}
-							isNotEssential={!essentials.includes(v)}>
-							{Essentials[v]}
-						</EssentialElement>
-					);
-				})}
+				{essentialsList
+					.filter((v) => !v.isFixed)
+					.map((v, i) => {
+						return (
+							<EssentialElement
+								key={i}
+								onClick={() => setIsEssential(v.id)}
+								isNotEssential={!essentials.includes(v.id)}>
+								{v.content}
+							</EssentialElement>
+						);
+					})}
 			</EssentialContainer>
 		</>
 	);
