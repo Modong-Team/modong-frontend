@@ -1,6 +1,7 @@
 import axios from 'axios';
+import { GenericInstance } from '../../@types/axios/core';
 
-const request = axios.create({
+const request: GenericInstance = axios.create({
 	baseURL: 'http://modong-backend-dev-env.eba-dstvsrcm.ap-northeast-2.elasticbeanstalk.com/',
 	timeout: 2500,
 	headers: { 'Content-Type': 'application/json' },
@@ -18,7 +19,7 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
 	(response) => {
-		return response;
+		return response.data;
 	},
 	(error) => {
 		return Promise.reject(error);
