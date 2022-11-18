@@ -35,7 +35,7 @@ export interface TabElementProps extends ChildrenType {
 
 export interface EssentialElementProps extends ChildrenType {
 	onClick?: () => void;
-	isNotEssential: boolean;
+	isNotEssential?: boolean;
 	isFixedEssential?: boolean;
 }
 
