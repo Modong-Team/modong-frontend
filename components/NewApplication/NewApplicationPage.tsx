@@ -29,15 +29,13 @@ export default function NewApplicationPage() {
 			return;
 		} else setEmptyTitleError(false);
 
-		const post = await postApplication(1, title)
-			.then(async (res) => {
-				console.log(res);
-				const id = res?.id;
-				if (id) {
-					const patch = await patchApplication(id, essentials).then(console.log);
-				} else throw new Error('POST /application Failed');
-			})
-			.catch(console.log);
+		try {
+			const post = await postApplication(1, title);
+			const patch = await patchApplication(post.id, essentials);
+			console.log(patch);
+		} catch (err) {
+			console.log(err);
+		}
 	};
 
 	const onNext = () => {
