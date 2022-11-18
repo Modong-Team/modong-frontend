@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { NewApplicationIndicatorProps } from './propsTypes';
-import { IndicatorElementProps } from './styledTypes';
+import { NewApplicationIndicatorProps } from './props';
+import { IndicatorElementProps } from './styled';
 
 export default function NewApplicationIndicator({ currentSection }: NewApplicationIndicatorProps) {
 	return (

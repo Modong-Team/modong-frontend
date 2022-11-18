@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgCirclePlus, svgCircleX, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
-import { NewApplicationDefaultProps } from './propsTypes';
+import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
 
 export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import NewApplicationHeader from './NewApplicationHeader';
-import { NewApplicationLayoutProps } from './propsTypes';
+import { NewApplicationLayoutProps } from './props';
 
 export default function NewApplicationLayout({ children, onDone }: NewApplicationLayoutProps) {
 	return (

@@ -1,6 +1,6 @@
-import { IEssentials } from '../interfaces/essentials';
+import { EssentialsType } from '../@types/client/data';
 
-export const Essentials: IEssentials = {
+export const Essentials: EssentialsType = {
 	1: '성함',
 	2: '이메일',
 	3: '전화번호',

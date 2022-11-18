@@ -32,8 +32,10 @@ export default function NewApplicationPage() {
 		const post = await postApplication(1, title)
 			.then(async (res) => {
 				console.log(res);
-				const id = res.data.id;
-				const patch = await patchApplication(id, essentials).then(console.log);
+				const id = res?.id;
+				if (id) {
+					const patch = await patchApplication(id, essentials).then(console.log);
+				} else throw new Error('POST /application Failed');
 			})
 			.catch(console.log);
 	};

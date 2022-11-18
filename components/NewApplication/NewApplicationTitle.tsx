@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { NewApplicationTitleProps } from './propsTypes';
-import { TitleContainerProps } from './styledTypes';
+import { NewApplicationTitleProps } from './props';
+import { TitleContainerProps } from './styled';
 
 export default function NewApplicationTitle({
 	titleRef,

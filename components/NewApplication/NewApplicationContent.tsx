@@ -3,7 +3,7 @@ import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
-import { NewApplicationContentProps } from './propsTypes';
+import { NewApplicationContentProps } from './props';
 
 export default function NewApplicationContent({
 	essentials,

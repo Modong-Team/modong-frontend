@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { NewApplicationHeaderProps } from './propsTypes';
+import { NewApplicationHeaderProps } from './props';
 import { svgModong } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 

@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgPrev, svgNext } from '../../constants/svgs';
-import { NewApplicationButtonProps } from './propsTypes';
-import { ButtonProps } from './styledTypes';
+import { NewApplicationButtonProps } from './props';
+import { ButtonProps } from './styled';
 
 export default function NewApplicationButton({
 	currentSection,

@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
-import { IChildren } from '../../interfaces/children';
-import { ISections } from '../../interfaces/sections';
+import { SectionsType } from '../../@types/client/data';
+import { ChildrenType } from '../../@types/client/base';
 
-export interface NewApplicationLayoutProps extends IChildren {
+export interface NewApplicationLayoutProps extends ChildrenType {
 	onDone: () => void;
 }
 
@@ -19,7 +19,7 @@ export interface NewApplicationContentProps {
 	essentials: number[];
 	setEssentials: Dispatch<SetStateAction<number[]>>;
 	currentSection?: number;
-	section: ISections;
+	section: SectionsType;
 }
 
 export interface NewApplicationEssentialProps {
@@ -27,13 +27,13 @@ export interface NewApplicationEssentialProps {
 	setEssentials: Dispatch<SetStateAction<number[]>>;
 }
 
-export interface TabElementProps extends IChildren {
+export interface TabElementProps extends ChildrenType {
 	onClickTitle: () => void;
 	onClickX: () => void;
 	isActive: boolean;
 }
 
-export interface EssentialElementProps extends IChildren {
+export interface EssentialElementProps extends ChildrenType {
 	onClick?: () => void;
 	isNotEssential: boolean;
 	isFixedEssential?: boolean;
@@ -48,13 +48,13 @@ export interface NewApplicationButtonProps {
 
 export interface NewApplicationNavigatorProps {
 	currentSection: number;
-	sections: ISections[];
+	sections: SectionsType[];
 	onRouteToSection: (idx: number) => void;
 	onRemove: (idx: number) => void;
 }
 
 export interface NewApplicationDefaultProps {
-	section: ISections;
+	section: SectionsType;
 }
 
 export interface NewApplicationIndicatorProps {

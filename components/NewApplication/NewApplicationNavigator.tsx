@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
-import { NewApplicationNavigatorProps } from './propsTypes';
-import { NavigatorElementProps } from './styledTypes';
+import { NewApplicationNavigatorProps } from './props';
+import { NavigatorElementProps } from './styled';
 import { svgVertical } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { useState } from 'react';

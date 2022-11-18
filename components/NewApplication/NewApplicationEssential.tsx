@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { svgChecked, svgUnChecked, svgCheckedBlue } from '../../constants/svgs';
 import { Essentials } from '../../models/essentials';
-import { EssentialElementWrapperProps } from './styledTypes';
-import { EssentialElementProps, NewApplicationEssentialProps } from './propsTypes';
+import { EssentialElementWrapperProps } from './styled';
+import { EssentialElementProps, NewApplicationEssentialProps } from './props';
 import Fonts from '../../constants/fonts';
 
 export default function NewApplicationEssential({
