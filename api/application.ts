@@ -1,29 +1,24 @@
 import request from './core';
+import { RequestApplication, ResponseApplication } from '../@types/api/application';
 
 export const getApplicationAll = (clubId: number) => {
-	return request({ url: `/application/all?clubId=${clubId}` });
+	const url = `/application/all?clubId=${clubId}`;
+	return request.get<ResponseApplication.GetAll>(url);
 };
 
 export const getApplication = (id: number) => {
-	return request({ url: `/application/${id}` });
+	const url = `/application/${id}`;
+	return request.get<ResponseApplication.Get>(url);
 };
 
 export const postApplication = (clubId: number, title: string) => {
-	return request({
-		url: `/application?clubId=${clubId}`,
-		method: 'POST',
-		data: {
-			title,
-		},
-	});
+	const url = `/application?clubId=${clubId}`;
+	const data = { title } as const;
+	return request.post<ResponseApplication.Post, RequestApplication.Post>(url, data);
 };
 
 export const patchApplication = (id: number, essentialIds: number[]) => {
-	return request({
-		url: `/application/${id}`,
-		method: 'PATCH',
-		data: {
-			essentialIds,
-		},
-	});
+	const url = `/application/${id}`;
+	const data = { essentialIds } as const;
+	return request.patch<ResponseApplication.Patch, RequestApplication.Patch>(url, data);
 };
