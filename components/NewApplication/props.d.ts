@@ -15,6 +15,7 @@ export interface NewApplicationHeaderProps {
 export interface NewApplicationTitleProps {
 	titleRef: React.RefObject<HTMLInputElement>;
 	emptyTitleError: boolean;
+	setEmptyTitleError: Dispatch<SetStateAction<boolean>>;
 }
 
 export interface NewApplicationContentProps {
