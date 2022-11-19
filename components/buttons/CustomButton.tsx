@@ -13,10 +13,15 @@ import {
 import { CustomButtonProps } from './props';
 import { ButtonElementProps } from './styled';
 
-export default function CustomButton({ buttonSize, buttonType, isDisabled }: CustomButtonProps) {
+export default function CustomButton({
+	children,
+	buttonSize,
+	buttonType,
+	isDisabled,
+}: CustomButtonProps) {
 	return (
 		<ButtonElement buttonSize={buttonSize} buttonType={buttonType} isDisabled={isDisabled}>
-			{buttonSize} {buttonType}
+			{children}
 		</ButtonElement>
 	);
 }
