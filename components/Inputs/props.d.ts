@@ -8,6 +8,5 @@ export interface SectionTitleInputProps {
 }
 
 export interface QuestionInputProps {
-	questionType: string;
 	isError?: boolean;
 }
