@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { SectionsType } from '../../@types/client/data';
+import { SectionsType, FormType } from '../../@types/client/data';
 import { ChildrenType } from '../../@types/client/base';
 
 export interface NewApplicationLayoutProps extends ChildrenType {
@@ -54,7 +54,8 @@ export interface NewApplicationNavigatorProps {
 }
 
 export interface NewApplicationDefaultProps {
-	section: SectionsType;
+	form: FormType;
+	formIdx: number;
 }
 
 export interface NewApplicationIndicatorProps {
