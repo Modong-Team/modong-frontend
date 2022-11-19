@@ -34,11 +34,13 @@ export default function FormsProviders({ children }: ChildrenType) {
 				setForms(copy);
 			},
 			removeQuestion(formIdx: number, questionIdx: number) {
+				if (forms[formIdx].questions.length === 1) return;
 				const copy = [...forms];
 				copy[formIdx].questions.splice(questionIdx, 1);
 				setForms(copy);
 			},
 			removeQuestionOption(formIdx: number, questionIdx: number, optionIdx: number) {
+				if (forms[formIdx].questions[questionIdx].options.length === 1) return;
 				const copy = [...forms];
 				copy[formIdx].questions[questionIdx].options.splice(optionIdx, 1);
 				setForms(copy);

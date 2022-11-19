@@ -31,8 +31,8 @@ export default function NewApplicationPage() {
 		const title = titleRef.current!.value;
 		if (!title) {
 			setEmptyTitleError(true);
-			return;
-		} else setEmptyTitleError(false);
+			return false;
+		}
 
 		try {
 			let savedApplicationId: number;
@@ -68,11 +68,13 @@ export default function NewApplicationPage() {
 		} catch (err) {
 			console.log(err);
 		}
+
+		return true;
 	};
 
 	const onDone = async () => {
-		await onSave();
-		router.push('/');
+		const saveSucceed = await onSave();
+		if (saveSucceed) router.push('/');
 	};
 
 	const onNext = () => {
@@ -97,7 +99,11 @@ export default function NewApplicationPage() {
 	return (
 		<NewApplicationLayout onSave={onSave} onDone={onDone}>
 			<NewApplicationContainer>
-				<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
+				<NewApplicationTitle
+					titleRef={titleRef}
+					emptyTitleError={emptyTitleError}
+					setEmptyTitleError={setEmptyTitleError}
+				/>
 				<NewApplicationIndicator currentSection={currentSection} />
 				<NewApplicationContent
 					essentials={essentials}

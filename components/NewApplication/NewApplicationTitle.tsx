@@ -8,11 +8,13 @@ import { TitleContainerProps } from './styled';
 export default function NewApplicationTitle({
 	titleRef,
 	emptyTitleError,
+	setEmptyTitleError,
 }: NewApplicationTitleProps) {
 	const [isFocused, setIsFocused] = useState(false);
 
 	const onFocus = () => {
 		setIsFocused(true);
+		setEmptyTitleError(false);
 	};
 
 	const onBlur = () => {

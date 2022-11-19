@@ -22,8 +22,10 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 		actions.updateFormTitle(formIdx, e.target.value);
 	};
 
-	const onCreateQuestion = (questionType: string) => {
+	const onCreateQuestion = (e: React.MouseEvent<HTMLDivElement>, questionType: string) => {
+		e.stopPropagation();
 		actions.createQuestion(formIdx, questionType);
+		setShowMenu(false);
 	};
 
 	return (
@@ -50,11 +52,13 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 					<span>{svgCirclePlus}</span>
 					{showMenu && (
 						<QuestionMenu>
-							<div onClick={() => onCreateQuestion(Questions.TextQuestion)}>{svgPencil}주관식</div>
-							<div onClick={() => onCreateQuestion(Questions.RadioQuestion)}>
+							<div onClick={(e) => onCreateQuestion(e, Questions.TextQuestion)}>
+								{svgPencil}주관식
+							</div>
+							<div onClick={(e) => onCreateQuestion(e, Questions.RadioQuestion)}>
 								{svgTick}단일 선택
 							</div>
-							<div onClick={() => onCreateQuestion(Questions.CheckboxQuestion)}>
+							<div onClick={(e) => onCreateQuestion(e, Questions.CheckboxQuestion)}>
 								{svgCheckBox}복수 선택
 							</div>
 						</QuestionMenu>
