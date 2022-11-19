@@ -1,19 +1,28 @@
+import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgCirclePlus, svgCircleX, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
+import useInput from '../../hooks/useInput';
 
 export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
+	const [title, setTitle] = useInput('질문 페이지');
 
 	const onClickMenu = () => setShowMenu(true);
 	const onBlur = () => setShowMenu(false);
 
 	return (
 		<>
-			<h2>{section && section.title}</h2>
+			<h2>
+				<input
+					placeholder='섹션 제목'
+					value={title as string}
+					onChange={setTitle as React.ChangeEventHandler}
+				/>
+			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
 			<DefaultContainer>
 				<DefaultInputContainer>
