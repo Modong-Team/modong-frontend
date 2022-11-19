@@ -15,20 +15,36 @@ import { ButtonElementProps } from './styled';
 
 export default function CustomButton({
 	children,
+	onClick,
 	buttonSize,
 	buttonType,
 	isDisabled,
+	margin,
 }: CustomButtonProps) {
 	return (
-		<ButtonElement buttonSize={buttonSize} buttonType={buttonType} isDisabled={isDisabled}>
+		<ButtonElement
+			onClick={onClick}
+			buttonSize={buttonSize}
+			buttonType={buttonType}
+			isDisabled={isDisabled}
+			margin={margin}>
 			{children}
 		</ButtonElement>
 	);
 }
 
 const ButtonElement = styled.button<ButtonElementProps>`
+	display: flex;
+	align-items: center;
+	gap: 0.47rem;
+	margin: ${(props) => props.margin};
+
 	/********** except bg-color & font-color **********/
 	${(props) => Buttons[props.buttonSize]}
+	${(props) =>
+		props.buttonType === ButtonTypes.line &&
+		props.buttonSize === ButtonSizes.medium &&
+		Buttons.mediumLine}
 
 	/********** normal **********/
 	/* primary */
@@ -37,13 +53,13 @@ const ButtonElement = styled.button<ButtonElementProps>`
 	${(props) => props.buttonType === ButtonTypes.secondary && SecondaryStates.normal}
 	/* large-line */
 	${(props) =>
-		props.buttonSize === ButtonSizes.large &&
 		props.buttonType === ButtonTypes.line &&
+		props.buttonSize === ButtonSizes.large &&
 		LargeLineStates.normal}
 	/* medium-line */
 	${(props) =>
-		props.buttonSize === ButtonSizes.medium &&
 		props.buttonType === ButtonTypes.line &&
+		props.buttonSize === ButtonSizes.medium &&
 		MediumLineStates.normal}
 	/* red */
 	${(props) => props.buttonType === ButtonTypes.red && RedStates.normal}
@@ -56,13 +72,13 @@ const ButtonElement = styled.button<ButtonElementProps>`
 		${(props) => props.buttonType === ButtonTypes.secondary && SecondaryStates.hover}
 		/* large-line */
 		${(props) =>
-			props.buttonSize === ButtonSizes.large &&
 			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.large &&
 			LargeLineStates.hover}
 		/* medium-line */
 		${(props) =>
-			props.buttonSize === ButtonSizes.medium &&
 			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.medium &&
 			MediumLineStates.hover}
 		/* red */
 		${(props) => props.buttonType === ButtonTypes.red && RedStates.hover}
@@ -76,13 +92,13 @@ const ButtonElement = styled.button<ButtonElementProps>`
 		${(props) => props.buttonType === ButtonTypes.secondary && SecondaryStates.active}
 		/* large-line */
 		${(props) =>
-			props.buttonSize === ButtonSizes.large &&
 			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.large &&
 			LargeLineStates.active}
 		/* medium-line */
 		${(props) =>
-			props.buttonSize === ButtonSizes.medium &&
 			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.medium &&
 			MediumLineStates.active}
 		/* red */
 		${(props) => props.buttonType === ButtonTypes.red && RedStates.active}
@@ -99,4 +115,6 @@ const ButtonElement = styled.button<ButtonElementProps>`
 	${(props) => props.isDisabled && props.buttonType === ButtonTypes.line && CommonLineStates.disabled}
 	/* red */
 	${(props) => props.isDisabled && props.buttonType === ButtonTypes.red && RedStates.disabled}
+	/* svg */
+	${(props) => props.isDisabled && 'svg path { fill:white; }'}
 `;
