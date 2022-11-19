@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
+import { useFormsValue } from '../../contexts/FormsProviders';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
 import { NewApplicationContentProps } from './props';
@@ -9,15 +10,16 @@ export default function NewApplicationContent({
 	essentials,
 	setEssentials,
 	currentSection,
-	section,
 }: NewApplicationContentProps) {
+	const forms = useFormsValue();
+
 	return (
 		<ContentContainer>
 			<FormContainer>
 				{!currentSection ? (
 					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
 				) : (
-					<NewApplicationDefault section={section} />
+					forms.map((v, i) => <NewApplicationDefault key={i} form={v} formIdx={i} />)
 				)}
 			</FormContainer>
 		</ContentContainer>
