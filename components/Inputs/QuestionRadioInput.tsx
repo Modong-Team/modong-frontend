@@ -1,12 +1,34 @@
 import styled from 'styled-components';
 import QuestionInput from './QuestionInput';
 import { svgRadioQuestion } from '../../constants/svgs';
+import { QuestionRadioInputProps } from './props';
+import { useFormsActions } from '../../contexts/FormsProviders';
 
-export default function QuestionRadioInput() {
+export default function QuestionRadioInput({
+	question,
+	formIdx,
+	questionIdx,
+	optionIdx,
+}: QuestionRadioInputProps) {
+	const actions = useFormsActions();
+
+	const onChangeQuestionOption = (e: React.ChangeEvent<HTMLInputElement>) => {
+		actions.updateQuestionOption(formIdx, questionIdx, optionIdx, e.target.value);
+	};
+
+	const onRemoveQuestionOption = () => {
+		actions.removeQuestionOption(formIdx, questionIdx, optionIdx);
+	};
+
 	return (
 		<RadioElement>
 			{svgRadioQuestion}
-			<QuestionInput />
+			<QuestionInput
+				onChange={onChangeQuestionOption}
+				onRemove={onRemoveQuestionOption}
+				placeholder={`선택${optionIdx + 1}`}
+				value={question.options[optionIdx]}
+			/>
 		</RadioElement>
 	);
 }

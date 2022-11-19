@@ -8,6 +8,7 @@ import NewApplicationIndicator from './NewApplicationIndicator';
 import NewApplicationNavigator from './NewApplicationNavigator';
 import NewApplicationButton from './NewApplicationButton';
 import { DummySections } from '../../models/sections';
+import FormsProviders from '../../contexts/FormsProviders';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -15,7 +16,6 @@ export default function NewApplicationPage() {
 	const [currentSection, setCurrentSection] = useState(0);
 	const [sections, setSections] = useState([...DummySections]);
 	const [sectionsLength, setSectionsLength] = useState(0);
-	const [removedSections, setRemovedSections] = useState([]);
 	const [emptyTitleError, setEmptyTitleError] = useState(false);
 
 	useEffect(() => {
@@ -58,30 +58,32 @@ export default function NewApplicationPage() {
 	};
 
 	return (
-		<NewApplicationLayout onDone={onDone}>
-			<NewApplicationContainer>
-				<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
-				<NewApplicationIndicator currentSection={currentSection} />
-				<NewApplicationContent
-					essentials={essentials}
-					setEssentials={setEssentials}
-					currentSection={currentSection}
-					section={sections[currentSection]}
-				/>
-				<NewApplicationNavigator
-					sections={sections}
-					currentSection={currentSection}
-					onRouteToSection={onRouteToSection}
-					onRemove={onRemove}
-				/>
-				<NewApplicationButton
-					currentSection={currentSection}
-					sectionsLength={sectionsLength}
-					onNext={onNext}
-					onPrev={onPrev}
-				/>
-			</NewApplicationContainer>
-		</NewApplicationLayout>
+		<FormsProviders>
+			<NewApplicationLayout onDone={onDone}>
+				<NewApplicationContainer>
+					<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
+					<NewApplicationIndicator currentSection={currentSection} />
+					<NewApplicationContent
+						essentials={essentials}
+						setEssentials={setEssentials}
+						currentSection={currentSection}
+						section={sections[currentSection]}
+					/>
+					<NewApplicationNavigator
+						sections={sections}
+						currentSection={currentSection}
+						onRouteToSection={onRouteToSection}
+						onRemove={onRemove}
+					/>
+					<NewApplicationButton
+						currentSection={currentSection}
+						sectionsLength={sectionsLength}
+						onNext={onNext}
+						onPrev={onPrev}
+					/>
+				</NewApplicationContainer>
+			</NewApplicationLayout>
+		</FormsProviders>
 	);
 }
 

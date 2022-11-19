@@ -5,12 +5,18 @@ import { svgCircleX } from '../../constants/svgs';
 import { InputElementProps } from './styled';
 import { QuestionInputProps } from './props';
 
-export default function QuestionInput({ isError }: QuestionInputProps) {
+export default function QuestionInput({
+	onChange,
+	onRemove,
+	isError,
+	placeholder,
+	value,
+}: QuestionInputProps) {
 	return (
 		<>
 			<InputElement isError={isError || false}>
-				<input />
-				{svgCircleX}
+				<input value={value} onChange={onChange} placeholder={placeholder} />
+				<span onClick={onRemove}>{svgCircleX}</span>
 			</InputElement>
 			{isError && <Error>내용을 입력해주세요.</Error>}
 		</>
@@ -25,29 +31,32 @@ const InputElement = styled.div<InputElementProps>`
 	background-color: ${Colors.white};
 	flex-grow: 1;
 
-	& {
-		input {
-			${Fonts.body16regular}
-			width: 100%;
-			background-color: transparent;
-			padding: 1rem 0.8rem;
-			border: 0.1rem solid ${Colors.gray200};
-			border-radius: 0.4rem;
-			caret-color: ${Colors.blue500};
+	span {
+		display: flex;
+		cursor: pointer;
+	}
 
-			&:hover {
-				border-color: ${Colors.gray700};
-			}
-			&:focus {
-				border-color: ${Colors.blue500};
-			}
-			&::placeholder {
-				${Fonts.body16regular}
-				color: ${Colors.gray400};
-			}
+	input {
+		${Fonts.body16regular}
+		width: 100%;
+		background-color: transparent;
+		padding: 1rem 0.8rem;
+		border: 0.1rem solid ${Colors.gray200};
+		border-radius: 0.4rem;
+		caret-color: ${Colors.blue500};
 
-			border-color: ${(props) => (props.isError ? Colors.red500 : '')};
+		&:hover {
+			border-color: ${Colors.gray700};
 		}
+		&:focus {
+			border-color: ${Colors.blue500};
+		}
+		&::placeholder {
+			${Fonts.body16regular}
+			color: ${Colors.gray400};
+		}
+
+		border-color: ${(props) => (props.isError ? Colors.red500 : '')};
 	}
 `;
 

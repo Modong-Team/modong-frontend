@@ -2,40 +2,61 @@ import React from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { svgCirclePlus, svgCircleX, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
+import { svgCirclePlus, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
 import useInput from '../../hooks/useInput';
 import SectionTitleInput from '../Inputs/SectionTitleInput';
 import { Questions } from '../../constants/questions';
 import QuestionBox from '../boxes/QuestionBox';
+import { useFormsActions } from '../../contexts/FormsProviders';
 
-export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {
+export default function NewApplicationDefault({ form, formIdx }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
-	const [title, setTitle] = useInput('질문 페이지');
+	const actions = useFormsActions();
 
 	const onClickMenu = () => setShowMenu(true);
 	const onBlur = () => setShowMenu(false);
+
+	const onChangeFormTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+		actions.updateFormTitle(formIdx, e.target.value);
+	};
+
+	const onCreateQuestion = (questionType: string) => {
+		actions.createQuestion(formIdx, questionType);
+	};
 
 	return (
 		<>
 			<h2>
 				<SectionTitleInput
-					value={title as string}
-					onChange={setTitle as React.ChangeEventHandler}
+					value={form.title as string}
+					onChange={onChangeFormTitle}
 					placeholder='섹션 제목'
 				/>
 			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
 			<DefaultContainer>
-				<QuestionBox questionType={Questions.RadioQuestion} />
+				{form.questions.map((v, i) => (
+					<QuestionBox
+						questionType={Questions[v.type]}
+						key={i}
+						question={v}
+						formIdx={formIdx}
+						questionIdx={i}
+					/>
+				))}
 				<NewQuestionButton onClick={onClickMenu} onBlur={onBlur}>
-					{svgCirclePlus}
+					<span>{svgCirclePlus}</span>
 					{showMenu && (
 						<QuestionMenu>
-							<div>{svgPencil}주관식</div>
-							<div>{svgTick}단일 선택</div>
-							<div>{svgCheckBox}복수 선택</div>
+							<div onClick={() => onCreateQuestion(Questions.TextQuestion)}>{svgPencil}주관식</div>
+							<div onClick={() => onCreateQuestion(Questions.RadioQuestion)}>
+								{svgTick}단일 선택
+							</div>
+							<div onClick={() => onCreateQuestion(Questions.CheckboxQuestion)}>
+								{svgCheckBox}복수 선택
+							</div>
 						</QuestionMenu>
 					)}
 				</NewQuestionButton>
@@ -47,7 +68,6 @@ export default function NewApplicationDefault({ section }: NewApplicationDefault
 const DefaultContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 2.52rem;
 
 	& {
 		> span {
@@ -61,6 +81,7 @@ const NewQuestionButton = styled.button`
 	text-align: center;
 	width: fit-content;
 	margin: 0 auto;
+	margin-top: 2.52rem;
 `;
 
 const QuestionMenu = styled.div`
