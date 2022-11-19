@@ -46,14 +46,14 @@ const InputElement = styled.div<InputElementProps>`
 				color: ${Colors.gray400};
 			}
 
-			border-color: ${(props) => (props.isError ? Colors.red : '')};
+			border-color: ${(props) => (props.isError ? Colors.red500 : '')};
 		}
 	}
 `;
 
 const Error = styled.div`
 	${Fonts.body12medium}
-	color: ${Colors.red};
+	color: ${Colors.red500};
 	margin-top: 0.4rem;
 	margin-bottom: 0.1rem;
 `;
