@@ -59,7 +59,7 @@ const TitleContainer = styled.div<TitleContainerProps>`
 		border-color: ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray700)};
 	}
 
-	border-color: ${(props) => (props.isError ? `${Colors.red} !important` : '')};
+	border-color: ${(props) => (props.isError ? `${Colors.red500} !important` : '')};
 `;
 
 const Error = styled.div`
@@ -67,5 +67,5 @@ const Error = styled.div`
 	position: absolute;
 	top: -2.4rem;
 	left: 0;
-	color: ${Colors.red};
+	color: ${Colors.red500};
 `;

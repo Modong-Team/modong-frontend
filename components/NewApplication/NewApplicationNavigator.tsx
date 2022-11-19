@@ -99,7 +99,7 @@ const NavigatorMore = styled.div`
 		}
 
 		div:first-child {
-			color: ${Colors.red};
+			color: ${Colors.red500};
 			padding: 0.7rem 1.6rem 0.4rem 1.6rem;
 		}
 
