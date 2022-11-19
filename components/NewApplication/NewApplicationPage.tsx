@@ -8,7 +8,9 @@ import NewApplicationIndicator from './NewApplicationIndicator';
 import NewApplicationNavigator from './NewApplicationNavigator';
 import NewApplicationButton from './NewApplicationButton';
 import { DummySections } from '../../models/sections';
-import FormsProviders from '../../contexts/FormsProviders';
+import { useRouter } from 'next/router';
+import { useFormsValue } from '../../contexts/FormsProviders';
+import { postForm, putForm } from '../../api/form';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -17,12 +19,15 @@ export default function NewApplicationPage() {
 	const [sections, setSections] = useState([...DummySections]);
 	const [sectionsLength, setSectionsLength] = useState(0);
 	const [emptyTitleError, setEmptyTitleError] = useState(false);
+	const [applicationId, setApplicationId] = useState<number | null>(null);
+	const forms = useFormsValue();
+	const router = useRouter();
 
 	useEffect(() => {
 		setSectionsLength(sections.length);
 	}, [sections]);
 
-	const onDone = async () => {
+	const onSave = async () => {
 		const title = titleRef.current!.value;
 		if (!title) {
 			setEmptyTitleError(true);
@@ -30,12 +35,44 @@ export default function NewApplicationPage() {
 		} else setEmptyTitleError(false);
 
 		try {
-			const post = await postApplication(1, title);
-			const patch = await patchApplication(post.id, essentials);
+			let savedApplicationId: number;
+			// post new or get saved Id
+			if (!applicationId) {
+				const post = await postApplication(1, title);
+				setApplicationId(post.id);
+				savedApplicationId = post.id;
+			} else savedApplicationId = applicationId;
+			// patch essentials
+			const patch = await patchApplication(savedApplicationId, essentials);
 			console.log(patch);
+			// post forms or put forms
+			const postForms = [];
+			const promises = forms.map(async (form) => {
+				if (form.id) {
+					const putFormUsingSavedId = await putForm(form.id, form.title, form.questions);
+					postForms.push(putFormUsingSavedId);
+				} else {
+					const postFormAndSaveId = await postForm(
+						savedApplicationId,
+						form.title,
+						form.questions,
+					).then((res) => {
+						form.id = res.id;
+					});
+					postForms.push(postFormAndSaveId);
+				}
+			});
+			// wait for all promises to be fulfilled
+			await Promise.all(promises);
+			console.log(forms);
 		} catch (err) {
 			console.log(err);
 		}
+	};
+
+	const onDone = async () => {
+		await onSave();
+		router.push('/');
 	};
 
 	const onNext = () => {
@@ -58,32 +95,30 @@ export default function NewApplicationPage() {
 	};
 
 	return (
-		<FormsProviders>
-			<NewApplicationLayout onDone={onDone}>
-				<NewApplicationContainer>
-					<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
-					<NewApplicationIndicator currentSection={currentSection} />
-					<NewApplicationContent
-						essentials={essentials}
-						setEssentials={setEssentials}
-						currentSection={currentSection}
-						section={sections[currentSection]}
-					/>
-					<NewApplicationNavigator
-						sections={sections}
-						currentSection={currentSection}
-						onRouteToSection={onRouteToSection}
-						onRemove={onRemove}
-					/>
-					<NewApplicationButton
-						currentSection={currentSection}
-						sectionsLength={sectionsLength}
-						onNext={onNext}
-						onPrev={onPrev}
-					/>
-				</NewApplicationContainer>
-			</NewApplicationLayout>
-		</FormsProviders>
+		<NewApplicationLayout onSave={onSave} onDone={onDone}>
+			<NewApplicationContainer>
+				<NewApplicationTitle titleRef={titleRef} emptyTitleError={emptyTitleError} />
+				<NewApplicationIndicator currentSection={currentSection} />
+				<NewApplicationContent
+					essentials={essentials}
+					setEssentials={setEssentials}
+					currentSection={currentSection}
+					section={sections[currentSection]}
+				/>
+				<NewApplicationNavigator
+					sections={sections}
+					currentSection={currentSection}
+					onRouteToSection={onRouteToSection}
+					onRemove={onRemove}
+				/>
+				<NewApplicationButton
+					currentSection={currentSection}
+					sectionsLength={sectionsLength}
+					onNext={onNext}
+					onPrev={onPrev}
+				/>
+			</NewApplicationContainer>
+		</NewApplicationLayout>
 	);
 }
 
