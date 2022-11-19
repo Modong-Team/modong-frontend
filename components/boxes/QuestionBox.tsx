@@ -6,6 +6,9 @@ import QuestionRadioInput from '../Inputs/QuestionRadioInput';
 import { QuestionBoxProps } from './props';
 import { Questions } from '../../constants/questions';
 import QuestionCheckboxInput from '../Inputs/QuestionCheckboxInput';
+import CustomButton from '../buttons/CustomButton';
+import { ButtonSizes, ButtonTypes } from '../../constants/buttons';
+import { svgCirclePlus } from '../../constants/svgs';
 
 export default function QuestionBox({ questionType, isError }: QuestionBoxProps) {
 	return (
@@ -17,6 +20,16 @@ export default function QuestionBox({ questionType, isError }: QuestionBoxProps)
 				<QuestionRadioInput />
 			) : questionType === Questions.CheckboxQuestion ? (
 				<QuestionCheckboxInput />
+			) : (
+				''
+			)}
+			{questionType !== Questions.TextQuestion ? (
+				<CustomButton
+					buttonSize={ButtonSizes.medium}
+					buttonType={ButtonTypes.line}
+					margin='0 0 0 3rem'>
+					{svgCirclePlus} 항목 추가
+				</CustomButton>
 			) : (
 				''
 			)}
