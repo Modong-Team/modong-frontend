@@ -21,6 +21,7 @@ export type QuestionType = {
 };
 
 export type FormType = {
+	id: number | null;
 	title: string;
 	questions: {
 		type: string;
