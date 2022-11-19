@@ -19,3 +19,12 @@ export type QuestionType = {
 	content: string;
 	options: string[];
 };
+
+export type FormType = {
+	title: string;
+	questions: {
+		type: string;
+		content: string;
+		options: string[];
+	}[];
+};
