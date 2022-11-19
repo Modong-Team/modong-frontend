@@ -6,6 +6,7 @@ import { svgCirclePlus, svgCircleX, svgPencil, svgTick, svgCheckBox } from '../.
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
 import useInput from '../../hooks/useInput';
+import SectionTitleInput from '../Input/SectionTitleInput';
 
 export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
@@ -17,10 +18,10 @@ export default function NewApplicationDefault({ section }: NewApplicationDefault
 	return (
 		<>
 			<h2>
-				<input
-					placeholder='섹션 제목'
+				<SectionTitleInput
 					value={title as string}
 					onChange={setTitle as React.ChangeEventHandler}
+					placeholder='섹션 제목'
 				/>
 			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>

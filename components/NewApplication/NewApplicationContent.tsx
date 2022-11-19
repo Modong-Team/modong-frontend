@@ -37,24 +37,6 @@ const FormContainer = styled.div`
 			${Fonts.heading24bold}
 			color: ${Colors.gray900};
 			margin-bottom: 2.4rem;
-
-			input {
-				width: 100%;
-				height: 3rem;
-				padding: 0;
-				font-size: inherit;
-				font-weight: inherit;
-				color: inherit;
-
-				&:hover {
-					border-bottom: 0.1rem solid ${Colors.gray700};
-				}
-
-				&:focus {
-					border-bottom: 0.1rem solid ${Colors.blue500};
-					caret-color: ${Colors.blue500};
-				}
-			}
 		}
 		p {
 			${Fonts.subtitle14medium}
