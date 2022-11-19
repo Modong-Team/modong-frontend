@@ -6,9 +6,9 @@ import { svgCirclePlus, svgCircleX, svgPencil, svgTick, svgCheckBox } from '../.
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
 import useInput from '../../hooks/useInput';
-import SectionTitleInput from '../Input/SectionTitleInput';
-import QuestionInput from '../Input/QuestionInput';
+import SectionTitleInput from '../Inputs/SectionTitleInput';
 import { Questions } from '../../constants/questions';
+import QuestionBox from '../boxes/QuestionBox';
 
 export default function NewApplicationDefault({ section }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
@@ -28,7 +28,7 @@ export default function NewApplicationDefault({ section }: NewApplicationDefault
 			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
 			<DefaultContainer>
-				<QuestionInput questionType={Questions.TextQuestion} />
+				<QuestionBox questionType={Questions.RadioQuestion} />
 				<NewQuestionButton onClick={onClickMenu} onBlur={onBlur}>
 					{svgCirclePlus}
 					{showMenu && (
