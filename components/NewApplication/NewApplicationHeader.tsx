@@ -4,12 +4,12 @@ import { NewApplicationHeaderProps } from './props';
 import { svgModong } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 
-export default function NewApplicationHeader({ onDone }: NewApplicationHeaderProps) {
+export default function NewApplicationHeader({ onSave, onDone }: NewApplicationHeaderProps) {
 	return (
 		<HeaderContainer>
 			<HeaderLogo>{svgModong}</HeaderLogo>
 			<HeaderButton>
-				<SaveBtn onClick={onDone}>저장하기</SaveBtn>
+				<SaveBtn onClick={onSave}>저장하기</SaveBtn>
 				<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
 			</HeaderButton>
 		</HeaderContainer>

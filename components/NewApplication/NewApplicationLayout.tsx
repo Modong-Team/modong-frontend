@@ -3,10 +3,14 @@ import Colors from '../../constants/colors';
 import NewApplicationHeader from './NewApplicationHeader';
 import { NewApplicationLayoutProps } from './props';
 
-export default function NewApplicationLayout({ children, onDone }: NewApplicationLayoutProps) {
+export default function NewApplicationLayout({
+	children,
+	onSave,
+	onDone,
+}: NewApplicationLayoutProps) {
 	return (
 		<LayoutContainer>
-			<NewApplicationHeader onDone={onDone} />
+			<NewApplicationHeader onSave={onSave} onDone={onDone} />
 			<MainContainer>{children}</MainContainer>
 		</LayoutContainer>
 	);

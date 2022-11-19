@@ -3,10 +3,12 @@ import { SectionsType, FormType } from '../../@types/client/data';
 import { ChildrenType } from '../../@types/client/base';
 
 export interface NewApplicationLayoutProps extends ChildrenType {
+	onSave: () => void;
 	onDone: () => void;
 }
 
 export interface NewApplicationHeaderProps {
+	onSave: () => void;
 	onDone: () => void;
 }
 
