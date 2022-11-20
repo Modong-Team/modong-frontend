@@ -4,6 +4,7 @@ import Fonts from '../../constants/fonts';
 import { svgCircleX } from '../../constants/svgs';
 import { InputElementProps } from './styled';
 import { QuestionInputProps } from './props';
+import { useState, useEffect, useRef, MutableRefObject } from 'react';
 
 export default function QuestionInput({
 	onChange,
@@ -12,10 +13,40 @@ export default function QuestionInput({
 	placeholder,
 	value,
 }: QuestionInputProps) {
+	const [isEmpty, setIsEmpty] = useState(true);
+	const valueRef = useRef() as MutableRefObject<HTMLInputElement>;
+
+	const checkIsEmpty = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (!e.target.value) {
+			setIsEmpty(true);
+			e.target.value = placeholder;
+			onChange(e);
+		} else setIsEmpty(false);
+	};
+
+	const removeEmptyPlaceholder = (e: React.ChangeEvent<HTMLInputElement>) => {
+		if (isEmpty) {
+			e.target.value = '';
+			onChange(e);
+			setIsEmpty(false);
+		}
+	};
+
+	useEffect(() => {
+		valueRef.current.focus();
+		valueRef.current.blur();
+	}, []);
+
 	return (
 		<>
-			<InputElement isError={isError || false}>
-				<input value={value} onChange={onChange} placeholder={placeholder} />
+			<InputElement isError={isError || false} isEmpty={isEmpty}>
+				<input
+					value={value}
+					onChange={onChange}
+					onBlur={checkIsEmpty}
+					onFocus={removeEmptyPlaceholder}
+					ref={valueRef}
+				/>
 				<span onClick={onRemove}>{svgCircleX}</span>
 			</InputElement>
 			{isError && <Error>내용을 입력해주세요.</Error>}
@@ -44,6 +75,7 @@ const InputElement = styled.div<InputElementProps>`
 		border: 0.1rem solid ${Colors.gray200};
 		border-radius: 0.4rem;
 		caret-color: ${Colors.blue500};
+		color: ${(props) => (props.isEmpty ? Colors.gray400 : '')};
 
 		&:hover {
 			border-color: ${Colors.gray700};
