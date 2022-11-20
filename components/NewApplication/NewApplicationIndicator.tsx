@@ -46,6 +46,7 @@ const IndicatorElement = styled.div<IndicatorElementProps>`
 	gap: 0.7rem;
 	margin-left: 6.7rem;
 	color: ${(props) => (props.isHighlighted ? Colors.gray950 : Colors.gray500)};
+	white-space: nowrap;
 
 	& {
 		> div {
