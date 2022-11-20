@@ -9,6 +9,8 @@ export interface FormsActionsType {
 	): void;
 	removeQuestion(formIdx: number, questionIdx: number): void;
 	removeQuestionOption(formIdx: number, questionIdx: number, optionIdx: number): void;
+	removeForm(formIdx: number): void;
 	createQuestion(formIdx: number, questionType: string): void;
 	createQuestionOption(formIdx: number, questionIdx: number): void;
+	createForm(): void;
 }

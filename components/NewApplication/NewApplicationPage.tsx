@@ -9,23 +9,18 @@ import NewApplicationNavigator from './NewApplicationNavigator';
 import NewApplicationButton from './NewApplicationButton';
 import { DummySections } from '../../models/sections';
 import { useRouter } from 'next/router';
-import { useFormsValue } from '../../contexts/FormsProviders';
+import { useFormsActions, useFormsValue } from '../../contexts/FormsProviders';
 import { postForm, putForm } from '../../api/form';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
 	const [essentials, setEssentials] = useState([1, 2, 3]);
-	const [currentSection, setCurrentSection] = useState(0);
-	const [sections, setSections] = useState([...DummySections]);
-	const [sectionsLength, setSectionsLength] = useState(0);
 	const [emptyTitleError, setEmptyTitleError] = useState(false);
 	const [applicationId, setApplicationId] = useState<number | null>(null);
+	const [currentPage, setCurrentPage] = useState(-1);
 	const forms = useFormsValue();
+	const actions = useFormsActions();
 	const router = useRouter();
-
-	useEffect(() => {
-		setSectionsLength(sections.length);
-	}, [sections]);
 
 	const onSave = async () => {
 		const title = titleRef.current!.value;
@@ -78,22 +73,24 @@ export default function NewApplicationPage() {
 	};
 
 	const onNext = () => {
-		if (currentSection === sections.length - 1)
-			setSections([...sections, { title: '질문 페이지' }]);
-		setCurrentSection(currentSection + 1);
+		if (currentPage === forms.length - 1) {
+			actions.createForm();
+		}
+		setCurrentPage(currentPage + 1);
 	};
 
 	const onPrev = () => {
-		setCurrentSection(currentSection - 1);
+		setCurrentPage(currentPage - 1);
 	};
 
-	const onRouteToSection = (idx: number) => {
-		setCurrentSection(idx);
+	const onRouteToPage = (idx: number) => {
+		setCurrentPage(idx);
 	};
 
 	const onRemove = (idx: number) => {
-		setSections(sections.filter((v, i) => i !== idx));
-		setCurrentSection(Math.max(0, currentSection - 1));
+		actions.removeForm(idx);
+		if (idx === currentPage) onRouteToPage(idx - 1);
+		if (idx <= currentPage) onRouteToPage(currentPage - 1);
 	};
 
 	return (
@@ -104,25 +101,19 @@ export default function NewApplicationPage() {
 					emptyTitleError={emptyTitleError}
 					setEmptyTitleError={setEmptyTitleError}
 				/>
-				<NewApplicationIndicator currentSection={currentSection} />
+				<NewApplicationIndicator currentPage={currentPage} />
+
 				<NewApplicationContent
 					essentials={essentials}
 					setEssentials={setEssentials}
-					currentSection={currentSection}
-					section={sections[currentSection]}
+					currentPage={currentPage}
 				/>
 				<NewApplicationNavigator
-					sections={sections}
-					currentSection={currentSection}
-					onRouteToSection={onRouteToSection}
+					onRouteToPage={onRouteToPage}
 					onRemove={onRemove}
+					currentPage={currentPage}
 				/>
-				<NewApplicationButton
-					currentSection={currentSection}
-					sectionsLength={sectionsLength}
-					onNext={onNext}
-					onPrev={onPrev}
-				/>
+				<NewApplicationButton currentPage={currentPage} onNext={onNext} onPrev={onPrev} />
 			</NewApplicationContainer>
 		</NewApplicationLayout>
 	);

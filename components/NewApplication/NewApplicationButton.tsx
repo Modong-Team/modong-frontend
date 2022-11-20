@@ -4,20 +4,22 @@ import Fonts from '../../constants/fonts';
 import { svgPrev, svgNext } from '../../constants/svgs';
 import { NewApplicationButtonProps } from './props';
 import { ButtonProps } from './styled';
+import { useFormsValue } from '../../contexts/FormsProviders';
 
 export default function NewApplicationButton({
-	currentSection,
-	sectionsLength,
+	currentPage,
 	onNext,
 	onPrev,
 }: NewApplicationButtonProps) {
+	const forms = useFormsValue();
+
 	return (
 		<ButtonContainer>
-			<Button onClick={onPrev} isHidden={currentSection === 0}>
+			<Button onClick={onPrev} isHidden={currentPage === -1}>
 				{svgPrev}이전
 			</Button>
 			<Button onClick={onNext}>
-				{currentSection === sectionsLength - 1 ? '페이지 추가' : '다음'}
+				{currentPage === forms.length - 1 ? '페이지 추가' : '다음'}
 				{svgNext}
 			</Button>
 		</ButtonContainer>

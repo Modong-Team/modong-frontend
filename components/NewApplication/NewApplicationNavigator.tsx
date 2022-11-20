@@ -5,14 +5,15 @@ import { NavigatorElementProps } from './styled';
 import { svgVertical } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { useState } from 'react';
+import { useFormsValue } from '../../contexts/FormsProviders';
 
 export default function NewApplicationNavigator({
-	sections,
-	currentSection,
-	onRouteToSection,
+	currentPage,
+	onRouteToPage,
 	onRemove,
 }: NewApplicationNavigatorProps) {
 	const [showMoreFor, setShowMoreFor] = useState(-1);
+	const forms = useFormsValue();
 
 	const onClickMore = (idx: number) => setShowMoreFor(idx);
 	const onBlur = () => setShowMoreFor(-1);
@@ -24,10 +25,13 @@ export default function NewApplicationNavigator({
 
 	return (
 		<NavigatorContainer>
-			{sections.map((v, i) => (
-				<NavigatorElement isCurrent={i === currentSection} key={i} onBlur={onBlur}>
-					<span onClick={() => onRouteToSection(i)}>{v.title}</span>
-					<span onClick={() => onClickMore(i)}>{i !== 0 && svgVertical}</span>
+			<NavigatorElement isCurrent={currentPage === -1} onClick={() => onRouteToPage(-1)}>
+				지원자 정보
+			</NavigatorElement>
+			{forms.map((v, i) => (
+				<NavigatorElement isCurrent={currentPage === i} key={i} onBlur={onBlur}>
+					<span onClick={() => onRouteToPage(i)}>{v.title}</span>
+					<span onClick={() => onClickMore(i)}>{svgVertical}</span>
 					{showMoreFor === i && (
 						<NavigatorMore>
 							<div onClick={() => onClickRemove(i)}>삭제하기</div>
@@ -64,16 +68,18 @@ const NavigatorElement = styled.button<NavigatorElementProps>`
 	align-items: center;
 	justify-content: space-between;
 
-	& {
-		span,
-		svg {
-			cursor: pointer;
-		}
+	span:first-child {
+		width: 100%;
+	}
 
-		svg {
-			position: relative;
-			top: 0.1rem;
-		}
+	span,
+	svg {
+		cursor: pointer;
+	}
+
+	svg {
+		position: relative;
+		top: 0.1rem;
 	}
 `;
 
