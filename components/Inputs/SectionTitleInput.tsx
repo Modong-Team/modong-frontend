@@ -18,6 +18,7 @@ export default function SectionTitleInput({
 const InputContainer = styled.div`
 	input {
 		${Fonts.heading24bold}
+		background-color: transparent;
 		color: ${Colors.gray900};
 		width: 100%;
 		height: 3.5rem;
