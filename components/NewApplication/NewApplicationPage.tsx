@@ -88,9 +88,9 @@ export default function NewApplicationPage() {
 	};
 
 	const onRemove = (idx: number) => {
-		actions.removeForm(idx);
 		if (idx === currentPage) onRouteToPage(idx - 1);
-		if (idx <= currentPage) onRouteToPage(currentPage - 1);
+		else if (idx < currentPage) onRouteToPage(currentPage - 1);
+		actions.removeForm(idx);
 	};
 
 	return (
