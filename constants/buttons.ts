@@ -32,8 +32,8 @@ export class PrimaryStates {
 }
 
 export class SecondaryStates {
-	static normal = `background-color:${Colors.gray200}; color:${Colors.gray950};`;
-	static hover = `background-color:${Colors.gray300}; color:${Colors.gray950};`;
+	static normal = `background-color:${Colors.gray200}; color:${Colors.gray900};`;
+	static hover = `background-color:${Colors.gray300}; color:${Colors.gray900};`;
 	static active = `background-color:${Colors.gray400}; color:${Colors.white};`;
 	static disabled = `background-color:${Colors.gray300}; color:${Colors.white};`;
 }
