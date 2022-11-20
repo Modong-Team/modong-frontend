@@ -52,9 +52,7 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 					<span>{svgCirclePlus}</span>
 					{showMenu && (
 						<QuestionMenu>
-							<div onClick={(e) => onCreateQuestion(e, Questions.TextQuestion)}>
-								{svgPencil}주관식
-							</div>
+							<div onClick={(e) => onCreateQuestion(e, Questions.Question)}>{svgPencil}주관식</div>
 							<div onClick={(e) => onCreateQuestion(e, Questions.RadioQuestion)}>
 								{svgTick}단일 선택
 							</div>

@@ -43,7 +43,7 @@ export default function QuestionBox({
 				placeholder={Placeholders.question}
 				value={question.content}
 			/>
-			{questionType !== Questions.TextQuestion ? <h3>선택항목</h3> : ''}
+			{questionType !== Questions.Question ? <h3>선택항목</h3> : ''}
 			{questionType === Questions.RadioQuestion
 				? question.options.map((v, i) => (
 						<QuestionRadioInput
@@ -65,7 +65,7 @@ export default function QuestionBox({
 						/>
 				  ))
 				: ''}
-			{questionType !== Questions.TextQuestion ? (
+			{questionType !== Questions.Question ? (
 				<CustomButton
 					onClick={onCreateQuestionOption}
 					buttonSize={ButtonSizes.medium}

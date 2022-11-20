@@ -7,7 +7,7 @@ export const EmptyForm: FormType = {
 	title: '질문 페이지',
 	questions: [
 		{
-			type: `${Questions.TextQuestion}`,
+			type: `${Questions.Question}`,
 			content: `${Placeholders.question}`,
 			options: [''],
 		},
