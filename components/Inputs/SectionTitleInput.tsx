@@ -1,21 +1,33 @@
+import { FocusEventHandler, MutableRefObject } from 'react';
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
+import usePlaceholder from '../../hooks/usePlaceholder';
 import { SectionTitleInputProps } from './props';
+import { InputElementProps } from './styled';
 
 export default function SectionTitleInput({
 	value,
 	onChange,
 	placeholder,
 }: SectionTitleInputProps) {
+	const [isEmpty, valueRef, onFocus, onBlur] = usePlaceholder(placeholder, onChange);
+
 	return (
-		<InputContainer>
-			<input value={value} onChange={onChange} placeholder={placeholder} />
+		<InputContainer isEmpty={isEmpty as boolean}>
+			<input
+				value={value}
+				onChange={onChange}
+				ref={valueRef as MutableRefObject<HTMLInputElement>}
+				onFocus={onFocus as FocusEventHandler<HTMLInputElement>}
+				onBlur={onBlur as FocusEventHandler<HTMLInputElement>}
+				placeholder={placeholder}
+			/>
 		</InputContainer>
 	);
 }
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<InputElementProps>`
 	input {
 		${Fonts.heading24bold}
 		background-color: transparent;
