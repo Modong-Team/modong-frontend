@@ -7,10 +7,11 @@ export default function NewApplicationLayout({
 	children,
 	onSave,
 	onDone,
+	isComplete,
 }: NewApplicationLayoutProps) {
 	return (
 		<LayoutContainer>
-			<NewApplicationHeader onSave={onSave} onDone={onDone} />
+			<NewApplicationHeader onSave={onSave} onDone={onDone} isComplete={isComplete} />
 			<MainContainer>{children}</MainContainer>
 		</LayoutContainer>
 	);
