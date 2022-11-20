@@ -21,8 +21,7 @@ export interface NewApplicationTitleProps {
 export interface NewApplicationContentProps {
 	essentials: number[];
 	setEssentials: Dispatch<SetStateAction<number[]>>;
-	currentSection?: number;
-	section: SectionsType;
+	currentPage: number;
 }
 
 export interface NewApplicationEssentialProps {
@@ -43,16 +42,14 @@ export interface EssentialElementProps extends ChildrenType {
 }
 
 export interface NewApplicationButtonProps {
-	currentSection: number;
-	sectionsLength: number;
+	currentPage: number;
 	onNext: () => void;
 	onPrev: () => void;
 }
 
 export interface NewApplicationNavigatorProps {
-	currentSection: number;
-	sections: SectionsType[];
-	onRouteToSection: (idx: number) => void;
+	currentPage: number;
+	onRouteToPage: (idx: number) => void;
 	onRemove: (idx: number) => void;
 }
 
@@ -62,5 +59,5 @@ export interface NewApplicationDefaultProps {
 }
 
 export interface NewApplicationIndicatorProps {
-	currentSection: number;
+	currentPage: number;
 }
