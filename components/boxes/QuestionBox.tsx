@@ -10,6 +10,7 @@ import CustomButton from '../buttons/CustomButton';
 import { ButtonSizes, ButtonTypes } from '../../constants/buttons';
 import { svgCirclePlusSmall } from '../../constants/svgs';
 import { useFormsActions } from '../../contexts/FormsProviders';
+import { Placeholders } from '../../constants/placeholders';
 
 export default function QuestionBox({
 	questionType,
@@ -39,7 +40,7 @@ export default function QuestionBox({
 				isError={isError}
 				onChange={onChangeQuestionContent}
 				onRemove={onRemoveQuestion}
-				placeholder='질문을 입력하세요.'
+				placeholder={Placeholders.question}
 				value={question.content}
 			/>
 			{questionType !== Questions.TextQuestion ? <h3>선택항목</h3> : ''}
