@@ -141,9 +141,9 @@ export default function NewApplicationPage() {
 }
 
 const NewApplicationContainer = styled.div`
-	width: fit-content;
-	margin: 0 auto;
 	display: grid;
 	grid-template-columns: max-content 71.2rem max-content;
 	row-gap: 1.6rem;
+	width: 100%;
+	justify-content: center;
 `;

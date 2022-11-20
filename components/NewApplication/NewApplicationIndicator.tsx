@@ -3,6 +3,7 @@ import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { NewApplicationIndicatorProps } from './props';
 import { IndicatorElementProps } from './styled';
+import { Styles } from '../../constants/styles';
 
 export default function NewApplicationIndicator({ currentPage }: NewApplicationIndicatorProps) {
 	return (
@@ -22,6 +23,7 @@ export default function NewApplicationIndicator({ currentPage }: NewApplicationI
 }
 
 const IndicatorContainer = styled.section`
+	${Styles.stickyIndicatorAndNavigator}
 	display: flex;
 	flex-direction: column;
 	gap: 1.8rem;

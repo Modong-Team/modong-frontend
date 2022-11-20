@@ -6,6 +6,7 @@ import { svgVertical } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { useState } from 'react';
 import { useFormsValue } from '../../contexts/FormsProviders';
+import { Styles } from '../../constants/styles';
 
 export default function NewApplicationNavigator({
 	currentPage,
@@ -53,6 +54,7 @@ export default function NewApplicationNavigator({
 }
 
 const NavigatorContainer = styled.section`
+	${Styles.stickyIndicatorAndNavigator}
 	margin-left: 2rem;
 	display: flex;
 	flex-direction: column;
