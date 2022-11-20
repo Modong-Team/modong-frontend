@@ -9,17 +9,21 @@ import { NewApplicationContentProps } from './props';
 export default function NewApplicationContent({
 	essentials,
 	setEssentials,
-	currentSection,
+	currentPage,
 }: NewApplicationContentProps) {
 	const forms = useFormsValue();
 
 	return (
 		<ContentContainer>
 			<FormContainer>
-				{!currentSection ? (
+				{currentPage === -1 ? (
 					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
 				) : (
-					forms.map((v, i) => <NewApplicationDefault key={i} form={v} formIdx={i} />)
+					<NewApplicationDefault
+						key={currentPage}
+						form={forms[currentPage]}
+						formIdx={currentPage}
+					/>
 				)}
 			</FormContainer>
 		</ContentContainer>
