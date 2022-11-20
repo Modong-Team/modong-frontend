@@ -24,4 +24,5 @@ export default class Colors {
 	static blue900 = '#3F74DB';
 
 	static background = '#F4F6F8;';
+	static shade = 'rgba(20, 20, 22, 0.53);';
 }

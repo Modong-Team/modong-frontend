@@ -11,6 +11,9 @@ import { DummySections } from '../../models/sections';
 import { useRouter } from 'next/router';
 import { useFormsActions, useFormsValue } from '../../contexts/FormsProviders';
 import { postForm, putForm } from '../../api/form';
+import BasicModal from '../modals/BasicModal';
+import { iconTrash } from '../../constants/icons';
+import ModalTypes from '../../constants/modals';
 
 export default function NewApplicationPage() {
 	const titleRef = useRef<HTMLInputElement>(null);
@@ -18,6 +21,8 @@ export default function NewApplicationPage() {
 	const [emptyTitleError, setEmptyTitleError] = useState(false);
 	const [applicationId, setApplicationId] = useState<number | null>(null);
 	const [currentPage, setCurrentPage] = useState(-1);
+	const [isRemoveModalOpened, setIsRemoveModalOpened] = useState(false);
+	const [removeFormIdx, setRemoveFormIdx] = useState(-1);
 	const forms = useFormsValue();
 	const actions = useFormsActions();
 	const router = useRouter();
@@ -88,9 +93,15 @@ export default function NewApplicationPage() {
 	};
 
 	const onRemove = (idx: number) => {
-		if (idx === currentPage) onRouteToPage(idx - 1);
-		else if (idx < currentPage) onRouteToPage(currentPage - 1);
-		actions.removeForm(idx);
+		setRemoveFormIdx(idx);
+		setIsRemoveModalOpened(true);
+	};
+
+	const onConfirmRemoveModal = () => {
+		if (removeFormIdx === currentPage) onRouteToPage(removeFormIdx - 1);
+		else if (removeFormIdx < currentPage) onRouteToPage(currentPage - 1);
+		actions.removeForm(removeFormIdx);
+		setIsRemoveModalOpened(false);
 	};
 
 	return (
@@ -115,6 +126,16 @@ export default function NewApplicationPage() {
 				/>
 				<NewApplicationButton currentPage={currentPage} onNext={onNext} onPrev={onPrev} />
 			</NewApplicationContainer>
+			{isRemoveModalOpened && (
+				<BasicModal
+					icon={iconTrash}
+					title='페이지를 삭제할까요?'
+					subtitle='삭제된 페이지는 복구가 불가능해요.'
+					type={ModalTypes.doubleButton}
+					onCancel={() => setIsRemoveModalOpened(false)}
+					onConfirm={onConfirmRemoveModal}
+				/>
+			)}
 		</NewApplicationLayout>
 	);
 }
