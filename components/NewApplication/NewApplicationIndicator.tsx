@@ -4,14 +4,14 @@ import Fonts from '../../constants/fonts';
 import { NewApplicationIndicatorProps } from './props';
 import { IndicatorElementProps } from './styled';
 
-export default function NewApplicationIndicator({ currentSection }: NewApplicationIndicatorProps) {
+export default function NewApplicationIndicator({ currentPage }: NewApplicationIndicatorProps) {
 	return (
 		<IndicatorContainer>
-			<IndicatorElement isHighlighted={currentSection === 0}>
+			<IndicatorElement isHighlighted={currentPage === -1}>
 				<IndicatorCircle>1</IndicatorCircle>
 				지원자 정보
 			</IndicatorElement>
-			<IndicatorElement isHighlighted={currentSection !== 0}>
+			<IndicatorElement isHighlighted={currentPage !== -1}>
 				<IndicatorCircle>2</IndicatorCircle>질문 등록
 			</IndicatorElement>
 			<IndicatorElement>
