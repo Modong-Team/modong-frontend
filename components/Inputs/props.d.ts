@@ -12,7 +12,7 @@ export interface QuestionInputProps {
 	onRemove: () => void;
 	isError?: boolean;
 	placeholder: string;
-	value?: string;
+	value: string;
 }
 
 export interface QuestionRadioInputProps {

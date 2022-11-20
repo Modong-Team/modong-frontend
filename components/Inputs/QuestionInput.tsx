@@ -4,6 +4,8 @@ import Fonts from '../../constants/fonts';
 import { svgCircleX } from '../../constants/svgs';
 import { InputElementProps } from './styled';
 import { QuestionInputProps } from './props';
+import usePlaceholder from '../../hooks/usePlaceholder';
+import { FocusEventHandler, MutableRefObject } from 'react';
 
 export default function QuestionInput({
 	onChange,
@@ -12,10 +14,19 @@ export default function QuestionInput({
 	placeholder,
 	value,
 }: QuestionInputProps) {
+	const [isEmpty, valueRef, onFocus, onBlur] = usePlaceholder(placeholder, onChange);
+
 	return (
 		<>
-			<InputElement isError={isError || false}>
-				<input value={value} onChange={onChange} placeholder={placeholder} />
+			<InputElement isError={isError || false} isEmpty={isEmpty as boolean}>
+				<input
+					value={value}
+					onChange={onChange}
+					ref={valueRef as MutableRefObject<HTMLInputElement>}
+					onFocus={onFocus as FocusEventHandler<HTMLInputElement>}
+					onBlur={onBlur as FocusEventHandler<HTMLInputElement>}
+					placeholder={placeholder}
+				/>
 				<span onClick={onRemove}>{svgCircleX}</span>
 			</InputElement>
 			{isError && <Error>내용을 입력해주세요.</Error>}
@@ -44,6 +55,7 @@ const InputElement = styled.div<InputElementProps>`
 		border: 0.1rem solid ${Colors.gray200};
 		border-radius: 0.4rem;
 		caret-color: ${Colors.blue500};
+		color: ${(props) => props.isEmpty && Colors.gray400};
 
 		&:hover {
 			border-color: ${Colors.gray700};

@@ -5,11 +5,11 @@ import Fonts from '../../constants/fonts';
 import { svgCirclePlus, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
-import useInput from '../../hooks/useInput';
 import SectionTitleInput from '../Inputs/SectionTitleInput';
 import { Questions } from '../../constants/questions';
 import QuestionBox from '../boxes/QuestionBox';
 import { useFormsActions } from '../../contexts/FormsProviders';
+import { Placeholders } from '../../constants/placeholders';
 
 export default function NewApplicationDefault({ form, formIdx }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
@@ -34,7 +34,7 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 				<SectionTitleInput
 					value={form.title as string}
 					onChange={onChangeFormTitle}
-					placeholder='섹션 제목'
+					placeholder={Placeholders.form}
 				/>
 			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
