@@ -15,7 +15,10 @@ export default function NewApplicationNavigator({
 	const [showMoreFor, setShowMoreFor] = useState(-1);
 	const forms = useFormsValue();
 
-	const onClickMore = (idx: number) => setShowMoreFor(idx);
+	const onClickMore = (e: React.MouseEvent, idx: number) => {
+		e.stopPropagation();
+		setShowMoreFor(idx);
+	};
 	const onBlur = () => setShowMoreFor(-1);
 
 	const onClickRemove = (idx: number) => {
@@ -29,9 +32,13 @@ export default function NewApplicationNavigator({
 				지원자 정보
 			</NavigatorElement>
 			{forms.map((v, i) => (
-				<NavigatorElement isCurrent={currentPage === i} key={i} onBlur={onBlur}>
-					<span onClick={() => onRouteToPage(i)}>{v.title}</span>
-					<span onClick={() => onClickMore(i)}>{svgVertical}</span>
+				<NavigatorElement
+					isCurrent={currentPage === i}
+					key={i}
+					onBlur={onBlur}
+					onClick={() => onRouteToPage(i)}>
+					<span>{v.title}</span>
+					<span onClick={(e) => onClickMore(e, i)}>{svgVertical}</span>
 					{showMoreFor === i && (
 						<NavigatorMore>
 							<div onClick={() => onClickRemove(i)}>삭제하기</div>
@@ -70,6 +77,10 @@ const NavigatorElement = styled.button<NavigatorElementProps>`
 
 	span:first-child {
 		width: 100%;
+		white-space: nowrap;
+		max-width: 85%;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	span,
