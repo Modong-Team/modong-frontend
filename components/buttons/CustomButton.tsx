@@ -36,8 +36,10 @@ export default function CustomButton({
 const ButtonElement = styled.button<ButtonElementProps>`
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 0.47rem;
 	margin: ${(props) => props.margin};
+	transition: 0.2s ease;
 
 	/********** except bg-color & font-color **********/
 	${(props) => Buttons[props.buttonSize]}
@@ -66,6 +68,7 @@ const ButtonElement = styled.button<ButtonElementProps>`
 
 	/********** hover **********/
 	&:hover {
+		transition: 0.2s ease;
 		/* primary */
 		${(props) => props.buttonType === ButtonTypes.primary && PrimaryStates.hover}
 		/* secondary */
@@ -86,6 +89,7 @@ const ButtonElement = styled.button<ButtonElementProps>`
 
 	/********** active **********/
 	&:active {
+		transition: 0.2s ease;
 		/* primary */
 		${(props) => props.buttonType === ButtonTypes.primary && PrimaryStates.active}
 		/* secondary */
