@@ -21,7 +21,8 @@ export default function NewApplicationNavigator({
 	};
 	const onBlur = () => setShowMoreFor(-1);
 
-	const onClickRemove = (idx: number) => {
+	const onClickRemove = (e: React.MouseEvent, idx: number) => {
+		e.stopPropagation();
 		setShowMoreFor(-1);
 		onRemove(idx);
 	};
@@ -41,7 +42,7 @@ export default function NewApplicationNavigator({
 					<span onClick={(e) => onClickMore(e, i)}>{svgVertical}</span>
 					{showMoreFor === i && (
 						<NavigatorMore>
-							<div onClick={() => onClickRemove(i)}>삭제하기</div>
+							<div onClick={(e) => onClickRemove(e, i)}>삭제하기</div>
 							<div>복제하기</div>
 						</NavigatorMore>
 					)}
