@@ -7,7 +7,6 @@ import { postApplication, patchApplication } from '../../api/application';
 import NewApplicationIndicator from './NewApplicationIndicator';
 import NewApplicationNavigator from './NewApplicationNavigator';
 import NewApplicationButton from './NewApplicationButton';
-import { DummySections } from '../../models/sections';
 import { useRouter } from 'next/router';
 import { useFormsActions, useFormsValue } from '../../contexts/FormsProviders';
 import { postForm, putForm } from '../../api/form';
@@ -23,6 +22,8 @@ export default function NewApplicationPage() {
 	const [currentPage, setCurrentPage] = useState(-1);
 	const [isRemoveModalOpened, setIsRemoveModalOpened] = useState(false);
 	const [removeFormIdx, setRemoveFormIdx] = useState(-1);
+	const [isComplete, setIsComplete] = useState(false);
+
 	const forms = useFormsValue();
 	const actions = useFormsActions();
 	const router = useRouter();
@@ -74,7 +75,7 @@ export default function NewApplicationPage() {
 
 	const onDone = async () => {
 		const saveSucceed = await onSave();
-		if (saveSucceed) router.push('/');
+		if (saveSucceed) setIsComplete(true);
 	};
 
 	const onNext = () => {
@@ -105,26 +106,32 @@ export default function NewApplicationPage() {
 	};
 
 	return (
-		<NewApplicationLayout onSave={onSave} onDone={onDone}>
+		<NewApplicationLayout onSave={onSave} onDone={onDone} isComplete={isComplete}>
 			<NewApplicationContainer>
-				<NewApplicationTitle
-					titleRef={titleRef}
-					emptyTitleError={emptyTitleError}
-					setEmptyTitleError={setEmptyTitleError}
-				/>
-				<NewApplicationIndicator currentPage={currentPage} />
-
+				{!isComplete && (
+					<NewApplicationTitle
+						titleRef={titleRef}
+						emptyTitleError={emptyTitleError}
+						setEmptyTitleError={setEmptyTitleError}
+					/>
+				)}
+				<NewApplicationIndicator currentPage={currentPage} isComplete={isComplete} />
 				<NewApplicationContent
 					essentials={essentials}
 					setEssentials={setEssentials}
 					currentPage={currentPage}
+					isComplete={isComplete}
 				/>
-				<NewApplicationNavigator
-					onRouteToPage={onRouteToPage}
-					onRemove={onRemove}
-					currentPage={currentPage}
-				/>
-				<NewApplicationButton currentPage={currentPage} onNext={onNext} onPrev={onPrev} />
+				{!isComplete && (
+					<>
+						<NewApplicationNavigator
+							onRouteToPage={onRouteToPage}
+							onRemove={onRemove}
+							currentPage={currentPage}
+						/>
+						<NewApplicationButton currentPage={currentPage} onNext={onNext} onPrev={onPrev} />
+					</>
+				)}
 			</NewApplicationContainer>
 			{isRemoveModalOpened && (
 				<BasicModal
