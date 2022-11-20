@@ -23,3 +23,7 @@ export interface TitleContainerProps {
 	isFocused?: boolean;
 	isError?: boolean;
 }
+
+export interface HeaderButtonProps {
+	isComplete: boolean;
+}

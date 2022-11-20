@@ -5,11 +5,13 @@ import { ChildrenType } from '../../@types/client/base';
 export interface NewApplicationLayoutProps extends ChildrenType {
 	onSave: () => void;
 	onDone: () => void;
+	isComplete: boolean;
 }
 
 export interface NewApplicationHeaderProps {
 	onSave: () => void;
 	onDone: () => void;
+	isComplete: boolean;
 }
 
 export interface NewApplicationTitleProps {
@@ -22,6 +24,7 @@ export interface NewApplicationContentProps {
 	essentials: number[];
 	setEssentials: Dispatch<SetStateAction<number[]>>;
 	currentPage: number;
+	isComplete: boolean;
 }
 
 export interface NewApplicationEssentialProps {
@@ -60,4 +63,5 @@ export interface NewApplicationDefaultProps {
 
 export interface NewApplicationIndicatorProps {
 	currentPage: number;
+	isComplete: boolean;
 }
