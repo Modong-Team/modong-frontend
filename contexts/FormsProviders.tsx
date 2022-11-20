@@ -10,7 +10,7 @@ const FormsValueContext = createContext<FormType[]>([] as any);
 const FormsActionsContext = createContext<FormsActionsType>([] as any);
 
 export default function FormsProviders({ children }: ChildrenType) {
-	const [forms, setForms] = useState<FormType[]>([deepCopyObject<FormType>(EmptyForm)]);
+	const [forms, setForms] = useState<FormType[]>([]);
 	const actions = {
 		updateFormTitle(formIdx: number, title: string) {
 			const copy = deepCopyObject<FormType[]>(forms);
