@@ -91,24 +91,25 @@ const NewQuestionButton = styled.button`
 const QuestionMenu = styled.div`
 	white-space: nowrap;
 	position: absolute;
-	bottom: -10rem;
+	bottom: -12rem;
 	left: 50%;
 	transform: translateX(-50%);
 	text-align: left;
 	background-color: ${Colors.white};
 	border: 0.1rem solid ${Colors.gray200};
-	border-radius: 0.4rem;
-	padding: 0.25rem 0;
+	border-radius: 0.8rem;
+	padding: 0.4rem;
 	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.17);
 
 	& {
 		div {
 			${Fonts.subtitle14semibold}
-			padding:0.35rem 1.35rem;
+			padding:0.55rem 0.95rem;
 			transition: 0.3s ease;
 			display: flex;
 			align-items: center;
 			gap: 0.65rem;
+			border-radius: 0.4rem;
 
 			&:hover {
 				background-color: ${Colors.gray100};
