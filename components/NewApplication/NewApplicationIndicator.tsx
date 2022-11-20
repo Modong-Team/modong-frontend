@@ -5,17 +5,20 @@ import { NewApplicationIndicatorProps } from './props';
 import { IndicatorElementProps } from './styled';
 import { Styles } from '../../constants/styles';
 
-export default function NewApplicationIndicator({ currentPage }: NewApplicationIndicatorProps) {
+export default function NewApplicationIndicator({
+	currentPage,
+	isComplete,
+}: NewApplicationIndicatorProps) {
 	return (
 		<IndicatorContainer>
-			<IndicatorElement isHighlighted={currentPage === -1}>
+			<IndicatorElement isHighlighted={!isComplete && currentPage === -1}>
 				<IndicatorCircle>1</IndicatorCircle>
 				지원자 정보
 			</IndicatorElement>
-			<IndicatorElement isHighlighted={currentPage !== -1}>
+			<IndicatorElement isHighlighted={!isComplete && currentPage !== -1}>
 				<IndicatorCircle>2</IndicatorCircle>질문 등록
 			</IndicatorElement>
-			<IndicatorElement>
+			<IndicatorElement isHighlighted={isComplete}>
 				<IndicatorCircle>3</IndicatorCircle>작성 완료
 			</IndicatorElement>
 		</IndicatorContainer>

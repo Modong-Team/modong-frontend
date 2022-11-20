@@ -5,18 +5,22 @@ import { useFormsValue } from '../../contexts/FormsProviders';
 import NewApplicationDefault from './NewApplicationDefault';
 import NewApplicationEssential from './NewApplicationEssential';
 import { NewApplicationContentProps } from './props';
+import NewApplicationComplete from './NewApplicationComplete';
 
 export default function NewApplicationContent({
 	essentials,
 	setEssentials,
 	currentPage,
+	isComplete,
 }: NewApplicationContentProps) {
 	const forms = useFormsValue();
 
 	return (
 		<ContentContainer>
 			<FormContainer>
-				{currentPage === -1 ? (
+				{isComplete ? (
+					<NewApplicationComplete />
+				) : currentPage === -1 ? (
 					<NewApplicationEssential essentials={essentials} setEssentials={setEssentials} />
 				) : (
 					<NewApplicationDefault

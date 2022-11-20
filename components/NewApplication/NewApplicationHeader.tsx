@@ -3,12 +3,17 @@ import Colors from '../../constants/colors';
 import { NewApplicationHeaderProps } from './props';
 import { svgModong } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
+import { HeaderButtonProps } from './styled';
 
-export default function NewApplicationHeader({ onSave, onDone }: NewApplicationHeaderProps) {
+export default function NewApplicationHeader({
+	onSave,
+	onDone,
+	isComplete,
+}: NewApplicationHeaderProps) {
 	return (
 		<HeaderContainer>
 			<HeaderLogo>{svgModong}</HeaderLogo>
-			<HeaderButton>
+			<HeaderButton isComplete={isComplete}>
 				<SaveBtn onClick={onSave}>저장하기</SaveBtn>
 				<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
 			</HeaderButton>
@@ -28,9 +33,10 @@ const HeaderContainer = styled.header`
 
 const HeaderLogo = styled.h1``;
 
-const HeaderButton = styled.div`
+const HeaderButton = styled.div<HeaderButtonProps>`
 	display: flex;
 	gap: 1.2rem;
+	visibility: ${(props) => props.isComplete && 'hidden'};
 `;
 
 const SaveBtn = styled.button`
