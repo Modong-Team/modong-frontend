@@ -222,3 +222,22 @@ export const svgCheckQuestion = (
 		/>
 	</svg>
 );
+
+export const svgCopy = (
+	<svg width='15' height='14' viewBox='0 0 15 14' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M12.3002 5.19995H6.9002C6.23745 5.19995 5.7002 5.73721 5.7002 6.39995V11.8C5.7002 12.4627 6.23745 13 6.9002 13H12.3002C12.9629 13 13.5002 12.4627 13.5002 11.8V6.39995C13.5002 5.73721 12.9629 5.19995 12.3002 5.19995Z'
+			stroke='#6B748B'
+			strokeWidth='1.2'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+		<path
+			d='M3.3 8.8H2.7C2.38174 8.8 2.07652 8.67357 1.85147 8.44853C1.62643 8.22348 1.5 7.91826 1.5 7.6V2.2C1.5 1.88174 1.62643 1.57652 1.85147 1.35147C2.07652 1.12643 2.38174 1 2.7 1H8.1C8.41826 1 8.72348 1.12643 8.94853 1.35147C9.17357 1.57652 9.3 1.88174 9.3 2.2V2.8'
+			stroke='#6B748B'
+			strokeWidth='1.2'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
