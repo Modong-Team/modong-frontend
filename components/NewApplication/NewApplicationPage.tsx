@@ -142,8 +142,9 @@ export default function NewApplicationPage() {
 
 const NewApplicationContainer = styled.div`
 	display: grid;
-	grid-template-columns: max-content 71.2rem max-content;
+	grid-template-columns: 19.4rem 71.2rem 19.4rem;
 	row-gap: 1.6rem;
-	width: 100%;
+	width: fit-content;
+	margin: 0 auto;
 	justify-content: center;
 `;
