@@ -1,3 +1,3 @@
-export default async function copyToClipBoard(text: string) {
-	await navigator.clipboard.writeText(text);
+export default function copyToClipBoard(text: string) {
+	return navigator.clipboard.writeText(text);
 }

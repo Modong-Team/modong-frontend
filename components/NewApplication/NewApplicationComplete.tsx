@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 export default function NewApplicationComplete({ url = 'www.modong.com/3H5os4' }) {
 	const router = useRouter();
 
-	const onClick = () => copyToClipBoard(url);
+	const onClick = async () => await copyToClipBoard(url);
 	const toHome = () => router.push('/');
 
 	return (
