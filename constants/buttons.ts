@@ -38,6 +38,12 @@ export class SecondaryStates {
 	static disabled = `background-color:${Colors.gray300}; color:${Colors.white};`;
 }
 
+export class SmallLineStates {
+	static normal = `background-color:${Colors.white}; color:${Colors.gray900}; border-color:${Colors.gray200};`;
+	static hover = `background-color:${Colors.gray100}; color:${Colors.gray900}; border-color:${Colors.gray200};`;
+	static active = `background-color:${Colors.gray200}; color:${Colors.gray900}; border-color:${Colors.gray300};`;
+}
+
 export class LargeLineStates {
 	static normal = `background-color:${Colors.white}; color:${Colors.gray950}; border-color:${Colors.gray200};`;
 	static hover = `background-color:${Colors.gray100}; color:${Colors.gray950}; border-color:${Colors.gray200};`;
