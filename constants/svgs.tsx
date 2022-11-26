@@ -253,3 +253,24 @@ export const svgDown = (
 		/>
 	</svg>
 );
+
+export const svgPerson = (
+	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<circle cx='12' cy='7.5' r='4.5' fill='#9DA4B5' stroke='#9DA4B5' stroke-width='1.5' />
+		<path
+			d='M12 13.5C7.85786 13.5 4.5 16.1863 4.5 19.5H19.5C19.5 16.1863 16.1421 13.5 12 13.5Z'
+			fill='#9DA4B5'
+			stroke='#9DA4B5'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const svgNewPlus = (
+	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path d='M20.0001 12.0001H3.99993' stroke='white' stroke-width='2' stroke-linecap='round' />
+		<path d='M12.0001 20.0001V3.99993' stroke='white' stroke-width='2' stroke-linecap='round' />
+	</svg>
+);

@@ -23,6 +23,8 @@ export default class Colors {
 	static blue700 = '#6894EB';
 	static blue900 = '#3F74DB';
 
+	static blue500twenty = 'rgba(125, 169, 255, 0.2)';
+
 	static background = '#F4F6F8;';
 	static shade = 'rgba(20, 20, 22, 0.53);';
 }
