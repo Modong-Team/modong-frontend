@@ -28,10 +28,12 @@ export default function MainSidebar() {
 const SidebarContainer = styled.div`
 	border-right: 0.1rem solid ${Colors.gray200};
 	position: fixed;
-	width: ${Styles.sidebarWidth};
 	top: ${Styles.headerHeight};
 	height: calc(100vh - ${Styles.headerHeight});
 	z-index: 10;
+	width: 15.28vw;
+	min-width: 22rem;
+	max-width: 27.2rem;
 `;
 
 const SidebarProfile = styled.section`

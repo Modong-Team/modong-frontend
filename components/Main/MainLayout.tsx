@@ -21,7 +21,7 @@ const LayoutContainer = styled.div`
 
 const MainContainer = styled.div`
 	margin-top: ${Styles.headerHeight};
-	margin-left: ${Styles.sidebarWidth};
+	margin-left: clamp(22rem, 15.28vw, 27.2rem);
 	height: calc(100vh - ${Styles.headerHeight});
 	position: relative;
 `;
