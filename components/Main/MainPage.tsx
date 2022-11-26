@@ -1,3 +1,10 @@
+import MainBoard from './MainBoard';
+import MainLayout from './MainLayout';
+
 export default function MainPage() {
-	return <>메인페이지</>;
+	return (
+		<MainLayout>
+			<MainBoard />
+		</MainLayout>
+	);
 }
