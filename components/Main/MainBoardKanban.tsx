@@ -29,5 +29,6 @@ const KanbanContainer = styled.div`
 	> section:nth-of-type(2) {
 		display: flex;
 		justify-content: space-between;
+		padding-bottom: 3.2rem;
 	}
 `;
