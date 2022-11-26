@@ -94,7 +94,7 @@ const SidebarList = styled.section`
 		${Fonts.subtitle16semibold}
 		color: ${Colors.gray700};
 		text-align: left;
-		padding: 1.6rem 1.7rem;
+		padding: 1.2rem 1.7rem;
 		border-radius: 0.8rem;
 	}
 

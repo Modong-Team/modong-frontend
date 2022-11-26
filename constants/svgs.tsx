@@ -274,3 +274,35 @@ export const svgNewPlus = (
 		<path d='M12.0001 20.0001V3.99993' stroke='white' stroke-width='2' stroke-linecap='round' />
 	</svg>
 );
+
+export const svgClipBoard = (
+	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<rect
+			x='8.5'
+			y='7.5'
+			width='10'
+			height='12'
+			rx='1'
+			stroke='#8D95A8'
+			strokeWidth='2'
+			strokeLinecap='round'
+		/>
+		<path
+			d='M15.5 4.5H6.5C5.94772 4.5 5.5 4.94772 5.5 5.5V16.5'
+			stroke='#8D95A8'
+			strokeWidth='2'
+			strokeLinecap='round'
+		/>
+	</svg>
+);
+
+export const svgLink = (
+	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			fillRule='evenodd'
+			clipRule='evenodd'
+			d='M3.9 12C3.9 10.29 5.29 8.9 7 8.9H10.05C10.5747 8.9 11 8.47467 11 7.95C11 7.42533 10.5747 7 10.05 7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H10.05C10.5747 17 11 16.5747 11 16.05C11 15.5253 10.5747 15.1 10.05 15.1H7C5.29 15.1 3.9 13.71 3.9 12ZM8 12C8 12.5523 8.44772 13 9 13H15C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11H9C8.44772 11 8 11.4477 8 12ZM17 7H13.95C13.4253 7 13 7.42533 13 7.95C13 8.47467 13.4253 8.9 13.95 8.9H17C18.71 8.9 20.1 10.29 20.1 12C20.1 13.71 18.71 15.1 17 15.1H13.95C13.4253 15.1 13 15.5253 13 16.05C13 16.5747 13.4253 17 13.95 17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7Z'
+			fill='#383C46'
+		/>
+	</svg>
+);
