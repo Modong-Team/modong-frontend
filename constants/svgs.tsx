@@ -256,7 +256,7 @@ export const svgDown = (
 
 export const svgPerson = (
 	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<circle cx='12' cy='7.5' r='4.5' fill='#9DA4B5' stroke='#9DA4B5' stroke-width='1.5' />
+		<circle cx='12' cy='7.5' r='4.5' fill='#9DA4B5' stroke='#9DA4B5' strokeWidth='1.5' />
 		<path
 			d='M12 13.5C7.85786 13.5 4.5 16.1863 4.5 19.5H19.5C19.5 16.1863 16.1421 13.5 12 13.5Z'
 			fill='#9DA4B5'
@@ -270,8 +270,8 @@ export const svgPerson = (
 
 export const svgNewPlus = (
 	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path d='M20.0001 12.0001H3.99993' stroke='white' stroke-width='2' stroke-linecap='round' />
-		<path d='M12.0001 20.0001V3.99993' stroke='white' stroke-width='2' stroke-linecap='round' />
+		<path d='M20.0001 12.0001H3.99993' stroke='white' strokeWidth='2' strokeLinecap='round' />
+		<path d='M12.0001 20.0001V3.99993' stroke='white' strokeWidth='2' strokeLinecap='round' />
 	</svg>
 );
 
@@ -303,6 +303,73 @@ export const svgLink = (
 			clipRule='evenodd'
 			d='M3.9 12C3.9 10.29 5.29 8.9 7 8.9H10.05C10.5747 8.9 11 8.47467 11 7.95C11 7.42533 10.5747 7 10.05 7H7C4.24 7 2 9.24 2 12C2 14.76 4.24 17 7 17H10.05C10.5747 17 11 16.5747 11 16.05C11 15.5253 10.5747 15.1 10.05 15.1H7C5.29 15.1 3.9 13.71 3.9 12ZM8 12C8 12.5523 8.44772 13 9 13H15C15.5523 13 16 12.5523 16 12C16 11.4477 15.5523 11 15 11H9C8.44772 11 8 11.4477 8 12ZM17 7H13.95C13.4253 7 13 7.42533 13 7.95C13 8.47467 13.4253 8.9 13.95 8.9H17C18.71 8.9 20.1 10.29 20.1 12C20.1 13.71 18.71 15.1 17 15.1H13.95C13.4253 15.1 13 15.5253 13 16.05C13 16.5747 13.4253 17 13.95 17H17C19.76 17 22 14.76 22 12C22 9.24 19.76 7 17 7Z'
 			fill='#383C46'
+		/>
+	</svg>
+);
+
+export const svgDown8 = (
+	<svg width='8' height='8' viewBox='0 0 8 8' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M1 2.5L4 5.5L7 2.5'
+			stroke='#383C46'
+			strokeWidth='1.4'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const svgStar16 = (
+	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M7.20593 2.36343C7.56043 1.7548 8.43969 1.7548 8.79419 2.36343L10.173 4.73076C10.3029 4.95371 10.5205 5.11181 10.7727 5.16642L13.4502 5.74623C14.1386 5.8953 14.4103 6.73153 13.941 7.25675L12.1156 9.29965C11.9437 9.49205 11.8606 9.74786 11.8866 10.0046L12.1626 12.7302C12.2335 13.431 11.5222 13.9478 10.8776 13.6638L8.37065 12.559C8.13455 12.455 7.86558 12.455 7.62947 12.559L5.12248 13.6638C4.47795 13.9478 3.76661 13.431 3.83756 12.7302L4.11353 10.0046C4.13952 9.74786 4.0564 9.49205 3.88449 9.29965L2.05912 7.25675C1.58982 6.73153 1.86153 5.8953 2.54991 5.74623L5.22746 5.16642C5.47963 5.11181 5.69723 4.95371 5.82709 4.73076L7.20593 2.36343Z'
+			fill='#7DA9FF'
+		/>
+	</svg>
+);
+
+export const svgUser16 = (
+	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<circle cx='8' cy='5' r='3' fill='#9DA4B5' stroke='#9DA4B5' strokeWidth='1.4' />
+		<path
+			d='M8 9C5.23858 9 3 10.7909 3 13H13C13 10.7909 10.7614 9 8 9Z'
+			fill='#9DA4B5'
+			stroke='#9DA4B5'
+			strokeWidth='1.4'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const svgMore24 = (
+	<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<circle cx='12' cy='6' r='1' fill='#383C46' stroke='#383C46' />
+		<circle cx='12' cy='12' r='1' fill='#383C46' stroke='#383C46' />
+		<circle cx='12' cy='18' r='1' fill='#383C46' stroke='#383C46' />
+	</svg>
+);
+
+export const svgRight16 = (
+	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M6.33333 3.33301L11 7.99967L6.33333 12.6663'
+			stroke='#383C46'
+			strokeWidth='1.4'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const svgLeft16 = (
+	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M10.3337 3.33301L5.66699 7.99967L10.3337 12.6663'
+			stroke='#C0C4CF'
+			strokeWidth='1.4'
+			strokeLinecap='round'
+			strokeLinejoin='round'
 		/>
 	</svg>
 );
