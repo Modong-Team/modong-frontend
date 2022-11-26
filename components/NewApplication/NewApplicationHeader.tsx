@@ -4,6 +4,7 @@ import { NewApplicationHeaderProps } from './props';
 import { svgModong } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { HeaderButtonProps } from './styled';
+import { HeaderContainer, HeaderLogo } from '../../constants/styled';
 
 export default function NewApplicationHeader({
 	onSave,
@@ -20,18 +21,6 @@ export default function NewApplicationHeader({
 		</HeaderContainer>
 	);
 }
-
-const HeaderContainer = styled.header`
-	background: ${Colors.white};
-	border-bottom: 0.1rem solid ${Colors.gray200};
-	height: 8rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	padding: 0 2.4rem;
-`;
-
-const HeaderLogo = styled.h1``;
 
 const HeaderButton = styled.div<HeaderButtonProps>`
 	display: flex;

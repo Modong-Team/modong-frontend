@@ -10,6 +10,15 @@ const nextConfig = {
 		prependData: `@import "styles/_variables.scss"; @import "styles/_mixins.scss";`,
 	},
 	output: 'standalone',
+	async redirects() {
+		return [
+			{
+				source: '/',
+				destination: '/main',
+				permanent: false,
+			},
+		];
+	},
 };
 
 module.exports = nextConfig;
