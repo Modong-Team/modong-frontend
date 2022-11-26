@@ -9,6 +9,7 @@ import {
 	MediumLineStates,
 	RedStates,
 	CommonLineStates,
+	SmallLineStates,
 } from '../../constants/buttons';
 import { CustomButtonProps } from './props';
 import { ButtonElementProps } from './styled';
@@ -63,6 +64,11 @@ const ButtonElement = styled.button<ButtonElementProps>`
 		props.buttonType === ButtonTypes.line &&
 		props.buttonSize === ButtonSizes.medium &&
 		MediumLineStates.normal}
+	/* small-line */
+	${(props) =>
+		props.buttonType === ButtonTypes.line &&
+		props.buttonSize === ButtonSizes.small &&
+		SmallLineStates.normal}
 	/* red */
 	${(props) => props.buttonType === ButtonTypes.red && RedStates.normal}
 
@@ -83,6 +89,11 @@ const ButtonElement = styled.button<ButtonElementProps>`
 			props.buttonType === ButtonTypes.line &&
 			props.buttonSize === ButtonSizes.medium &&
 			MediumLineStates.hover}
+		/* small-line */
+		${(props) =>
+			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.small &&
+			SmallLineStates.hover}
 		/* red */
 		${(props) => props.buttonType === ButtonTypes.red && RedStates.hover}
 	}
@@ -104,6 +115,11 @@ const ButtonElement = styled.button<ButtonElementProps>`
 			props.buttonType === ButtonTypes.line &&
 			props.buttonSize === ButtonSizes.medium &&
 			MediumLineStates.active}
+		/* small-line */
+		${(props) =>
+			props.buttonType === ButtonTypes.line &&
+			props.buttonSize === ButtonSizes.small &&
+			SmallLineStates.active}
 		/* red */
 		${(props) => props.buttonType === ButtonTypes.red && RedStates.active}
 	}
