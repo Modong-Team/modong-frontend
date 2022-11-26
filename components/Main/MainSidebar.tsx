@@ -3,8 +3,14 @@ import { Styles } from '../../constants/styles';
 import Colors from '../../constants/colors';
 import { svgPerson, svgNewPlus } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
+import { useRouter } from 'next/router';
 
 export default function MainSidebar() {
+	const router = useRouter();
+
+	const routeToNewApplication = () => {
+		router.push('/newApplication');
+	};
 	return (
 		<SidebarContainer>
 			<SidebarProfile>
@@ -19,7 +25,7 @@ export default function MainSidebar() {
 				<h3>지원서 목록</h3>
 				<li>작성한 지원서 1</li>
 				<li>작성한 지원서 2</li>
-				<button>{svgNewPlus}새로운 지원서</button>
+				<button onClick={routeToNewApplication}>{svgNewPlus}새로운 지원서</button>
 			</SidebarList>
 		</SidebarContainer>
 	);
