@@ -15,3 +15,9 @@ export interface FilterButtonProps extends ChildrenType {
 	onBlur: () => void;
 	isActive: boolean;
 }
+
+export interface KanbanMoreButtonProps extends ChildrenType {
+	isActive: boolean;
+	onClick: () => void;
+	onBlur: () => void;
+}

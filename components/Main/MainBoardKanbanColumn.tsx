@@ -43,12 +43,12 @@ export default function MainBoardKanbanColumn({
 				</span>
 			</section>
 			<section>
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
 			</section>
 			<section>
 				<PageButtons />

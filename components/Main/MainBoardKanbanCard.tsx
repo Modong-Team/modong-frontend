@@ -1,13 +1,40 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { svgStar16, svgUser16, svgMore24 } from '../../constants/svgs';
-export default function MainBoardKanbanCard() {
+import { svgStar16, svgUser16 } from '../../constants/svgs';
+import KanbanMoreButton from '../buttons/KanbanMoreButton';
+import DropDown from '../dropdowns/DropDown';
+import { Styles } from '../../constants/styles';
+import { MainBoardKanbanCardProps } from './props';
+import { useState } from 'react';
+import stopPropagation from '../../utils/stopPropagation';
+
+export default function MainBoardKanbanCard({ isStatusEditMode }: MainBoardKanbanCardProps) {
+	const [isShowMore, setIsShowMore] = useState(false);
+
+	const toggleMore = () => setIsShowMore(!isShowMore);
+
+	const hideMore = () => setIsShowMore(false);
+
 	return (
 		<CardContainer>
 			<div>
 				<h3>박병진</h3>
-				<div>{svgMore24}</div>
+				{!isStatusEditMode ? (
+					<KanbanMoreButton isActive={isShowMore} onClick={toggleMore} onBlur={hideMore}>
+						{isShowMore && (
+							<DropDown
+								option1='선택하기'
+								option2='탈락 처리'
+								onClick1={stopPropagation}
+								onClick2={stopPropagation}
+								customCSS={`${Styles.dropDownAlignRightBottom} transform:translate(76%,106%); ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
+							/>
+						)}
+					</KanbanMoreButton>
+				) : (
+					'수정'
+				)}
 			</div>
 			<div>
 				<h4>2022. 11. 2</h4>
