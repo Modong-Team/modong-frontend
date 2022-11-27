@@ -48,6 +48,7 @@ const DropDownContainer = styled.div<DropDownContainerProps>`
 	border-radius: 0.8rem;
 	padding: 0.4rem;
 	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.17);
+	cursor: pointer;
 	z-index: 5;
 
 	div {

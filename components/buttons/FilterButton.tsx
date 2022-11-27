@@ -4,16 +4,17 @@ import { svgDown8 } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import Colors from '../../constants/colors';
 
-export default function FilterButton({ title }: FilterButtonProps) {
+export default function FilterButton({ children, title, onClick, onBlur }: FilterButtonProps) {
 	return (
-		<FilterContainer>
+		<FilterContainer onClick={onClick} onBlur={onBlur}>
 			{title}
 			{svgDown8}
+			{children}
 		</FilterContainer>
 	);
 }
 
-const FilterContainer = styled.div`
+const FilterContainer = styled.button`
 	${Fonts.button14medium}
 	display: flex;
 	width: fit-content;
@@ -23,6 +24,7 @@ const FilterContainer = styled.div`
 	border: 0.1rem solid ${Colors.gray200};
 	border-radius: 1.6rem;
 	cursor: pointer;
+	position: relative;
 
 	svg {
 		position: relative;
