@@ -8,4 +8,5 @@ export interface DropDownProps {
 	onClick1: (e: any) => void;
 	onClick2: (e: any) => void;
 	onClick3?: (e: any) => void;
+	customCSS?: string;
 }

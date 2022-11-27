@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { DropDownProps } from './props';
+import { DropDownContainerProps } from './styled';
 
 export default function DropDown({
 	svg1,
@@ -13,9 +14,10 @@ export default function DropDown({
 	onClick1,
 	onClick2,
 	onClick3,
+	customCSS,
 }: DropDownProps) {
 	return (
-		<DropDownContainer>
+		<DropDownContainer customCSS={customCSS}>
 			<div onClick={onClick1}>
 				{svg1}
 				{option1}
@@ -24,15 +26,17 @@ export default function DropDown({
 				{svg2}
 				{option2}
 			</div>
-			<div onClick={onClick3}>
-				{svg3}
-				{option3}
-			</div>
+			{option3 && (
+				<div onClick={onClick3}>
+					{svg3}
+					{option3}
+				</div>
+			)}
 		</DropDownContainer>
 	);
 }
 
-const DropDownContainer = styled.div`
+const DropDownContainer = styled.div<DropDownContainerProps>`
 	white-space: nowrap;
 	position: absolute;
 	bottom: -10.8rem;
@@ -44,28 +48,29 @@ const DropDownContainer = styled.div`
 	border-radius: 0.8rem;
 	padding: 0.4rem;
 	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.17);
+	z-index: 5;
 
-	& {
-		div {
-			${Fonts.button13medium}
-			padding: 0.75rem 0.9rem;
+	div {
+		${Fonts.button13medium}
+		padding: 0.75rem 0.9rem;
+		transition: 0.3s ease;
+		display: flex;
+		align-items: center;
+		gap: 0.65rem;
+		border-radius: 0.4rem;
+		line-height: normal;
+
+		&:hover {
+			background-color: ${Colors.gray100};
 			transition: 0.3s ease;
-			display: flex;
-			align-items: center;
-			gap: 0.65rem;
-			border-radius: 0.4rem;
-			line-height: normal;
+		}
 
-			&:hover {
-				background-color: ${Colors.gray100};
-				transition: 0.3s ease;
-			}
-
-			svg {
-				width: 1.5rem;
-				position: relative;
-				top: -0.05rem;
-			}
+		svg {
+			width: 1.5rem;
+			position: relative;
+			top: -0.05rem;
 		}
 	}
+
+	${(props) => props.customCSS && props.customCSS};
 `;
