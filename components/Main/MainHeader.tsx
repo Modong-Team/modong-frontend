@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { HeaderContainer, HeaderLogo } from '../../constants/styled';
-import { svgModong, svgDown } from '../../constants/svgs';
+import { svgModong, svgDown16 } from '../../constants/svgs';
 
 export default function MainHeader() {
 	return (
@@ -10,7 +10,7 @@ export default function MainHeader() {
 			<HeaderLogo>{svgModong}</HeaderLogo>
 			<HeaderProfile>
 				<ProfileInitial>h</ProfileInitial>
-				<ProfileDropDown>{svgDown}</ProfileDropDown>
+				<ProfileDropDown>{svgDown16}</ProfileDropDown>
 			</HeaderProfile>
 		</MainHeaderContainer>
 	);

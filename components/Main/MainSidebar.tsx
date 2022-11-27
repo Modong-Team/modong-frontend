@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Styles } from '../../constants/styles';
 import Colors from '../../constants/colors';
-import { svgPerson, svgNewPlus } from '../../constants/svgs';
+import { svgNewPlus, svgUser24 } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { useRouter } from 'next/router';
 
@@ -19,7 +19,7 @@ export default function MainSidebar() {
 				</ProfileImage>
 				<h2>동아리 이름</h2>
 				<h3>XX대학교 XX동아리/학회</h3>
-				<ProfilePopulation>{svgPerson} 3</ProfilePopulation>
+				<ProfilePopulation>{svgUser24} 3</ProfilePopulation>
 			</SidebarProfile>
 			<SidebarList>
 				<h3>지원서 목록</h3>
