@@ -8,6 +8,7 @@ import { useState } from 'react';
 export default function MainBoardKanban() {
 	const [isShowTypeFilter, setIsShowTypeFilter] = useState(false);
 	const [isShowSortFilter, setIsShowSortFilter] = useState(false);
+	const [statusEditModeFor, setStatusEditModeFor] = useState(-1);
 
 	const showTypeFilter = () => setIsShowTypeFilter(true);
 
@@ -18,6 +19,11 @@ export default function MainBoardKanban() {
 	const hideSortFilter = () => setIsShowSortFilter(false);
 
 	const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
+
+	const toggleStatusEditMode = (idx: number) => {
+		if (statusEditModeFor !== idx) setStatusEditModeFor(idx);
+		else setStatusEditModeFor(-1);
+	};
 
 	return (
 		<KanbanContainer>
@@ -50,10 +56,22 @@ export default function MainBoardKanban() {
 				</FilterButton>
 			</section>
 			<section>
-				<MainBoardKanbanColumn />
-				<MainBoardKanbanColumn />
-				<MainBoardKanbanColumn />
-				<MainBoardKanbanColumn />
+				<MainBoardKanbanColumn
+					isStatusEditMode={statusEditModeFor === 0}
+					onClickStatusEdit={() => toggleStatusEditMode(0)}
+				/>
+				<MainBoardKanbanColumn
+					isStatusEditMode={statusEditModeFor === 1}
+					onClickStatusEdit={() => toggleStatusEditMode(1)}
+				/>
+				<MainBoardKanbanColumn
+					isStatusEditMode={statusEditModeFor === 2}
+					onClickStatusEdit={() => toggleStatusEditMode(2)}
+				/>
+				<MainBoardKanbanColumn
+					isStatusEditMode={statusEditModeFor === 3}
+					onClickStatusEdit={() => toggleStatusEditMode(3)}
+				/>
 			</section>
 		</KanbanContainer>
 	);
