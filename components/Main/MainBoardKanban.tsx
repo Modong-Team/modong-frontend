@@ -28,7 +28,11 @@ export default function MainBoardKanban() {
 	return (
 		<KanbanContainer>
 			<section>
-				<FilterButton title='모든 지원자' onClick={showTypeFilter} onBlur={hideTypeFilter}>
+				<FilterButton
+					title='모든 지원자'
+					onClick={showTypeFilter}
+					onBlur={hideTypeFilter}
+					isActive={isShowTypeFilter}>
 					{isShowTypeFilter && (
 						<DropDown
 							option1='모든 지원자'
@@ -41,7 +45,11 @@ export default function MainBoardKanban() {
 						/>
 					)}
 				</FilterButton>
-				<FilterButton title='가나다 순' onClick={showSortFilter} onBlur={hideSortFilter}>
+				<FilterButton
+					title='가나다 순'
+					onClick={showSortFilter}
+					onBlur={hideSortFilter}
+					isActive={isShowSortFilter}>
 					{isShowSortFilter && (
 						<DropDown
 							option1='가나다 순'

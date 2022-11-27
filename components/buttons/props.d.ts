@@ -13,4 +13,5 @@ export interface FilterButtonProps extends ChildrenType {
 	title: string;
 	onClick: () => void;
 	onBlur: () => void;
+	isActive: boolean;
 }
