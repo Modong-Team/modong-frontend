@@ -57,7 +57,7 @@ export default function MainBoardKanbanColumn({
 }
 
 const ColumnContainer = styled.div<ColumnContainerProps>`
-	background-color: ${(props) => (props.isStatusEditMode ? Colors.blue100 : Colors.background)};
+	background-color: ${(props) => (props.isStatusEditMode ? Colors.blue50 : Colors.background)};
 	transition: 0.3s ease;
 	transition-property: background-color;
 	max-height: 77.6rem;

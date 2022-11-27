@@ -6,18 +6,29 @@ import KanbanMoreButton from '../buttons/KanbanMoreButton';
 import DropDown from '../dropdowns/DropDown';
 import { Styles } from '../../constants/styles';
 import { MainBoardKanbanCardProps } from './props';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import stopPropagation from '../../utils/stopPropagation';
+import CheckboxButton from '../buttons/CheckboxButton';
+import { CardContainerProps } from './styled';
 
 export default function MainBoardKanbanCard({ isStatusEditMode }: MainBoardKanbanCardProps) {
 	const [isShowMore, setIsShowMore] = useState(false);
+	const [isActiveTemp, setIsActiveTemp] = useState(false);
 
 	const toggleMore = () => setIsShowMore(!isShowMore);
 
 	const hideMore = () => setIsShowMore(false);
 
+	const toggleActiveTemp = () => {
+		if (isStatusEditMode) setIsActiveTemp(!isActiveTemp);
+	};
+
+	useEffect(() => {
+		if (!isStatusEditMode) setIsActiveTemp(false);
+	}, [isStatusEditMode]);
+
 	return (
-		<CardContainer>
+		<CardContainer onClick={toggleActiveTemp} isActive={isActiveTemp}>
 			<div>
 				<h3>박병진</h3>
 				{!isStatusEditMode ? (
@@ -33,27 +44,27 @@ export default function MainBoardKanbanCard({ isStatusEditMode }: MainBoardKanba
 						)}
 					</KanbanMoreButton>
 				) : (
-					'수정'
+					<CheckboxButton isActive={isActiveTemp} />
 				)}
 			</div>
 			<div>
 				<h4>2022. 11. 2</h4>
 				<div>
-					<StatusPin>{svgStar16}9.3</StatusPin>
-					<StatusPin>{svgUser16}3/3</StatusPin>
+					<StatusPin isActive={isActiveTemp}>{svgStar16}9.3</StatusPin>
+					<StatusPin isActive={isActiveTemp}>{svgUser16}3/3</StatusPin>
 				</div>
 			</div>
 		</CardContainer>
 	);
 }
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<CardContainerProps>`
 	min-width: 23.2rem;
 	max-width: 31.2rem;
 	width: calc(16.67vw - 0.8rem);
-	background-color: ${Colors.white};
+	background-color: ${(props) => (props.isActive ? Colors.blue100 : Colors.white)};
 	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.gray200};
+	border: 0.1rem solid ${(props) => (props.isActive ? Colors.blue500 : Colors.gray200)};
 	padding: 1.6rem;
 	padding-bottom: 1.5rem;
 	flex-grow: 1;
@@ -61,6 +72,8 @@ const CardContainer = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	cursor: pointer;
+	transition: 0.3s ease;
+	transition-property: background-color, border-color;
 
 	@media screen and (max-height: 1000px) {
 		padding: 0.8rem 1.6rem;
@@ -84,7 +97,7 @@ const CardContainer = styled.div`
 		&:nth-of-type(2) {
 			h4 {
 				${Fonts.body12medium}
-				color: ${Colors.gray500};
+				color: ${(props) => (props.isActive ? Colors.gray700 : Colors.gray500)};
 			}
 
 			> div {
@@ -95,13 +108,15 @@ const CardContainer = styled.div`
 	}
 `;
 
-const StatusPin = styled.div`
+const StatusPin = styled.div<CardContainerProps>`
 	${Fonts.body12medium}
 	padding: 0.3rem 0.8rem;
 	border-radius: 2rem;
 	display: flex;
 	align-items: center;
 	gap: 0.3rem;
+	transition: 0.3s ease;
+	transition-property: background-color;
 
 	svg {
 		position: relative;
@@ -114,4 +129,6 @@ const StatusPin = styled.div`
 	&:nth-of-type(2) {
 		background-color: ${Colors.gray100};
 	}
+
+	background-color: ${(props) => props.isActive && Colors.white} !important;
 `;

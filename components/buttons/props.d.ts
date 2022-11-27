@@ -21,3 +21,7 @@ export interface KanbanMoreButtonProps extends ChildrenType {
 	onClick: () => void;
 	onBlur: () => void;
 }
+
+export interface CheckboxButtonProps {
+	isActive: boolean;
+}

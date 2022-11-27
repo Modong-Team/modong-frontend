@@ -12,3 +12,7 @@ export interface FilterContainerProps {
 export interface MoreContainerProps {
 	isActive: boolean;
 }
+
+export interface CheckboxContainerProps {
+	isActive: boolean;
+}
