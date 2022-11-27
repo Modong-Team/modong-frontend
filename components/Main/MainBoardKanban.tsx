@@ -41,7 +41,7 @@ export default function MainBoardKanban() {
 							onClick1={stopPropagation}
 							onClick2={stopPropagation}
 							onClick3={stopPropagation}
-							customCSS={`bottom:-10.5rem; ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
+							customCSS={`bottom:-11rem; ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
 						/>
 					)}
 				</FilterButton>
@@ -58,7 +58,7 @@ export default function MainBoardKanban() {
 							onClick1={stopPropagation}
 							onClick2={stopPropagation}
 							onClick3={stopPropagation}
-							customCSS={`bottom:-10.5rem; ${Styles.dropDownAlignLeft}`}
+							customCSS={`bottom:-11rem; ${Styles.dropDownAlignLeft}`}
 						/>
 					)}
 				</FilterButton>
