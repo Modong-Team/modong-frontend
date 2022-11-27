@@ -41,7 +41,7 @@ const ColumnContainer = styled.div`
 	border-radius: 0.8rem;
 	display: flex;
 	flex-direction: column;
-	overflow: scroll;
+	overflow: hidden;
 
 	> section:first-of-type {
 		display: flex;
