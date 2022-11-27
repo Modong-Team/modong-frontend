@@ -7,6 +7,7 @@ import Fonts from '../../constants/fonts';
 import { useState } from 'react';
 import { useFormsValue } from '../../contexts/FormsProviders';
 import { Styles } from '../../constants/styles';
+import DropDown from '../dropdowns/DropDown';
 
 export default function NewApplicationNavigator({
 	currentPage,
@@ -42,10 +43,13 @@ export default function NewApplicationNavigator({
 					<span>{v.title}</span>
 					<span onClick={(e) => onClickMore(e, i)}>{svgVertical}</span>
 					{showMoreFor === i && (
-						<NavigatorMore>
-							<div onClick={(e) => onClickRemove(e, i)}>삭제하기</div>
-							<div>복제하기</div>
-						</NavigatorMore>
+						<DropDown
+							option1={'삭제하기'}
+							option2={'복제하기'}
+							onClick1={(e) => onClickRemove(e, i)}
+							onClick2={() => alert('미구현된 피쳐입니다.')}
+							customCSS={`${Styles.dropDownAlignRightBottom} bottom:-6rem; right:-2rem; div:first-of-type{${Styles.dropDownOptionRed}}`}
+						/>
 					)}
 				</NavigatorElement>
 			))}

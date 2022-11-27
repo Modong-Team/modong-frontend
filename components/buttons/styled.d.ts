@@ -4,3 +4,7 @@ export interface ButtonElementProps {
 	isDisabled?: boolean;
 	margin?: string;
 }
+
+export interface FilterContainerProps {
+	isActive: boolean;
+}

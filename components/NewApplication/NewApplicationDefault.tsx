@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Colors from '../../constants/colors';
-import Fonts from '../../constants/fonts';
 import { svgCirclePlus, svgPencil, svgTick, svgCheckBox } from '../../constants/svgs';
 import { NewApplicationDefaultProps } from './props';
 import { useState } from 'react';
@@ -10,6 +8,7 @@ import { Questions } from '../../constants/questions';
 import QuestionBox from '../boxes/QuestionBox';
 import { useFormsActions } from '../../contexts/FormsProviders';
 import { Placeholders } from '../../constants/placeholders';
+import DropDown from '../dropdowns/DropDown';
 
 export default function NewApplicationDefault({ form, formIdx }: NewApplicationDefaultProps) {
 	const [showMenu, setShowMenu] = useState(false);
@@ -51,17 +50,17 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 				<NewQuestionButton onClick={onClickMenu} onBlur={onBlur}>
 					<span>{svgCirclePlus}</span>
 					{showMenu && (
-						<QuestionMenu>
-							<div onClick={(e) => onCreateQuestion(e, Questions.TextQuestion)}>
-								{svgPencil}주관식
-							</div>
-							<div onClick={(e) => onCreateQuestion(e, Questions.RadioQuestion)}>
-								{svgTick}단일 선택
-							</div>
-							<div onClick={(e) => onCreateQuestion(e, Questions.CheckboxQuestion)}>
-								{svgCheckBox}복수 선택
-							</div>
-						</QuestionMenu>
+						<DropDown
+							svg1={svgPencil}
+							svg2={svgTick}
+							svg3={svgCheckBox}
+							option1={'주관식'}
+							option2={'단일 선택'}
+							option3={'복수 선택'}
+							onClick1={(e) => onCreateQuestion(e, Questions.TextQuestion)}
+							onClick2={(e) => onCreateQuestion(e, Questions.RadioQuestion)}
+							onClick3={(e) => onCreateQuestion(e, Questions.CheckboxQuestion)}
+						/>
 					)}
 				</NewQuestionButton>
 			</DefaultContainer>
@@ -86,35 +85,4 @@ const NewQuestionButton = styled.button`
 	width: fit-content;
 	margin: 0 auto;
 	margin-top: 2.52rem;
-`;
-
-const QuestionMenu = styled.div`
-	white-space: nowrap;
-	position: absolute;
-	bottom: -12rem;
-	left: 50%;
-	transform: translateX(-50%);
-	text-align: left;
-	background-color: ${Colors.white};
-	border: 0.1rem solid ${Colors.gray200};
-	border-radius: 0.8rem;
-	padding: 0.4rem;
-	box-shadow: 6px 7px 16px rgba(106, 106, 106, 0.17);
-
-	& {
-		div {
-			${Fonts.subtitle14semibold}
-			padding:0.55rem 0.95rem;
-			transition: 0.3s ease;
-			display: flex;
-			align-items: center;
-			gap: 0.65rem;
-			border-radius: 0.4rem;
-
-			&:hover {
-				background-color: ${Colors.gray100};
-				transition: 0.3s ease;
-			}
-		}
-	}
 `;
