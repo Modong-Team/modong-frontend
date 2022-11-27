@@ -1,6 +1,7 @@
 export default class Colors {
 	static white = '#FFFFFF';
 
+	static red100 = '#F6DCDB';
 	static red500 = '#DC746D';
 	static red700 = '#CC5750';
 	static red900 = '#B7443C';
