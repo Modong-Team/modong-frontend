@@ -8,6 +8,7 @@ import PageButtons from '../buttons/PageButtons';
 import DropDown from '../dropdowns/DropDown';
 import { ColumnContainerProps } from './styled';
 import { MainBoardKanbanColumnProps } from './props';
+import { Styles } from '../../constants/styles';
 
 export default function MainBoardKanbanColumn({
 	isStatusEditMode,
@@ -36,7 +37,7 @@ export default function MainBoardKanbanColumn({
 							onClick1={stopPropagation}
 							onClick2={stopPropagation}
 							onClick3={stopPropagation}
-							customCSS={`left:unset; right:0; transform:translateX(105%); bottom:0; >div{width:9.1rem;} div:last-of-type{color:${Colors.red500}; &:hover{background-color:${Colors.red100}}}`}
+							customCSS={`${Styles.dropDownAlignRightBottom} transform:translateX(105%); ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
 						/>
 					)}
 				</span>

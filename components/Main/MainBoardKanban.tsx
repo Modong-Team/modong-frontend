@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import Colors from '../../constants/colors';
 import FilterButton from '../buttons/FilterButton';
 import DropDown from '../dropdowns/DropDown';
 import MainBoardKanbanColumn from './MainBoardKanbanColumn';
 import { useState } from 'react';
+import { Styles } from '../../constants/styles';
 
 export default function MainBoardKanban() {
 	const [isShowTypeFilter, setIsShowTypeFilter] = useState(false);
@@ -37,7 +37,7 @@ export default function MainBoardKanban() {
 							onClick1={stopPropagation}
 							onClick2={stopPropagation}
 							onClick3={stopPropagation}
-							customCSS={`bottom:-10.5rem; >div{width:9.2rem;} div:last-of-type{color:${Colors.red500}; &:hover{background-color:${Colors.red100}}}`}
+							customCSS={`bottom:-10.5rem; ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
 						/>
 					)}
 				</FilterButton>
@@ -50,7 +50,7 @@ export default function MainBoardKanban() {
 							onClick1={stopPropagation}
 							onClick2={stopPropagation}
 							onClick3={stopPropagation}
-							customCSS={`bottom:-10.5rem; >div{width:9.2rem;}`}
+							customCSS={`bottom:-10.5rem; ${Styles.dropDownAlignLeft}`}
 						/>
 					)}
 				</FilterButton>

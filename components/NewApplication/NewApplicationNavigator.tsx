@@ -48,7 +48,7 @@ export default function NewApplicationNavigator({
 							option2={'복제하기'}
 							onClick1={(e) => onClickRemove(e, i)}
 							onClick2={() => alert('미구현된 피쳐입니다.')}
-							customCSS={`bottom:-6rem; transform:translateX(40%); div:first-of-type{color:${Colors.red500}; &:hover{background-color:${Colors.red100}}}`}
+							customCSS={`${Styles.dropDownAlignRightBottom} bottom:-6rem; right:-2rem; div:first-of-type{${Styles.dropDownOptionRed}}`}
 						/>
 					)}
 				</NavigatorElement>
