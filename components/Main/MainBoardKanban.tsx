@@ -4,6 +4,7 @@ import DropDown from '../dropdowns/DropDown';
 import MainBoardKanbanColumn from './MainBoardKanbanColumn';
 import { useState } from 'react';
 import { Styles } from '../../constants/styles';
+import stopPropagation from '../../utils/stopPropagation';
 
 export default function MainBoardKanban() {
 	const [isShowTypeFilter, setIsShowTypeFilter] = useState(false);
@@ -17,8 +18,6 @@ export default function MainBoardKanban() {
 	const hideTypeFilter = () => setIsShowTypeFilter(false);
 
 	const hideSortFilter = () => setIsShowSortFilter(false);
-
-	const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
 
 	const toggleStatusEditMode = (idx: number) => {
 		if (statusEditModeFor !== idx) setStatusEditModeFor(idx);

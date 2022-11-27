@@ -9,13 +9,12 @@ import DropDown from '../dropdowns/DropDown';
 import { ColumnContainerProps } from './styled';
 import { MainBoardKanbanColumnProps } from './props';
 import { Styles } from '../../constants/styles';
+import stopPropagation from '../../utils/stopPropagation';
 
 export default function MainBoardKanbanColumn({
 	isStatusEditMode,
 	onClickStatusEdit,
 }: MainBoardKanbanColumnProps) {
-	const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
-
 	return (
 		<ColumnContainer isStatusEditMode={isStatusEditMode}>
 			<section>
