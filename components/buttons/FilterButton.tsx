@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { FilterDropDownProps } from './props';
+import { FilterButtonProps } from './props';
 import { svgDown8 } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import Colors from '../../constants/colors';
 
-export default function FilterDropDown({ title }: FilterDropDownProps) {
+export default function FilterButton({ title }: FilterButtonProps) {
 	return (
 		<FilterContainer>
 			{title}

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import FilterDropDown from '../dropdowns/FilterDropDown';
+import FilterButton from '../buttons/FilterButton';
 import MainBoardKanbanColumn from './MainBoardKanbanColumn';
 
 export default function MainBoardKanban() {
 	return (
 		<KanbanContainer>
 			<section>
-				<FilterDropDown title='모든 지원자' />
-				<FilterDropDown title='가나다 순' />
+				<FilterButton title='모든 지원자' />
+				<FilterButton title='가나다 순' />
 			</section>
 			<section>
 				<MainBoardKanbanColumn />

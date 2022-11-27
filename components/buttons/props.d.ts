@@ -7,3 +7,7 @@ export interface CustomButtonProps extends ChildrenType {
 	isDisabled?: boolean;
 	margin?: string;
 }
+
+export interface FilterButtonProps {
+	title: string;
+}
