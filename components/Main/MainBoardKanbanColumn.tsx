@@ -9,13 +9,12 @@ import DropDown from '../dropdowns/DropDown';
 import { ColumnContainerProps } from './styled';
 import { MainBoardKanbanColumnProps } from './props';
 import { Styles } from '../../constants/styles';
+import stopPropagation from '../../utils/stopPropagation';
 
 export default function MainBoardKanbanColumn({
 	isStatusEditMode,
 	onClickStatusEdit,
 }: MainBoardKanbanColumnProps) {
-	const stopPropagation = (e: React.MouseEvent) => e.stopPropagation();
-
 	return (
 		<ColumnContainer isStatusEditMode={isStatusEditMode}>
 			<section>
@@ -43,12 +42,12 @@ export default function MainBoardKanbanColumn({
 				</span>
 			</section>
 			<section>
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
-				<MainBoardKanbanCard />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
 			</section>
 			<section>
 				<PageButtons />
@@ -58,7 +57,7 @@ export default function MainBoardKanbanColumn({
 }
 
 const ColumnContainer = styled.div<ColumnContainerProps>`
-	background-color: ${(props) => (props.isStatusEditMode ? Colors.blue100 : Colors.background)};
+	background-color: ${(props) => (props.isStatusEditMode ? Colors.blue50 : Colors.background)};
 	transition: 0.3s ease;
 	transition-property: background-color;
 	max-height: 77.6rem;

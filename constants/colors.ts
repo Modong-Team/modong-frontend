@@ -18,6 +18,7 @@ export default class Colors {
 	static gray950 = '#2E3139';
 	static gray990 = '#1C1E23';
 
+	static blue50 = '#EAF1FF';
 	static blue100 = '#DAE6FF';
 	static blue300 = '#ABC8FF';
 	static blue500 = '#7DA9FF';

@@ -8,3 +8,11 @@ export interface ButtonElementProps {
 export interface FilterContainerProps {
 	isActive: boolean;
 }
+
+export interface MoreContainerProps {
+	isActive: boolean;
+}
+
+export interface CheckboxContainerProps {
+	isActive: boolean;
+}
