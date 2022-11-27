@@ -91,8 +91,8 @@ const ColumnContainer = styled.div<ColumnContainerProps>`
 	}
 
 	> section:nth-of-type(2) {
-		display: flex;
-		flex-direction: column;
+		display: grid;
+		grid-template-rows: repeat(6, 1fr);
 		gap: 0.4rem;
 		height: 100%;
 	}
