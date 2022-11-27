@@ -17,6 +17,6 @@ export default class Fonts {
 	static button16bold = 'font-weight:700; font-size:1.6rem; line-height:2.4rem;';
 	static button14bold = 'font-weight:700; font-size:1.4rem; line-height:1.96rem;';
 	static button14medium = 'font-weight:500; font-size:1.4rem; line-height:1.96rem;';
+	static button13medium = 'font-weight:500; font-size:1.3rem; line-height:1.69rem;';
 	static button12bold = 'font-weight:700; font-size:1.2rem; line-height:1.56rem;';
-	static button12medium = 'font-weight:500; font-size:1.2rem; line-height:1.56rem;';
 }

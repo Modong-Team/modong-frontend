@@ -57,7 +57,7 @@ const IndicatorElement = styled.div<IndicatorElementProps>`
 `;
 
 const IndicatorCircle = styled.div`
-	${Fonts.button12medium}
+	${Fonts.button13medium}
 	width: 2.4rem;
 	height: 2.4rem;
 	border-radius: 50%;
