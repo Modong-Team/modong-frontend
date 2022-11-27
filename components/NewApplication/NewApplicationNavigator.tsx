@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import { NewApplicationNavigatorProps } from './props';
 import { NavigatorElementProps } from './styled';
-import { svgVertical } from '../../constants/svgs';
+import { svgMore } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { useState } from 'react';
 import { useFormsValue } from '../../contexts/FormsProviders';
@@ -41,7 +41,7 @@ export default function NewApplicationNavigator({
 					onBlur={onBlur}
 					onClick={() => onRouteToPage(i)}>
 					<span>{v.title}</span>
-					<span onClick={(e) => onClickMore(e, i)}>{svgVertical}</span>
+					<span onClick={(e) => onClickMore(e, i)}>{svgMore}</span>
 					{showMoreFor === i && (
 						<DropDown
 							option1={'삭제하기'}

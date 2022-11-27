@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { svgClipBoard, svgLink, svgVertical } from '../../constants/svgs';
+import { svgCopy24, svgLink24, svgMore24 } from '../../constants/svgs';
 
 export default function MainBoardHeader() {
 	return (
 		<BoardHeader>
 			<h1>작성한 지원서1</h1>
 			<div>
-				<BoardLinkLabel>{svgLink}지원 링크</BoardLinkLabel>
-				<BoardClipBoard>www.modong.co.kr/club1{svgClipBoard}</BoardClipBoard>
-				<BoardVertical>{svgVertical}</BoardVertical>
+				<BoardLinkLabel>{svgLink24}지원 링크</BoardLinkLabel>
+				<BoardClipBoard>www.modong.co.kr/club1{svgCopy24}</BoardClipBoard>
+				<BoardVertical>{svgMore24}</BoardVertical>
 			</div>
 		</BoardHeader>
 	);
