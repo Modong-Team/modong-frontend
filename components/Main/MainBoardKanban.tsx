@@ -65,18 +65,22 @@ export default function MainBoardKanban() {
 			<section>
 				<MainBoardKanbanColumn
 					isStatusEditMode={statusEditModeFor === 0}
+					isOtherStatusEditMode={statusEditModeFor !== 0 && statusEditModeFor !== -1}
 					onClickStatusEdit={() => toggleStatusEditMode(0)}
 				/>
 				<MainBoardKanbanColumn
 					isStatusEditMode={statusEditModeFor === 1}
+					isOtherStatusEditMode={statusEditModeFor !== 1 && statusEditModeFor !== -1}
 					onClickStatusEdit={() => toggleStatusEditMode(1)}
 				/>
 				<MainBoardKanbanColumn
 					isStatusEditMode={statusEditModeFor === 2}
+					isOtherStatusEditMode={statusEditModeFor !== 2 && statusEditModeFor !== -1}
 					onClickStatusEdit={() => toggleStatusEditMode(2)}
 				/>
 				<MainBoardKanbanColumn
 					isStatusEditMode={statusEditModeFor === 3}
+					isOtherStatusEditMode={statusEditModeFor !== 3 && statusEditModeFor !== -1}
 					onClickStatusEdit={() => toggleStatusEditMode(3)}
 				/>
 			</section>

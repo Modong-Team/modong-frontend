@@ -4,4 +4,7 @@ export interface ColumnContainerProps {
 
 export interface CardContainerProps {
 	isActive: boolean;
+	isDisabled?: boolean;
+	isOtherStatusEditMode: boolean;
+	isStatusEditMode?: boolean;
 }

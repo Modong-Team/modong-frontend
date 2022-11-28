@@ -13,6 +13,7 @@ import stopPropagation from '../../utils/stopPropagation';
 
 export default function MainBoardKanbanColumn({
 	isStatusEditMode,
+	isOtherStatusEditMode,
 	onClickStatusEdit,
 }: MainBoardKanbanColumnProps) {
 	return (
@@ -25,7 +26,8 @@ export default function MainBoardKanbanColumn({
 					<CustomButton
 						buttonSize={ButtonSizes.small}
 						buttonType={ButtonTypes.line}
-						onClick={onClickStatusEdit}>
+						onClick={onClickStatusEdit}
+						isHidden={isOtherStatusEditMode}>
 						{!isStatusEditMode ? '상태 변경' : '선택 취소'}
 					</CustomButton>
 					{isStatusEditMode && (
@@ -42,12 +44,31 @@ export default function MainBoardKanbanColumn({
 				</span>
 			</section>
 			<section>
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
-				<MainBoardKanbanCard isStatusEditMode={isStatusEditMode} />
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+				/>
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+				/>
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+				/>
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+				/>
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+				/>
+				<MainBoardKanbanCard
+					isStatusEditMode={isStatusEditMode}
+					isOtherStatusEditMode={isOtherStatusEditMode}
+					isDisabled={true}
+				/>
 			</section>
 			<section>
 				<PageButtons />

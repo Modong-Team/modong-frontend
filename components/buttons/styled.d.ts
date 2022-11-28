@@ -3,6 +3,7 @@ export interface ButtonElementProps {
 	buttonType: string;
 	isDisabled?: boolean;
 	margin?: string;
+	isHidden?: boolean;
 }
 
 export interface FilterContainerProps {
@@ -11,6 +12,7 @@ export interface FilterContainerProps {
 
 export interface MoreContainerProps {
 	isActive: boolean;
+	isDisabled?: boolean;
 }
 
 export interface CheckboxContainerProps {
