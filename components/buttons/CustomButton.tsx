@@ -21,6 +21,7 @@ export default function CustomButton({
 	buttonType,
 	isDisabled,
 	margin,
+	isHidden,
 }: CustomButtonProps) {
 	return (
 		<ButtonElement
@@ -28,7 +29,8 @@ export default function CustomButton({
 			buttonSize={buttonSize}
 			buttonType={buttonType}
 			isDisabled={isDisabled}
-			margin={margin}>
+			margin={margin}
+			isHidden={isHidden}>
 			{children}
 		</ButtonElement>
 	);
@@ -137,4 +139,6 @@ const ButtonElement = styled.button<ButtonElementProps>`
 	${(props) => props.isDisabled && props.buttonType === ButtonTypes.red && RedStates.disabled}
 	/* svg */
 	${(props) => props.isDisabled && 'svg path { fill:white; }'}
+
+	visibility: ${(props) => props.isHidden && 'hidden'};
 `;
