@@ -9,9 +9,10 @@ export default function KanbanMoreButton({
 	isActive,
 	onClick,
 	onBlur,
+	isDisabled,
 }: KanbanMoreButtonProps) {
 	return (
-		<MoreContainer isActive={isActive} onClick={onClick} onBlur={onBlur}>
+		<MoreContainer isActive={isActive} onClick={onClick} onBlur={onBlur} isDisabled={isDisabled}>
 			{svgMore24}
 			{children}
 		</MoreContainer>
@@ -25,4 +26,9 @@ const MoreContainer = styled.button<MoreContainerProps>`
 	border-radius: 0.6rem;
 	background-color: ${(props) => props.isActive && Colors.gray200};
 	transition: 0.3s ease;
+
+	svg circle {
+		fill: ${(props) => props.isDisabled && Colors.gray600};
+		stroke: ${(props) => props.isDisabled && Colors.gray600};
+	}
 `;

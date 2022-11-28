@@ -7,6 +7,7 @@ export interface CustomButtonProps extends ChildrenType {
 	buttonType: string;
 	isDisabled?: boolean;
 	margin?: string;
+	isHidden?: boolean;
 }
 
 export interface FilterButtonProps extends ChildrenType {
@@ -20,6 +21,7 @@ export interface KanbanMoreButtonProps extends ChildrenType {
 	isActive: boolean;
 	onClick: () => void;
 	onBlur: () => void;
+	isDisabled?: boolean;
 }
 
 export interface CheckboxButtonProps {
