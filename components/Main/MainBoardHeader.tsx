@@ -2,15 +2,38 @@ import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgCopy24, svgLink24, svgMore24 } from '../../constants/svgs';
+import stopPropagation from '../../utils/stopPropagation';
+import KanbanMoreButton from '../buttons/KanbanMoreButton';
+import DropDown from '../dropdowns/DropDown';
+import { Styles } from '../../constants/styles';
+import { useState } from 'react';
 
 export default function MainBoardHeader() {
+	const [isOpenDropDown, setIsOpenDropDown] = useState(false);
+
+	const onClickMore = () => setIsOpenDropDown(true);
+
+	const onBlurMore = () => setIsOpenDropDown(false);
+
 	return (
 		<BoardHeader>
 			<h1>작성한 지원서1</h1>
 			<div>
 				<BoardLinkLabel>{svgLink24}지원 링크</BoardLinkLabel>
 				<BoardClipBoard>www.modong.co.kr/club1{svgCopy24}</BoardClipBoard>
-				<BoardVertical>{svgMore24}</BoardVertical>
+				<BoardVertical>
+					<KanbanMoreButton isActive={isOpenDropDown} onClick={onClickMore} onBlur={onBlurMore}>
+						{isOpenDropDown && (
+							<DropDown
+								option1='지원서 수정'
+								option2='지원서 삭제'
+								onClick1={stopPropagation}
+								onClick2={stopPropagation}
+								customCSS={`left:0; transform:unset; bottom:-7.6rem; ${Styles.dropDownAlignLeft} div:last-of-type{${Styles.dropDownOptionRed}}`}
+							/>
+						)}
+					</KanbanMoreButton>
+				</BoardVertical>
 			</div>
 		</BoardHeader>
 	);
