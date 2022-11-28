@@ -11,7 +11,7 @@ export default function NewApplicationComplete({ url = 'www.modong.com/3H5os4' }
 	const router = useRouter();
 
 	const onClick = async () => await copyToClipBoard(url);
-	const toHome = () => router.push('/');
+	const toHome = () => router.push('/main');
 
 	return (
 		<CompleteContainer>
