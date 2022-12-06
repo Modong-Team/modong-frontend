@@ -1,4 +1,4 @@
-export interface FormsActionsType {
+export type FormsActionsType = {
 	updateFormTitle(formIdx: number, title: string): void;
 	updateQuestionContent(formIdx: number, questionIdx: number, content: string): void;
 	updateQuestionOption(
@@ -13,4 +13,4 @@ export interface FormsActionsType {
 	createQuestion(formIdx: number, questionType: string): void;
 	createQuestionOption(formIdx: number, questionIdx: number): void;
 	createForm(): void;
-}
+};

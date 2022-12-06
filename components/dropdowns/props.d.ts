@@ -1,4 +1,4 @@
-export interface DropDownProps {
+export type DropDownProps = {
 	svg1?: any;
 	svg2?: any;
 	svg3?: any;
@@ -9,4 +9,4 @@ export interface DropDownProps {
 	onClick2: (e: any) => void;
 	onClick3?: (e: any) => void;
 	customCSS?: string;
-}
+};

@@ -1,20 +1,17 @@
-export interface ButtonElementProps {
+type CommonProps = {
+	isActive: boolean;
+	isDisabled?: boolean;
+};
+
+export type ButtonElementProps = Pick<CommonProps, 'isDisabled'> & {
 	buttonSize: string;
 	buttonType: string;
-	isDisabled?: boolean;
 	margin?: string;
 	isHidden?: boolean;
-}
+};
 
-export interface FilterContainerProps {
-	isActive: boolean;
-}
+export type FilterContainerProps = Pick<CommonProps, 'isActive'> & {};
 
-export interface MoreContainerProps {
-	isActive: boolean;
-	isDisabled?: boolean;
-}
+export type MoreContainerProps = CommonProps & {};
 
-export interface CheckboxContainerProps {
-	isActive: boolean;
-}
+export type CheckboxContainerProps = Pick<CommonProps, 'isActive'> & {};

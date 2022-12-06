@@ -1,3 +1,3 @@
-export interface DropDownContainerProps {
+export type DropDownContainerProps = {
 	customCSS?: string;
-}
+};

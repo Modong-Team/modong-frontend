@@ -3,11 +3,12 @@ import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
 import { svgChecked, svgUnChecked, svgCheckedBlue } from '../../constants/svgs';
 import { EssentialElementWrapperProps } from './styled';
-import { EssentialElementProps, NewApplicationEssentialProps } from './props';
+import { NewApplicationEssentialProps } from './props';
 import { useEffect, useState } from 'react';
 import { getEssentialAll } from '../../api/essential';
 import { ResponseEssential } from '../../@types/api/essential';
 import useAPI from '../../hooks/useAPI';
+import { EssentialProps } from './elementsProps';
 
 export default function NewApplicationEssential({
 	essentials,
@@ -63,7 +64,7 @@ const EssentialElement = ({
 	onClick,
 	isNotEssential,
 	isFixedEssential,
-}: EssentialElementProps) => {
+}: EssentialProps.EssentialElementProps) => {
 	return (
 		<S.EssentialElementWrapper
 			onClick={onClick}

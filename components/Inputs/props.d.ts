@@ -1,30 +1,26 @@
 import React from 'react';
 import { QuestionType } from '../../@types/client/data';
 
-export interface SectionTitleInputProps {
+type CommonProps = {
 	value: string;
 	onChange: React.ChangeEventHandler;
 	placeholder: string;
-}
+};
 
-export interface QuestionInputProps {
-	onChange: React.ChangeEventHandler;
+type CommonRadioAndCheckboxProps = {
+	question: QuestionType;
+	formIdx: number;
+	questionIdx: number;
+	optionIdx: number;
+};
+
+export type SectionTitleInputProps = CommonProps & {};
+
+export type QuestionInputProps = CommonProps & {
 	onRemove: () => void;
 	isError?: boolean;
-	placeholder: string;
-	value: string;
-}
+};
 
-export interface QuestionRadioInputProps {
-	question: QuestionType;
-	formIdx: number;
-	questionIdx: number;
-	optionIdx: number;
-}
+export type QuestionRadioInputProps = CommonRadioAndCheckboxProps & {};
 
-export interface QuestionCheckboxInputProps {
-	question: QuestionType;
-	formIdx: number;
-	questionIdx: number;
-	optionIdx: number;
-}
+export type QuestionCheckboxInputProps = CommonRadioAndCheckboxProps & {};
