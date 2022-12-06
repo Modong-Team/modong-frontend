@@ -17,7 +17,7 @@ export default function MainBoardKanbanColumn({
 	onClickStatusEdit,
 }: MainBoardKanbanColumnProps) {
 	return (
-		<ColumnContainer isStatusEditMode={isStatusEditMode}>
+		<S.ColumnContainer isStatusEditMode={isStatusEditMode}>
 			<section>
 				<h3>
 					지원 접수 <span>8</span>
@@ -73,56 +73,58 @@ export default function MainBoardKanbanColumn({
 			<section>
 				<PageButtons />
 			</section>
-		</ColumnContainer>
+		</S.ColumnContainer>
 	);
 }
 
-const ColumnContainer = styled.div<ColumnContainerProps>`
-	background-color: ${(props) => (props.isStatusEditMode ? Colors.blue50 : Colors.background)};
-	transition: 0.3s ease;
-	transition-property: background-color;
-	max-height: 77.6rem;
-	min-height: 58rem;
-	height: calc(100vh - 83.2rem + 58rem);
-	padding: 0 0.4rem;
-	border-radius: 0.8rem;
-	display: flex;
-	flex-direction: column;
-	overflow: visible;
-
-	> section:first-of-type {
+namespace S {
+	export const ColumnContainer = styled.div<ColumnContainerProps>`
+		background-color: ${(props) => (props.isStatusEditMode ? Colors.blue50 : Colors.background)};
+		transition: 0.3s ease;
+		transition-property: background-color;
+		max-height: 77.6rem;
+		min-height: 58rem;
+		height: calc(100vh - 83.2rem + 58rem);
+		padding: 0 0.4rem;
+		border-radius: 0.8rem;
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		padding: 1.2rem 1.6rem;
-		position: relative;
+		flex-direction: column;
+		overflow: visible;
 
-		> h3 {
-			${Fonts.subtitle16semibold}
+		> section:first-of-type {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 1.2rem 1.6rem;
+			position: relative;
 
-			span {
-				color: ${Colors.blue500};
-				margin-left: 0.2rem;
+			> h3 {
+				${Fonts.subtitle16semibold}
+
+				span {
+					color: ${Colors.blue500};
+					margin-left: 0.2rem;
+				}
+			}
+
+			> span {
+				position: relative;
 			}
 		}
 
-		> span {
-			position: relative;
+		> section:nth-of-type(2) {
+			display: grid;
+			grid-template-rows: repeat(6, 1fr);
+			gap: 0.4rem;
+			height: 100%;
 		}
-	}
 
-	> section:nth-of-type(2) {
-		display: grid;
-		grid-template-rows: repeat(6, 1fr);
-		gap: 0.4rem;
-		height: 100%;
-	}
+		> section:nth-of-type(3) {
+			padding: 2.6rem 0;
 
-	> section:nth-of-type(3) {
-		padding: 2.6rem 0;
-
-		@media screen and (max-height: 1000px) {
-			padding: 1.1rem 0 1.3rem 0;
+			@media screen and (max-height: 1000px) {
+				padding: 1.1rem 0 1.3rem 0;
+			}
 		}
-	}
-`;
+	`;
+}

@@ -1,29 +1,29 @@
 import styled from 'styled-components';
-import Fonts from '../../constants/fonts';
-import Colors from '../../constants/colors';
 import MainBoardHeader from './MainBoardHeader';
 import MainBoardKanban from './MainBoardKanban';
 
 export default function MainBoard() {
 	return (
-		<BoardContainer>
-			<BoardWrapper>
+		<S.BoardContainer>
+			<S.BoardWrapper>
 				<MainBoardHeader />
 				<MainBoardKanban />
-			</BoardWrapper>
-		</BoardContainer>
+			</S.BoardWrapper>
+		</S.BoardContainer>
 	);
 }
 
-const BoardContainer = styled.div`
-	height: 100%;
-	overflow: scroll;
-`;
+namespace S {
+	export const BoardContainer = styled.div`
+		height: 100%;
+		overflow: scroll;
+	`;
 
-const BoardWrapper = styled.div`
-	height: 100%;
-	width: 69vw;
-	min-width: 99.6rem;
-	max-width: 131.6rem;
-	margin: 0 auto;
-`;
+	export const BoardWrapper = styled.div`
+		height: 100%;
+		width: 69vw;
+		min-width: 99.6rem;
+		max-width: 131.6rem;
+		margin: 0 auto;
+	`;
+}

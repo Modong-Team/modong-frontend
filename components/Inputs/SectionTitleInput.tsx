@@ -14,7 +14,7 @@ export default function SectionTitleInput({
 	const [isEmpty, valueRef, onFocus, onBlur] = usePlaceholder(placeholder, onChange);
 
 	return (
-		<InputContainer isEmpty={isEmpty as boolean}>
+		<S.InputContainer isEmpty={isEmpty as boolean}>
 			<input
 				value={value}
 				onChange={onChange}
@@ -23,31 +23,33 @@ export default function SectionTitleInput({
 				onBlur={onBlur as FocusEventHandler<HTMLInputElement>}
 				placeholder={placeholder}
 			/>
-		</InputContainer>
+		</S.InputContainer>
 	);
 }
 
-const InputContainer = styled.div<InputElementProps>`
-	input {
-		${Fonts.heading24bold}
-		background-color: transparent;
-		color: ${Colors.gray900};
-		width: 100%;
-		height: 3.5rem;
-		padding: 0;
-		caret-color: ${Colors.blue500};
-		border-bottom: 0.1rem solid ${Colors.white};
+namespace S {
+	export const InputContainer = styled.div<InputElementProps>`
+		input {
+			${Fonts.heading24bold}
+			background-color: transparent;
+			color: ${Colors.gray900};
+			width: 100%;
+			height: 3.5rem;
+			padding: 0;
+			caret-color: ${Colors.blue500};
+			border-bottom: 0.1rem solid ${Colors.white};
 
-		&:hover {
-			border-color: ${Colors.gray700};
-		}
+			&:hover {
+				border-color: ${Colors.gray700};
+			}
 
-		&:focus {
-			border-color: ${Colors.blue500};
-		}
+			&:focus {
+				border-color: ${Colors.blue500};
+			}
 
-		&::placeholder {
-			color: ${Colors.gray500};
+			&::placeholder {
+				color: ${Colors.gray500};
+			}
 		}
-	}
-`;
+	`;
+}

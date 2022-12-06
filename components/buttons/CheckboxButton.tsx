@@ -5,13 +5,15 @@ import { CheckboxContainerProps } from './styled';
 
 export default function CheckboxButton({ isActive }: CheckboxButtonProps) {
 	return (
-		<CheckboxContainer isActive={isActive}>
+		<S.CheckboxContainer isActive={isActive}>
 			{isActive ? svgChecked16 : svgUnChecked16}
-		</CheckboxContainer>
+		</S.CheckboxContainer>
 	);
 }
 
-const CheckboxContainer = styled.div<CheckboxContainerProps>`
-	svg path {
-	}
-`;
+namespace S {
+	export const CheckboxContainer = styled.div<CheckboxContainerProps>`
+		svg path {
+		}
+	`;
+}

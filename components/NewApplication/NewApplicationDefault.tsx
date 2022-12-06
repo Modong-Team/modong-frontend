@@ -37,7 +37,7 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 				/>
 			</h2>
 			<p>지원자에게 질문하고 싶은 내용을 입력해주세요.</p>
-			<DefaultContainer>
+			<S.DefaultContainer>
 				{form.questions.map((v, i) => (
 					<QuestionBox
 						questionType={Questions[v.type]}
@@ -47,7 +47,7 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 						questionIdx={i}
 					/>
 				))}
-				<NewQuestionButton onClick={onClickMenu} onBlur={onBlur}>
+				<S.NewQuestionButton onClick={onClickMenu} onBlur={onBlur}>
 					<span>{svgCirclePlus}</span>
 					{showMenu && (
 						<DropDown
@@ -62,27 +62,28 @@ export default function NewApplicationDefault({ form, formIdx }: NewApplicationD
 							onClick3={(e) => onCreateQuestion(e, Questions.CheckboxQuestion)}
 						/>
 					)}
-				</NewQuestionButton>
-			</DefaultContainer>
+				</S.NewQuestionButton>
+			</S.DefaultContainer>
 		</>
 	);
 }
+namespace S {
+	export const DefaultContainer = styled.div`
+		display: flex;
+		flex-direction: column;
 
-const DefaultContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-
-	& {
-		> span {
-			margin: 0 auto;
+		& {
+			> span {
+				margin: 0 auto;
+			}
 		}
-	}
-`;
+	`;
 
-const NewQuestionButton = styled.button`
-	position: relative;
-	text-align: center;
-	width: fit-content;
-	margin: 0 auto;
-	margin-top: 2.52rem;
-`;
+	export const NewQuestionButton = styled.button`
+		position: relative;
+		text-align: center;
+		width: fit-content;
+		margin: 0 auto;
+		margin-top: 2.52rem;
+	`;
+}

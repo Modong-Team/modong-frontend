@@ -22,7 +22,7 @@ export default function QuestionCheckboxInput({
 	};
 
 	return (
-		<CheckboxElement>
+		<S.CheckboxElement>
 			{svgCheckQuestion}
 			<QuestionInput
 				onChange={onChangeQuestionOption}
@@ -30,14 +30,16 @@ export default function QuestionCheckboxInput({
 				placeholder={`선택${optionIdx + 1}`}
 				value={question.options[optionIdx]}
 			/>
-		</CheckboxElement>
+		</S.CheckboxElement>
 	);
 }
 
-const CheckboxElement = styled.div`
-	display: flex;
-	align-items: center;
-	width: 100%;
-	gap: 1.1rem;
-	margin-bottom: 1rem;
-`;
+namespace S {
+	export const CheckboxElement = styled.div`
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 1.1rem;
+		margin-bottom: 1rem;
+	`;
+}

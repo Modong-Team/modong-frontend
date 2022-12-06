@@ -27,8 +27,10 @@ export default function NewApplicationEssential({
 	return (
 		<>
 			<h2>지원자 정보</h2>
-			<EssentialContainer>
-				<Description>아래 3가지 항목은 지원자들에게 기본적으로 제출받는 항목입니다.</Description>
+			<S.EssentialContainer>
+				<S.Description>
+					아래 3가지 항목은 지원자들에게 기본적으로 제출받는 항목입니다.
+				</S.Description>
 				{essentialsList
 					.filter((v) => v.isFixed)
 					.map((v, i) => {
@@ -38,7 +40,7 @@ export default function NewApplicationEssential({
 							</EssentialElement>
 						);
 					})}
-				<Description>지원자에게 추가로 제출받을 항목을 선택해 주세요.</Description>
+				<S.Description>지원자에게 추가로 제출받을 항목을 선택해 주세요.</S.Description>
 				{essentialsList
 					.filter((v) => !v.isFixed)
 					.map((v, i) => {
@@ -51,7 +53,7 @@ export default function NewApplicationEssential({
 							</EssentialElement>
 						);
 					})}
-			</EssentialContainer>
+			</S.EssentialContainer>
 		</>
 	);
 }
@@ -63,7 +65,7 @@ const EssentialElement = ({
 	isFixedEssential,
 }: EssentialElementProps) => {
 	return (
-		<EssentialElementWrapper
+		<S.EssentialElementWrapper
 			onClick={onClick}
 			isNotEssential={isNotEssential}
 			isFixedEssential={isFixedEssential}>
@@ -73,54 +75,56 @@ const EssentialElement = ({
 				</span>
 			}
 			{children}
-		</EssentialElementWrapper>
+		</S.EssentialElementWrapper>
 	);
 };
 
-const EssentialContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-`;
+namespace S {
+	export const EssentialContainer = styled.div`
+		display: flex;
+		flex-direction: column;
+	`;
 
-const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
-	${Fonts.subtitle16semibold}
-	height: 4.8rem;
-	padding: 0 2.15rem;
-	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.gray200};
-	color: ${Colors.gray900};
-	display: flex;
-	align-items: center;
-	gap: 1.15rem;
-	cursor: ${(props) => (!props.isFixedEssential ? 'pointer' : '')};
-	margin-bottom: 1rem;
-	transition: 0.3s ease;
-
-	& {
-		> span {
-			display: flex;
-		}
-		:last-child {
-			margin-bottom: 0;
-		}
-	}
-
-	&:hover {
-		background-color: ${(props) => (!props.isFixedEssential ? Colors.gray100 : '')};
-		border-color: ${(props) => (!props.isFixedEssential ? Colors.gray300 : '')};
+	export const EssentialElementWrapper = styled.div<EssentialElementWrapperProps>`
+		${Fonts.subtitle16semibold}
+		height: 4.8rem;
+		padding: 0 2.15rem;
+		border-radius: 0.8rem;
+		border: 0.1rem solid ${Colors.gray200};
+		color: ${Colors.gray900};
+		display: flex;
+		align-items: center;
+		gap: 1.15rem;
+		cursor: ${(props) => (!props.isFixedEssential ? 'pointer' : '')};
+		margin-bottom: 1rem;
 		transition: 0.3s ease;
 
-		> span svg path:first-child {
-			fill: ${(props) => props.isNotEssential && Colors.gray300};
-			transition: 0.3s ease;
+		& {
+			> span {
+				display: flex;
+			}
+			:last-child {
+				margin-bottom: 0;
+			}
 		}
-	}
-`;
 
-const Description = styled.p`
-	margin-bottom: 0.8rem;
+		&:hover {
+			background-color: ${(props) => (!props.isFixedEssential ? Colors.gray100 : '')};
+			border-color: ${(props) => (!props.isFixedEssential ? Colors.gray300 : '')};
+			transition: 0.3s ease;
 
-	&:nth-of-type(2) {
-		margin-top: 1.4rem;
-	}
-`;
+			> span svg path:first-child {
+				fill: ${(props) => props.isNotEssential && Colors.gray300};
+				transition: 0.3s ease;
+			}
+		}
+	`;
+
+	export const Description = styled.p`
+		margin-bottom: 0.8rem;
+
+		&:nth-of-type(2) {
+			margin-top: 1.4rem;
+		}
+	`;
+}

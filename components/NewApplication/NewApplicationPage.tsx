@@ -107,7 +107,7 @@ export default function NewApplicationPage() {
 
 	return (
 		<NewApplicationLayout onSave={onSave} onDone={onDone} isComplete={isComplete}>
-			<NewApplicationContainer>
+			<S.NewApplicationContainer>
 				{!isComplete && (
 					<NewApplicationTitle
 						titleRef={titleRef}
@@ -132,7 +132,7 @@ export default function NewApplicationPage() {
 						<NewApplicationButton currentPage={currentPage} onNext={onNext} onPrev={onPrev} />
 					</>
 				)}
-			</NewApplicationContainer>
+			</S.NewApplicationContainer>
 			{isRemoveModalOpened && (
 				<BasicModal
 					icon={iconTrash}
@@ -147,11 +147,13 @@ export default function NewApplicationPage() {
 	);
 }
 
-const NewApplicationContainer = styled.div`
-	display: grid;
-	grid-template-columns: 19.4rem 71.2rem 19.4rem;
-	row-gap: 1.6rem;
-	width: fit-content;
-	margin: 0 auto;
-	justify-content: center;
-`;
+namespace S {
+	export const NewApplicationContainer = styled.div`
+		display: grid;
+		grid-template-columns: 19.4rem 71.2rem 19.4rem;
+		row-gap: 1.6rem;
+		width: fit-content;
+		margin: 0 auto;
+		justify-content: center;
+	`;
+}

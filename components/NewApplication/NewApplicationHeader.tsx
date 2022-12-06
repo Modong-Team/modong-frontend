@@ -4,7 +4,7 @@ import { NewApplicationHeaderProps } from './props';
 import { svgModong } from '../../constants/svgs';
 import Fonts from '../../constants/fonts';
 import { HeaderButtonProps } from './styled';
-import { HeaderContainer, HeaderLogo } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 
 export default function NewApplicationHeader({
 	onSave,
@@ -12,33 +12,35 @@ export default function NewApplicationHeader({
 	isComplete,
 }: NewApplicationHeaderProps) {
 	return (
-		<HeaderContainer>
-			<HeaderLogo>{svgModong}</HeaderLogo>
-			<HeaderButton isComplete={isComplete}>
-				<SaveBtn onClick={onSave}>저장하기</SaveBtn>
-				<SubmitBtn onClick={onDone}>작성완료</SubmitBtn>
-			</HeaderButton>
-		</HeaderContainer>
+		<SC.HeaderContainer>
+			<SC.HeaderLogo>{svgModong}</SC.HeaderLogo>
+			<S.HeaderButton isComplete={isComplete}>
+				<S.SaveBtn onClick={onSave}>저장하기</S.SaveBtn>
+				<S.SubmitBtn onClick={onDone}>작성완료</S.SubmitBtn>
+			</S.HeaderButton>
+		</SC.HeaderContainer>
 	);
 }
 
-const HeaderButton = styled.div<HeaderButtonProps>`
-	display: flex;
-	gap: 1.2rem;
-	visibility: ${(props) => props.isComplete && 'hidden'};
-`;
+namespace S {
+	export const HeaderButton = styled.div<HeaderButtonProps>`
+		display: flex;
+		gap: 1.2rem;
+		visibility: ${(props) => props.isComplete && 'hidden'};
+	`;
 
-const SaveBtn = styled.button`
-	${Fonts.button14bold}
-	background-color: ${Colors.gray200};
-	padding: 1.4rem 2rem;
-	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.gray300};
-	color: ${Colors.gray900};
-`;
+	export const SaveBtn = styled.button`
+		${Fonts.button14bold}
+		background-color: ${Colors.gray200};
+		padding: 1.4rem 2rem;
+		border-radius: 0.8rem;
+		border: 0.1rem solid ${Colors.gray300};
+		color: ${Colors.gray900};
+	`;
 
-const SubmitBtn = styled(SaveBtn)`
-	background-color: ${Colors.blue500};
-	border-color: ${Colors.blue700};
-	color: ${Colors.white};
-`;
+	export const SubmitBtn = styled(SaveBtn)`
+		background-color: ${Colors.blue500};
+		border-color: ${Colors.blue700};
+		color: ${Colors.white};
+	`;
+}

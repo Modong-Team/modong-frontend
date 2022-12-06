@@ -12,23 +12,25 @@ export default function KanbanMoreButton({
 	isDisabled,
 }: KanbanMoreButtonProps) {
 	return (
-		<MoreContainer isActive={isActive} onClick={onClick} onBlur={onBlur} isDisabled={isDisabled}>
+		<S.MoreContainer isActive={isActive} onClick={onClick} onBlur={onBlur} isDisabled={isDisabled}>
 			{svgMore24}
 			{children}
-		</MoreContainer>
+		</S.MoreContainer>
 	);
 }
 
-const MoreContainer = styled.button<MoreContainerProps>`
-	position: relative;
-	width: 2.4rem;
-	height: 2.4rem;
-	border-radius: 0.6rem;
-	background-color: ${(props) => props.isActive && Colors.gray200};
-	transition: 0.3s ease;
+namespace S {
+	export const MoreContainer = styled.button<MoreContainerProps>`
+		position: relative;
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 0.6rem;
+		background-color: ${(props) => props.isActive && Colors.gray200};
+		transition: 0.3s ease;
 
-	svg circle {
-		fill: ${(props) => props.isDisabled && Colors.gray600};
-		stroke: ${(props) => props.isDisabled && Colors.gray600};
-	}
-`;
+		svg circle {
+			fill: ${(props) => props.isDisabled && Colors.gray600};
+			stroke: ${(props) => props.isDisabled && Colors.gray600};
+		}
+	`;
+}

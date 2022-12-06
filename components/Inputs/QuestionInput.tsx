@@ -18,7 +18,7 @@ export default function QuestionInput({
 
 	return (
 		<>
-			<InputElement isError={isError || false} isEmpty={isEmpty as boolean}>
+			<S.InputElement isError={isError || false} isEmpty={isEmpty as boolean}>
 				<input
 					value={value}
 					onChange={onChange}
@@ -28,53 +28,55 @@ export default function QuestionInput({
 					placeholder={placeholder}
 				/>
 				<span onClick={onRemove}>{svgCircleX}</span>
-			</InputElement>
-			{isError && <Error>내용을 입력해주세요.</Error>}
+			</S.InputElement>
+			{isError && <S.Error>내용을 입력해주세요.</S.Error>}
 		</>
 	);
 }
 
-const InputElement = styled.div<InputElementProps>`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 1.15rem;
-	background-color: ${Colors.white};
-	flex-grow: 1;
-
-	span {
+namespace S {
+	export const InputElement = styled.div<InputElementProps>`
 		display: flex;
-		cursor: pointer;
-	}
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.15rem;
+		background-color: ${Colors.white};
+		flex-grow: 1;
 
-	input {
-		${Fonts.body16regular}
-		width: 100%;
-		background-color: transparent;
-		padding: 1rem 0.8rem;
-		border: 0.1rem solid ${Colors.gray200};
-		border-radius: 0.4rem;
-		caret-color: ${Colors.blue500};
-		color: ${(props) => props.isEmpty && Colors.gray400};
+		span {
+			display: flex;
+			cursor: pointer;
+		}
 
-		&:hover {
-			border-color: ${Colors.gray700};
-		}
-		&:focus {
-			border-color: ${Colors.blue500};
-		}
-		&::placeholder {
+		input {
 			${Fonts.body16regular}
-			color: ${Colors.gray400};
+			width: 100%;
+			background-color: transparent;
+			padding: 1rem 0.8rem;
+			border: 0.1rem solid ${Colors.gray200};
+			border-radius: 0.4rem;
+			caret-color: ${Colors.blue500};
+			color: ${(props) => props.isEmpty && Colors.gray400};
+
+			&:hover {
+				border-color: ${Colors.gray700};
+			}
+			&:focus {
+				border-color: ${Colors.blue500};
+			}
+			&::placeholder {
+				${Fonts.body16regular}
+				color: ${Colors.gray400};
+			}
+
+			border-color: ${(props) => (props.isError ? Colors.red500 : '')};
 		}
+	`;
 
-		border-color: ${(props) => (props.isError ? Colors.red500 : '')};
-	}
-`;
-
-const Error = styled.div`
-	${Fonts.body12medium}
-	color: ${Colors.red500};
-	margin-top: 0.4rem;
-	margin-bottom: 0.1rem;
-`;
+	export const Error = styled.div`
+		${Fonts.body12medium}
+		color: ${Colors.red500};
+		margin-top: 0.4rem;
+		margin-bottom: 0.1rem;
+	`;
+}

@@ -10,60 +10,62 @@ export default function NewApplicationIndicator({
 	isComplete,
 }: NewApplicationIndicatorProps) {
 	return (
-		<IndicatorContainer>
-			<IndicatorElement isHighlighted={!isComplete && currentPage === -1}>
-				<IndicatorCircle>1</IndicatorCircle>
+		<S.IndicatorContainer>
+			<S.IndicatorElement isHighlighted={!isComplete && currentPage === -1}>
+				<S.IndicatorCircle>1</S.IndicatorCircle>
 				지원자 정보
-			</IndicatorElement>
-			<IndicatorElement isHighlighted={!isComplete && currentPage !== -1}>
-				<IndicatorCircle>2</IndicatorCircle>질문 등록
-			</IndicatorElement>
-			<IndicatorElement isHighlighted={isComplete}>
-				<IndicatorCircle>3</IndicatorCircle>작성 완료
-			</IndicatorElement>
-		</IndicatorContainer>
+			</S.IndicatorElement>
+			<S.IndicatorElement isHighlighted={!isComplete && currentPage !== -1}>
+				<S.IndicatorCircle>2</S.IndicatorCircle>질문 등록
+			</S.IndicatorElement>
+			<S.IndicatorElement isHighlighted={isComplete}>
+				<S.IndicatorCircle>3</S.IndicatorCircle>작성 완료
+			</S.IndicatorElement>
+		</S.IndicatorContainer>
 	);
 }
 
-const IndicatorContainer = styled.section`
-	${Styles.stickyIndicatorAndNavigator}
-	display: flex;
-	flex-direction: column;
-	gap: 1.8rem;
-	margin-right: 3.2rem;
-	grid-column: 1/2;
+namespace S {
+	export const IndicatorContainer = styled.section`
+		${Styles.stickyIndicatorAndNavigator}
+		display: flex;
+		flex-direction: column;
+		gap: 1.8rem;
+		margin-right: 3.2rem;
+		grid-column: 1/2;
 
-	& {
-		> div {
-			${Fonts.subtitle14medium}
+		& {
+			> div {
+				${Fonts.subtitle14medium}
+			}
 		}
-	}
-`;
+	`;
 
-const IndicatorElement = styled.div<IndicatorElementProps>`
-	display: flex;
-	align-items: center;
-	gap: 0.7rem;
-	margin-left: 6.7rem;
-	color: ${(props) => (props.isHighlighted ? Colors.gray950 : Colors.gray500)};
-	white-space: nowrap;
+	export const IndicatorElement = styled.div<IndicatorElementProps>`
+		display: flex;
+		align-items: center;
+		gap: 0.7rem;
+		margin-left: 6.7rem;
+		color: ${(props) => (props.isHighlighted ? Colors.gray950 : Colors.gray500)};
+		white-space: nowrap;
 
-	& {
-		> div {
-			background-color: ${(props) => (props.isHighlighted ? Colors.blue500 : '')};
-			color: ${(props) => (props.isHighlighted ? Colors.white : '')};
+		& {
+			> div {
+				background-color: ${(props) => (props.isHighlighted ? Colors.blue500 : '')};
+				color: ${(props) => (props.isHighlighted ? Colors.white : '')};
+			}
 		}
-	}
-`;
+	`;
 
-const IndicatorCircle = styled.div`
-	${Fonts.button13medium}
-	width: 2.4rem;
-	height: 2.4rem;
-	border-radius: 50%;
-	background-color: ${Colors.gray200};
-	color: ${Colors.gray500};
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
+	export const IndicatorCircle = styled.div`
+		${Fonts.button13medium}
+		width: 2.4rem;
+		height: 2.4rem;
+		border-radius: 50%;
+		background-color: ${Colors.gray200};
+		color: ${Colors.gray500};
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	`;
+}

@@ -1,46 +1,48 @@
 import styled from 'styled-components';
 import Colors from '../../constants/colors';
 import Fonts from '../../constants/fonts';
-import { HeaderContainer, HeaderLogo } from '../../constants/styled';
+import { SC } from '../../constants/styled';
 import { svgModong, svgDown16 } from '../../constants/svgs';
 
 export default function MainHeader() {
 	return (
-		<MainHeaderContainer>
-			<HeaderLogo>{svgModong}</HeaderLogo>
-			<HeaderProfile>
-				<ProfileInitial>h</ProfileInitial>
-				<ProfileDropDown>{svgDown16}</ProfileDropDown>
-			</HeaderProfile>
-		</MainHeaderContainer>
+		<S.MainHeaderContainer>
+			<SC.HeaderLogo>{svgModong}</SC.HeaderLogo>
+			<S.HeaderProfile>
+				<S.ProfileInitial>h</S.ProfileInitial>
+				<S.ProfileDropDown>{svgDown16}</S.ProfileDropDown>
+			</S.HeaderProfile>
+		</S.MainHeaderContainer>
 	);
 }
 
-const MainHeaderContainer = styled(HeaderContainer)`
-	width: 100%;
-	position: fixed;
-	top: 0;
-	z-index: 10;
-`;
+namespace S {
+	export const MainHeaderContainer = styled(SC.HeaderContainer)`
+		width: 100%;
+		position: fixed;
+		top: 0;
+		z-index: 10;
+	`;
 
-const HeaderProfile = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 0.8rem;
-`;
+	export const HeaderProfile = styled.div`
+		display: flex;
+		align-items: center;
+		gap: 0.8rem;
+	`;
 
-const ProfileInitial = styled.div`
-	${Fonts.heading18bold}
-	background-color: ${Colors.blue500};
-	width: 4rem;
-	height: 4rem;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: ${Colors.white};
-`;
+	export const ProfileInitial = styled.div`
+		${Fonts.heading18bold}
+		background-color: ${Colors.blue500};
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: ${Colors.white};
+	`;
 
-const ProfileDropDown = styled.div`
-	display: flex;
-`;
+	export const ProfileDropDown = styled.div`
+		display: flex;
+	`;
+}

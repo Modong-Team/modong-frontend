@@ -10,17 +10,19 @@ export default function NewApplicationLayout({
 	isComplete,
 }: NewApplicationLayoutProps) {
 	return (
-		<LayoutContainer>
+		<S.LayoutContainer>
 			<NewApplicationHeader onSave={onSave} onDone={onDone} isComplete={isComplete} />
-			<MainContainer>{children}</MainContainer>
-		</LayoutContainer>
+			<S.MainContainer>{children}</S.MainContainer>
+		</S.LayoutContainer>
 	);
 }
 
-const LayoutContainer = styled.div``;
+namespace S {
+	export const LayoutContainer = styled.div``;
 
-const MainContainer = styled.div`
-	background-color: ${Colors.background};
-	min-height: calc(100vh - 8rem);
-	padding: 4rem 0;
-`;
+	export const MainContainer = styled.div`
+		background-color: ${Colors.background};
+		min-height: calc(100vh - 8rem);
+		padding: 4rem 0;
+	`;
+}

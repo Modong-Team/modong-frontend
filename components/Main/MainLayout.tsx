@@ -6,22 +6,24 @@ import { Styles } from '../../constants/styles';
 
 export default function MainLayout({ children }: ChildrenType) {
 	return (
-		<LayoutContainer>
+		<S.LayoutContainer>
 			<MainHeader />
 			<MainSidebar />
-			<MainContainer>{children}</MainContainer>
-		</LayoutContainer>
+			<S.MainContainer>{children}</S.MainContainer>
+		</S.LayoutContainer>
 	);
 }
 
-const LayoutContainer = styled.div`
-	width: 100vw;
-	position: relative;
-`;
+namespace S {
+	export const LayoutContainer = styled.div`
+		width: 100vw;
+		position: relative;
+	`;
 
-const MainContainer = styled.div`
-	margin-top: ${Styles.headerHeight};
-	margin-left: clamp(22rem, 15.28vw, 27.2rem);
-	height: calc(100vh - ${Styles.headerHeight});
-	position: relative;
-`;
+	export const MainContainer = styled.div`
+		margin-top: ${Styles.headerHeight};
+		margin-left: clamp(22rem, 15.28vw, 27.2rem);
+		height: calc(100vh - ${Styles.headerHeight});
+		position: relative;
+	`;
+}
