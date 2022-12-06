@@ -1,4 +1,4 @@
-export interface EssentialsType {
+export type EssentialsType = {
 	1: string;
 	2: string;
 	3: string;
@@ -8,11 +8,11 @@ export interface EssentialsType {
 	7: string;
 	8: string;
 	[keys: number]: string;
-}
+};
 
-export interface SectionsType {
+export type SectionsType = {
 	title: string;
-}
+};
 
 export type QuestionType = {
 	type: string;

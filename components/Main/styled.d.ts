@@ -1,10 +1,11 @@
-export interface ColumnContainerProps {
-	isStatusEditMode: boolean;
-}
+type CommonProps = {
+	isStatusEditMode?: boolean;
+};
 
-export interface CardContainerProps {
+export type ColumnContainerProps = CommonProps & {};
+
+export type CardContainerProps = CommonProps & {
 	isActive: boolean;
 	isDisabled?: boolean;
 	isOtherStatusEditMode: boolean;
-	isStatusEditMode?: boolean;
-}
+};

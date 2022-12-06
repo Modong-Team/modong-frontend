@@ -1,4 +1,4 @@
-export interface InputElementProps {
+export type InputElementProps = {
 	isError?: boolean;
 	isEmpty: boolean;
-}
+};

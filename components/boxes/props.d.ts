@@ -1,8 +1,9 @@
 import { QuestionType } from '../../@types/client/data';
-export interface QuestionBoxProps {
+
+export type QuestionBoxProps = {
 	questionType: string;
 	isError?: boolean;
 	question: QuestionType;
 	formIdx: number;
 	questionIdx: number;
-}
+};

@@ -1,3 +1,3 @@
-export interface ChildrenType {
+export type ChildrenType = {
 	children: React.ReactNode;
-}
+};

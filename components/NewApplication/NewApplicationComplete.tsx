@@ -25,7 +25,10 @@ export default function NewApplicationComplete({ url = 'www.modong.com/3H5os4' }
 				{svgCopy}
 			</S.ClipBoard>
 			<S.ButtonWrapper>
-				<CustomButton buttonSize={ButtonSizes.medium} buttonType={ButtonTypes.secondary}>
+				<CustomButton
+					onClick={console.log}
+					buttonSize={ButtonSizes.medium}
+					buttonType={ButtonTypes.secondary}>
 					수정하기
 				</CustomButton>
 				<CustomButton

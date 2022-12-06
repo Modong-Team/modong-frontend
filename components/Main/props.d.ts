@@ -1,11 +1,9 @@
-export interface MainBoardKanbanColumnProps {
+export type MainBoardKanbanColumnProps = {
 	isStatusEditMode: boolean;
 	isOtherStatusEditMode: boolean;
 	onClickStatusEdit: () => void;
-}
+};
 
-export interface MainBoardKanbanCardProps {
-	isStatusEditMode: boolean;
-	isOtherStatusEditMode: boolean;
+export type MainBoardKanbanCardProps = Omit<MainBoardKanbanColumnProps, 'onClickStatusEdit'> & {
 	isDisabled?: boolean;
-}
+};

@@ -26,7 +26,6 @@ export default function NewApplicationPage() {
 
 	const forms = useFormsValue();
 	const actions = useFormsActions();
-	const router = useRouter();
 
 	const onSave = async () => {
 		const title = titleRef.current!.value;

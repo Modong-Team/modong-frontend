@@ -1,29 +1,29 @@
-export interface TabElementWrapperProps {
+export type TabElementWrapperProps = {
 	isActive: boolean;
-}
+};
 
-export interface EssentialElementWrapperProps {
+export type EssentialElementWrapperProps = {
 	isNotEssential?: boolean;
 	isFixedEssential?: boolean;
-}
+};
 
-export interface ButtonProps {
+export type ButtonProps = {
 	isHidden?: boolean;
-}
+};
 
-export interface NavigatorElementProps {
+export type NavigatorElementProps = {
 	isCurrent?: boolean;
-}
+};
 
-export interface IndicatorElementProps {
+export type IndicatorElementProps = {
 	isHighlighted?: boolean;
-}
+};
 
-export interface TitleContainerProps {
+export type TitleContainerProps = {
 	isFocused?: boolean;
 	isError?: boolean;
-}
+};
 
-export interface HeaderButtonProps {
+export type HeaderButtonProps = {
 	isComplete: boolean;
-}
+};

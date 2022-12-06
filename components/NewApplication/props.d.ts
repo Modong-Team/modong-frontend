@@ -2,66 +2,45 @@ import { Dispatch, SetStateAction } from 'react';
 import { SectionsType, FormType } from '../../@types/client/data';
 import { ChildrenType } from '../../@types/client/base';
 
-export interface NewApplicationLayoutProps extends ChildrenType {
-	onSave: () => void;
-	onDone: () => void;
+type CommonProps = {
+	currentPage: number;
 	isComplete: boolean;
-}
+};
 
-export interface NewApplicationHeaderProps {
-	onSave: () => void;
-	onDone: () => void;
-	isComplete: boolean;
-}
+export type NewApplicationLayoutProps = ChildrenType &
+	Pick<CommonProps, 'isComplete'> & {
+		onSave: () => void;
+		onDone: () => void;
+	};
 
-export interface NewApplicationTitleProps {
+export type NewApplicationHeaderProps = Omit<NewApplicationLayoutProps, 'children'>;
+
+export type NewApplicationTitleProps = {
 	titleRef: React.RefObject<HTMLInputElement>;
 	emptyTitleError: boolean;
 	setEmptyTitleError: Dispatch<SetStateAction<boolean>>;
-}
+};
 
-export interface NewApplicationContentProps {
+export type NewApplicationContentProps = CommonProps & {
 	essentials: number[];
 	setEssentials: Dispatch<SetStateAction<number[]>>;
-	currentPage: number;
-	isComplete: boolean;
-}
+};
 
-export interface NewApplicationEssentialProps {
-	essentials: number[];
-	setEssentials: Dispatch<SetStateAction<number[]>>;
-}
+export type NewApplicationEssentialProps = Omit<NewApplicationContentProps, keyof CommonProps>;
 
-export interface TabElementProps extends ChildrenType {
-	onClickTitle: () => void;
-	onClickX: () => void;
-	isActive: boolean;
-}
-
-export interface EssentialElementProps extends ChildrenType {
-	onClick?: () => void;
-	isNotEssential?: boolean;
-	isFixedEssential?: boolean;
-}
-
-export interface NewApplicationButtonProps {
-	currentPage: number;
+export type NewApplicationButtonProps = Pick<CommonProps, 'currentPage'> & {
 	onNext: () => void;
 	onPrev: () => void;
-}
+};
 
-export interface NewApplicationNavigatorProps {
-	currentPage: number;
+export type NewApplicationNavigatorProps = Pick<CommonProps, 'currentPage'> & {
 	onRouteToPage: (idx: number) => void;
 	onRemove: (idx: number) => void;
-}
+};
 
-export interface NewApplicationDefaultProps {
+export type NewApplicationDefaultProps = {
 	form: FormType;
 	formIdx: number;
-}
+};
 
-export interface NewApplicationIndicatorProps {
-	currentPage: number;
-	isComplete: boolean;
-}
+export type NewApplicationIndicatorProps = CommonProps & {};
