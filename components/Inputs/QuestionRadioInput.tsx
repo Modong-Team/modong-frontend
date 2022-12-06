@@ -21,7 +21,7 @@ export default function QuestionRadioInput({
 	};
 
 	return (
-		<RadioElement>
+		<S.RadioElement>
 			{svgRadioQuestion}
 			<QuestionInput
 				onChange={onChangeQuestionOption}
@@ -29,14 +29,16 @@ export default function QuestionRadioInput({
 				placeholder={`선택${optionIdx + 1}`}
 				value={question.options[optionIdx]}
 			/>
-		</RadioElement>
+		</S.RadioElement>
 	);
 }
 
-const RadioElement = styled.div`
-	display: flex;
-	align-items: center;
-	width: 100%;
-	gap: 1.1rem;
-	margin-bottom: 1rem;
-`;
+namespace S {
+	export const RadioElement = styled.div`
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: 1.1rem;
+		margin-bottom: 1rem;
+	`;
+}

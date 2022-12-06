@@ -16,8 +16,8 @@ export default function NewApplicationContent({
 	const forms = useFormsValue();
 
 	return (
-		<ContentContainer>
-			<FormContainer>
+		<S.ContentContainer>
+			<S.FormContainer>
 				{isComplete ? (
 					<NewApplicationComplete />
 				) : currentPage === -1 ? (
@@ -29,27 +29,29 @@ export default function NewApplicationContent({
 						formIdx={currentPage}
 					/>
 				)}
-			</FormContainer>
-		</ContentContainer>
+			</S.FormContainer>
+		</S.ContentContainer>
 	);
 }
 
-const ContentContainer = styled.div``;
+namespace S {
+	export const ContentContainer = styled.div``;
 
-const FormContainer = styled.div`
-	background-color: ${Colors.white};
-	border: 0.1rem solid ${Colors.gray200};
-	border-radius: 0.8rem;
-	padding: 4rem;
+	export const FormContainer = styled.div`
+		background-color: ${Colors.white};
+		border: 0.1rem solid ${Colors.gray200};
+		border-radius: 0.8rem;
+		padding: 4rem;
 
-	& {
-		h2 {
-			${Fonts.heading24bold}
-			color: ${Colors.gray900};
-			margin-bottom: 2.4rem;
+		& {
+			h2 {
+				${Fonts.heading24bold}
+				color: ${Colors.gray900};
+				margin-bottom: 2.4rem;
+			}
+			p {
+				${Fonts.subtitle14medium}
+			}
 		}
-		p {
-			${Fonts.subtitle14medium}
-		}
-	}
-`;
+	`;
+}

@@ -34,7 +34,7 @@ export default function QuestionBox({
 	};
 
 	return (
-		<QuestionBoxContainer>
+		<S.QuestionBoxContainer>
 			<h3>{QuestionsLabel[questionType]}</h3>
 			<QuestionInput
 				isError={isError}
@@ -76,25 +76,27 @@ export default function QuestionBox({
 			) : (
 				''
 			)}
-		</QuestionBoxContainer>
+		</S.QuestionBoxContainer>
 	);
 }
 
-const QuestionBoxContainer = styled.div`
-	padding: 2.3rem 2.8rem;
-	background-color: ${Colors.white};
-	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.gray200};
-	margin-top: 2rem;
+namespace S {
+	export const QuestionBoxContainer = styled.div`
+		padding: 2.3rem 2.8rem;
+		background-color: ${Colors.white};
+		border-radius: 0.8rem;
+		border: 0.1rem solid ${Colors.gray200};
+		margin-top: 2rem;
 
-	& {
-		h3 {
-			${Fonts.subtitle14semibold}
-			margin-bottom: 0.9rem;
+		& {
+			h3 {
+				${Fonts.subtitle14semibold}
+				margin-bottom: 0.9rem;
 
-			&:not(:first-child) {
-				margin-top: 1.9rem;
+				&:not(:first-child) {
+					margin-top: 1.9rem;
+				}
 			}
 		}
-	}
-`;
+	`;
+}

@@ -14,39 +14,41 @@ export default function NewApplicationButton({
 	const forms = useFormsValue();
 
 	return (
-		<ButtonContainer>
-			<Button onClick={onPrev} isHidden={currentPage === -1}>
+		<S.ButtonContainer>
+			<S.Button onClick={onPrev} isHidden={currentPage === -1}>
 				{svgPrev}이전
-			</Button>
-			<Button onClick={onNext}>
+			</S.Button>
+			<S.Button onClick={onNext}>
 				{currentPage === forms.length - 1 ? '페이지 추가' : '다음'}
 				{svgNext}
-			</Button>
-		</ButtonContainer>
+			</S.Button>
+		</S.ButtonContainer>
 	);
 }
 
-const ButtonContainer = styled.section`
-	grid-column: 2/3;
-	display: flex;
-	justify-content: space-between;
-`;
+namespace S {
+	export const ButtonContainer = styled.section`
+		grid-column: 2/3;
+		display: flex;
+		justify-content: space-between;
+	`;
 
-const Button = styled.button<ButtonProps>`
-	${Fonts.button14bold}
-	padding: 1.4rem 2rem;
-	display: flex;
-	gap: 0.48rem;
-	border-radius: 0.8rem;
-	border: 0.1rem solid ${Colors.gray200};
-	background-color: ${Colors.white};
-	visibility: ${(props) => (props.isHidden ? 'hidden' : '')};
+	export const Button = styled.button<ButtonProps>`
+		${Fonts.button14bold}
+		padding: 1.4rem 2rem;
+		display: flex;
+		gap: 0.48rem;
+		border-radius: 0.8rem;
+		border: 0.1rem solid ${Colors.gray200};
+		background-color: ${Colors.white};
+		visibility: ${(props) => (props.isHidden ? 'hidden' : '')};
 
-	& {
-		svg {
-			position: relative;
-			top: 0.18rem;
-			width: 0.7rem;
+		& {
+			svg {
+				position: relative;
+				top: 0.18rem;
+				width: 0.7rem;
+			}
 		}
-	}
-`;
+	`;
+}

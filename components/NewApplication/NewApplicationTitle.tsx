@@ -22,8 +22,8 @@ export default function NewApplicationTitle({
 	};
 
 	return (
-		<TitleContainer isFocused={isFocused} isError={emptyTitleError}>
-			<Error>{emptyTitleError ? '내용을 입력해주세요.' : ''}</Error>
+		<S.TitleContainer isFocused={isFocused} isError={emptyTitleError}>
+			<S.Error>{emptyTitleError ? '내용을 입력해주세요.' : ''}</S.Error>
 			<input
 				type='text'
 				placeholder='지원서 제목'
@@ -31,43 +31,45 @@ export default function NewApplicationTitle({
 				onFocus={onFocus}
 				onBlur={onBlur}
 			/>
-		</TitleContainer>
+		</S.TitleContainer>
 	);
 }
 
-const TitleContainer = styled.div<TitleContainerProps>`
-	position: relative;
-	border-radius: 0.8rem;
-	padding: 2.2rem 4rem;
-	background-color: ${Colors.white};
-	border: 0.1rem solid ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray200)};
-	grid-column: 2/3;
+namespace S {
+	export const TitleContainer = styled.div<TitleContainerProps>`
+		position: relative;
+		border-radius: 0.8rem;
+		padding: 2.2rem 4rem;
+		background-color: ${Colors.white};
+		border: 0.1rem solid ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray200)};
+		grid-column: 2/3;
 
-	& {
-		input {
-			${Fonts.heading26bold}
-			width: 100%;
-			color: ${Colors.gray900};
-			caret-color: ${Colors.blue500};
-			background-color: ${Colors.white};
+		& {
+			input {
+				${Fonts.heading26bold}
+				width: 100%;
+				color: ${Colors.gray900};
+				caret-color: ${Colors.blue500};
+				background-color: ${Colors.white};
 
-			&::placeholder {
-				color: ${Colors.gray500};
+				&::placeholder {
+					color: ${Colors.gray500};
+				}
 			}
 		}
-	}
 
-	&:hover {
-		border-color: ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray700)};
-	}
+		&:hover {
+			border-color: ${(props) => (props.isFocused ? Colors.blue500 : Colors.gray700)};
+		}
 
-	border-color: ${(props) => (props.isError ? `${Colors.red500} !important` : '')};
-`;
+		border-color: ${(props) => (props.isError ? `${Colors.red500} !important` : '')};
+	`;
 
-const Error = styled.div`
-	${Fonts.body14regular}
-	position: absolute;
-	top: -2.4rem;
-	left: 0;
-	color: ${Colors.red500};
-`;
+	export const Error = styled.div`
+		${Fonts.body14regular}
+		position: absolute;
+		top: -2.4rem;
+		left: 0;
+		color: ${Colors.red500};
+	`;
+}
