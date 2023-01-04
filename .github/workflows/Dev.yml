@@ -8,6 +8,7 @@ env:
   DOCKER_IMAGE: ghcr.io/${{ github.actor }}/modong-frontend
   VERSION: ${{ github.sha }}
   NAME: modong_frontend
+  ENV_FILE: ${{ secrets.ENV_FILE }}
 
 jobs:
   build:
@@ -52,4 +53,4 @@ jobs:
       - name: Docker run
         run: |
           docker stop ${{ env.NAME }} && docker rm ${{ env.NAME }} && docker rmi ${{ env.DOCKER_IMAGE }}:latest
-          docker run -d -p 80:3000 --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:latest
+          docker run -d -p 80:3000 --env-file ${{ env.ENV_FILE }} --name ${{ env.NAME }} --restart always ${{ env.DOCKER_IMAGE }}:latest
