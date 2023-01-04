@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GenericInstance } from '../../@types/axios/core';
 
 const request: GenericInstance = axios.create({
-	baseURL: 'http://modong-backend-dev-env.eba-dstvsrcm.ap-northeast-2.elasticbeanstalk.com/',
+	baseURL: process.env.NEXT_PUBLIC_BACK_END_BASE_URL,
 	timeout: 2500,
 	headers: { 'Content-Type': 'application/json' },
 });
