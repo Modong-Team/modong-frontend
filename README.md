@@ -131,3 +131,5 @@ Feat: 회원 가입 기능 구현 (#WTD-18)
 <!-- Security scan triggered at 2026-08-31 16:40:45 -->
 
 <!-- Security scan triggered at 2026-08-31 16:35:24 -->
+
+<!-- Security scan triggered at 2026-08-31 18:15:44 -->
